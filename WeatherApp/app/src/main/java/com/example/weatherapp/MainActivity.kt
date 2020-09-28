@@ -2,10 +2,8 @@ package com.example.weatherapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import org.jetbrains.anko.doAsync
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var searchButton: ImageButton
     private lateinit var offStarButton: ImageButton
     private lateinit var onStarButton: ImageButton
+    private lateinit var sunImageView: ImageView
     private lateinit var cityTextView: TextView
     private lateinit var temperatureTextView: TextView
     private lateinit var humidityImageView: ImageView
@@ -35,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         searchButton = findViewById(R.id.searchButton)
         offStarButton = findViewById(R.id.offStarButton)
         onStarButton = findViewById(R.id.onStarButton)
+        sunImageView = findViewById(R.id.sunImageView)
         cityTextView = findViewById(R.id.cityTextView)
         temperatureTextView = findViewById(R.id.temperatureTextView)
         humidityImageView = findViewById(R.id.humidityImageView)
@@ -48,5 +48,17 @@ class MainActivity : AppCompatActivity() {
         windTextView = findViewById(R.id.windTextView)
         moreDetailsButton = findViewById(R.id.moreDetailsButton)
 
+
+        doAsync {
+            val weatherManager = WeatherManager()
+            val currentWeather = weatherManager.retrieveWeather(getString(R.string.api_key))
+            runOnUiThread {
+                cityTextView.text = currentWeather.city
+                temperatureTextView.text = getString(R.string.temperature, currentWeather.temp)
+                humidityValueTextView.text = getString(R.string.humidity_value, currentWeather.humidity)
+                uvValueTextView.text = currentWeather.uv
+                windValueTextView.text = getString(R.string.wind_value, currentWeather.wind)
+            }
+        }
     }
 }

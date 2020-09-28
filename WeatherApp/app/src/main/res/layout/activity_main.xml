@@ -22,8 +22,8 @@
         android:id="@+id/onStarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:background="?android:attr/panelBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,19 +33,28 @@
         android:id="@+id/offStarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:background="?android:attr/panelBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_off" />
+
+    <ImageView
+        android:id="@+id/sunImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="54dp"
+        app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
+        app:layout_constraintEnd_toStartOf="@+id/temperatureTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sun" />
 
     <TextView
         android:id="@+id/cityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="City, State"
         android:textColor="@color/white"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +66,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:text="00°F"
         android:textColor="@color/white"
         android:textSize="64sp"
         android:textStyle="bold"
@@ -72,7 +80,7 @@
         app:layout_constraintBottom_toTopOf="@+id/humidityValueTextView"
         app:layout_constraintEnd_toEndOf="@+id/humidityValueTextView"
         app:layout_constraintStart_toStartOf="@+id/humidityValueTextView"
-        app:srcCompat="@android:drawable/ic_dialog_alert" />
+        app:srcCompat="@drawable/humidity" />
 
     <ImageView
         android:id="@+id/uvImageView"
@@ -81,7 +89,7 @@
         app:layout_constraintBottom_toTopOf="@+id/uvValueTextView"
         app:layout_constraintEnd_toEndOf="@+id/uvValueTextView"
         app:layout_constraintStart_toStartOf="@+id/uvValueTextView"
-        app:srcCompat="@android:drawable/ic_dialog_alert" />
+        app:srcCompat="@drawable/uv" />
 
     <ImageView
         android:id="@+id/windImageView"
@@ -90,13 +98,12 @@
         app:layout_constraintBottom_toTopOf="@+id/windValueTextView"
         app:layout_constraintEnd_toEndOf="@+id/windValueTextView"
         app:layout_constraintStart_toStartOf="@+id/windValueTextView"
-        app:srcCompat="@android:drawable/ic_dialog_alert" />
+        app:srcCompat="@drawable/wind" />
 
     <TextView
         android:id="@+id/humidityValueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00%"
         android:textColor="@color/white"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/humidityTextView"
@@ -107,7 +114,6 @@
         android:id="@+id/uvValueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
         android:textColor="@color/white"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/uvTextView"
@@ -118,7 +124,6 @@
         android:id="@+id/windValueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00 mph"
         android:textColor="@color/white"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/windTextView"
