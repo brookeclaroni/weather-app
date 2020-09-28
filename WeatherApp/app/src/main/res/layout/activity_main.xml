@@ -4,15 +4,176 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3476A7"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageButton
+        android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="?android:attr/panelBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_search" />
+
+    <ImageButton
+        android:id="@+id/onStarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="?android:attr/panelBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <ImageButton
+        android:id="@+id/offStarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="?android:attr/panelBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_star_big_off" />
+
+    <TextView
+        android:id="@+id/cityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="City, State"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
+
+    <TextView
+        android:id="@+id/temperatureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="00°F"
+        android:textColor="@color/white"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/windImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityTextView" />
+
+    <ImageView
+        android:id="@+id/humidityImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/humidityValueTextView"
+        app:layout_constraintEnd_toEndOf="@+id/humidityValueTextView"
+        app:layout_constraintStart_toStartOf="@+id/humidityValueTextView"
+        app:srcCompat="@android:drawable/ic_dialog_alert" />
+
+    <ImageView
+        android:id="@+id/uvImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/uvValueTextView"
+        app:layout_constraintEnd_toEndOf="@+id/uvValueTextView"
+        app:layout_constraintStart_toStartOf="@+id/uvValueTextView"
+        app:srcCompat="@android:drawable/ic_dialog_alert" />
+
+    <ImageView
+        android:id="@+id/windImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/windValueTextView"
+        app:layout_constraintEnd_toEndOf="@+id/windValueTextView"
+        app:layout_constraintStart_toStartOf="@+id/windValueTextView"
+        app:srcCompat="@android:drawable/ic_dialog_alert" />
+
+    <TextView
+        android:id="@+id/humidityValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00%"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/humidityTextView"
+        app:layout_constraintEnd_toEndOf="@+id/humidityTextView"
+        app:layout_constraintStart_toStartOf="@+id/humidityTextView" />
+
+    <TextView
+        android:id="@+id/uvValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/uvTextView"
+        app:layout_constraintEnd_toEndOf="@+id/uvTextView"
+        app:layout_constraintStart_toStartOf="@+id/uvTextView" />
+
+    <TextView
+        android:id="@+id/windValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00 mph"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/windTextView"
+        app:layout_constraintEnd_toEndOf="@+id/windTextView"
+        app:layout_constraintStart_toStartOf="@+id/windTextView" />
+
+    <TextView
+        android:id="@+id/humidityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/humidity"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
+        app:layout_constraintEnd_toStartOf="@+id/uvTextView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/uvTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/uv"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/windTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/wind"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/uvTextView" />
+
+    <Button
+        android:id="@+id/moreDetailsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/more_details"
+        android:textColor="@color/colorBackground"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="more_details">Click for more details ➜</string>
+    <string name="humidity">Humidity</string>
+    <string name="uv">UV Index</string>
+    <string name="wind">Wind</string>
 </resources>
