@@ -8,15 +8,15 @@
     tools:context=".MainActivity">
 
     <ImageButton
-        android:id="@+id/searchButton"
+        android:id="@+id/cityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:background="?android:attr/panelBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_search" />
+        app:srcCompat="@android:drawable/ic_dialog_map" />
 
     <ImageButton
         android:id="@+id/onStarButton"
@@ -59,7 +59,7 @@
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
+        app:layout_constraintTop_toBottomOf="@+id/cityButton" />
 
     <TextView
         android:id="@+id/temperatureTextView"

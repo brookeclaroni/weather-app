@@ -1,5 +1,6 @@
 package com.example.weatherapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -8,7 +9,7 @@ import org.jetbrains.anko.doAsync
 class MainActivity : AppCompatActivity() {
 
     //initialize lateinit variables
-    private lateinit var searchButton: ImageButton
+    private lateinit var cityButton: ImageButton
     private lateinit var offStarButton: ImageButton
     private lateinit var onStarButton: ImageButton
     private lateinit var sunImageView: ImageView
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //populate lateinit variables
-        searchButton = findViewById(R.id.searchButton)
+        cityButton = findViewById(R.id.cityButton)
         offStarButton = findViewById(R.id.offStarButton)
         onStarButton = findViewById(R.id.onStarButton)
         sunImageView = findViewById(R.id.sunImageView)
@@ -60,5 +61,19 @@ class MainActivity : AppCompatActivity() {
                 windValueTextView.text = getString(R.string.wind_value, currentWeather.wind)
             }
         }
+
+        //when city button is pressed, head to city activity
+        cityButton.setOnClickListener{
+            val intent = Intent(this, CitiesActivity::class.java)
+            startActivity(intent)
+        }
+
+        //when details button is pressed, head to details activity
+        moreDetailsButton.setOnClickListener{
+            val intent = Intent(this, DetailsActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }
