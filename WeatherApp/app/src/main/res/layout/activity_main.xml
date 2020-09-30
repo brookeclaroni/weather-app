@@ -44,7 +44,7 @@
         android:id="@+id/sunImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="54dp"
+        android:layout_marginEnd="64dp"
         app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
         app:layout_constraintEnd_toStartOf="@+id/temperatureTextView"
         app:layout_constraintTop_toTopOf="parent"

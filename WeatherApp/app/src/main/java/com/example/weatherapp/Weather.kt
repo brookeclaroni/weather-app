@@ -6,5 +6,6 @@ data class Weather (
     val temp: String,
     val humidity: String,
     val uv: String,
-    val wind: String
+    val wind: String,
+    var saved: Boolean
 )

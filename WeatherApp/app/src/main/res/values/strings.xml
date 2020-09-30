@@ -4,7 +4,8 @@
     <string name="humidity">Humidity</string>
     <string name="uv">UV Index</string>
     <string name="wind">Wind</string>
-    <string name="temperature">%1$s °F</string>
-    <string name="humidity_value">%1$s %%</string>
-    <string name="wind_value">%1$s mph</string>
+    <string name="temperature">%1$s°F</string>
+    <string name="humidity_value">%1$s%%</string>
+    <string name="wind_value">%1$smph</string>
+    <string name="search_city">Search for a city</string>
 </resources>

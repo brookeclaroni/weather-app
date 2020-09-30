@@ -26,9 +26,40 @@ class WeatherManager {
         okHttpClient = builder.build()
     }
 
-    fun retrieveWeather(apiKey : String): Weather {
+    fun retrieveWeather(query : String, apiKey : String): Weather {
+        val request = Request.Builder()
+            .url("https://dataservice.accuweather.com/locations/v1/cities/search?apikey=$apiKey&q=$query\n")
+            .method("GET", null)
+            .build()
 
-        val locationKey = "327659"
+        val response = okHttpClient.newCall(request).execute()
+        val responseString: String? = response.body?.string()
+
+        if (!responseString.isNullOrEmpty() && response.isSuccessful) {
+            val jsonArray = JSONArray(responseString)
+            val jsonObject = jsonArray.getJSONObject(0)
+            val locationKey = jsonObject.getString("Key")
+            val cityName = jsonObject.getString("EnglishName")
+            val adminArea = jsonObject.getJSONObject("AdministrativeArea")
+            val stateName = adminArea.getString("ID")
+
+            return retrieveWeatherByKey(locationKey,cityName, stateName, apiKey)
+        }
+
+        return Weather (
+            city = "City",
+            state = "State",
+            temp = "00",
+            humidity= "00",
+            uv = "0",
+            wind = "00",
+            saved = false
+        )
+    }
+
+    fun retrieveWeatherByKey(locationKey : String, cityName : String, stateName : String, apiKey : String): Weather {
+
+        //val locationsKey = "327659"
         val request = Request.Builder()
             .url("https://dataservice.accuweather.com/currentconditions/v1/$locationKey?apikey=$apiKey&details=true\n")
             .method("GET", null)
@@ -42,7 +73,8 @@ class WeatherManager {
             temp = "00",
             humidity= "00",
             uv = "0",
-            wind = "00"
+            wind = "00",
+            saved = false
         )
 
         if (!responseString.isNullOrEmpty() && response.isSuccessful) {
@@ -59,12 +91,13 @@ class WeatherManager {
             val windSpeedImperialVal = windSpeedImperial.getString("Value")
 
             weather = Weather (
-                city = "Washington",
-                state = "DC",
+                city = "$cityName, $stateName",
+                state = stateName,
                 temp = tempImperialVal,
                 humidity= humidityVal,
                 uv = uvVal,
-                wind = windSpeedImperialVal
+                wind = windSpeedImperialVal,
+                saved = false
             )
         }
         return weather

@@ -1,8 +1,10 @@
 package com.example.weatherapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import org.jetbrains.anko.doAsync
 
@@ -49,10 +51,23 @@ class MainActivity : AppCompatActivity() {
         windTextView = findViewById(R.id.windTextView)
         moreDetailsButton = findViewById(R.id.moreDetailsButton)
 
+        //get intent shared preference variables
+        val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
+        val cityCode = preferences.getString("CURR_CITY", "327658")!!
+
+        var currentWeather = Weather (
+            city = "City",
+            state = "State",
+            temp = "00",
+            humidity= "00",
+            uv = "0",
+            wind = "00",
+            saved = false
+        )
 
         doAsync {
             val weatherManager = WeatherManager()
-            val currentWeather = weatherManager.retrieveWeather(getString(R.string.api_key))
+            currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
             runOnUiThread {
                 cityTextView.text = currentWeather.city
                 temperatureTextView.text = getString(R.string.temperature, currentWeather.temp)
@@ -66,6 +81,37 @@ class MainActivity : AppCompatActivity() {
         cityButton.setOnClickListener{
             val intent = Intent(this, CitiesActivity::class.java)
             startActivity(intent)
+        }
+
+        //when star is clicked, behave accordingly
+        //get sharedPreferences, get the string set of saved concerts
+        val savedCitySet = preferences.getStringSet("SAVED_CITIES", mutableSetOf())
+
+        //make the star the appropriate color
+        if(savedCitySet!!.contains(currentWeather.city))
+            offStarButton.visibility = View.GONE //if this is a saved result, make the yellow star appear
+        else  //if this is not a saved result, make the grey star appear
+            offStarButton.visibility = View.VISIBLE
+
+        //if star is grey and then the user clicks to save
+        offStarButton.setOnClickListener{
+
+            //change the color, object data, and update shared preferences
+            offStarButton.visibility = View.GONE
+            currentWeather.saved=true
+            savedCitySet?.add(currentWeather.city)
+            preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
+
+        }
+
+        //if star is yellow and then the user clicks to unsave
+        onStarButton.setOnClickListener{
+
+            //change the color, object data, and update shared preferences
+            offStarButton.visibility = View.VISIBLE
+            currentWeather.saved=false
+            savedCitySet?.remove(currentWeather.city)
+            preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
         }
 
         //when details button is pressed, head to details activity

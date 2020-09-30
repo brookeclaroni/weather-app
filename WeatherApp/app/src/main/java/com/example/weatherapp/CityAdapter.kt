@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CityAdapter (private val results: List<Weather>) : RecyclerView.Adapter<CityAdapter.ViewHolder>(){
+class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapter<CityAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         //fill in recycler view with city rows
@@ -16,16 +16,16 @@ class CityAdapter (private val results: List<Weather>) : RecyclerView.Adapter<Ci
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //retrieve the current result to add to the recycler view
-        val currentResult = results[position]
+        val currentCity = citySet.elementAt(position)
 
         //fill in event, location, and artist
-        holder.cityName.text = currentResult.city
-        holder.cityTemp.text = currentResult.temp
+        holder.cityName.text = currentCity
+        holder.cityTemp.text = "69"
     }
 
     override fun getItemCount(): Int {
         //return length of results list
-        return results.size
+        return citySet.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
