@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
 
         var currentWeather = Weather (
             city = "City",
+            locationKey = "000000",
             state = "State",
             country = "Country",
             temp = "00",

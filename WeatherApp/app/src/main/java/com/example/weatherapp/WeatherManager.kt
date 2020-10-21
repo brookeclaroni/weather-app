@@ -49,6 +49,7 @@ class WeatherManager {
 
         return Weather (
             city = "City",
+            locationKey = "000000",
             state = "State",
             country = "NA",
             temp = "00",
@@ -73,6 +74,7 @@ class WeatherManager {
         val responseString: String? = response.body?.string()
         var weather = Weather (
             city = "City",
+            locationKey = "000000",
             state = "State",
             country = "NA",
             temp = "00",
@@ -101,6 +103,7 @@ class WeatherManager {
 
             weather = Weather (
                 city = "$cityName, $stateName",
+                locationKey = locationKey,
                 state = stateName,
                 country = countryName,
                 tempMet = tempMetricVal,

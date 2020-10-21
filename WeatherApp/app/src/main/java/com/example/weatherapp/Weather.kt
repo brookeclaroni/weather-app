@@ -2,6 +2,7 @@ package com.example.weatherapp
 
 data class Weather(
     val city: String,
+    val locationKey: String,
     val state: String,
     val country: String,
     val temp: String,
