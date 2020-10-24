@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/day4Aqi"
         app:layout_constraintTop_toBottomOf="@+id/day4Aqi" />
 
@@ -23,6 +24,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/date5TextView"
         app:layout_constraintTop_toBottomOf="@+id/day4Condition" />
 
@@ -33,6 +35,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="36dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/day5Aqi"
         app:layout_constraintTop_toBottomOf="@+id/day4Temp" />
 
@@ -42,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/day3Aqi"
         app:layout_constraintTop_toBottomOf="@+id/day3Aqi" />
 
@@ -52,6 +56,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/day3Condition"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/date4TextView"
@@ -64,6 +69,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="36dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/day4Aqi"
         app:layout_constraintTop_toBottomOf="@+id/day3Temp" />
 
@@ -74,7 +80,8 @@
         android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/day2Aqi"
-        app:layout_constraintTop_toBottomOf="@+id/day2Aqi" />
+        app:layout_constraintTop_toBottomOf="@+id/day2Aqi"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/day3Condition"
@@ -83,6 +90,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/day2Condition"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/date3TextView"
@@ -95,6 +103,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="36dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/day3Aqi"
         app:layout_constraintTop_toBottomOf="@+id/day2Temp" />
 
@@ -104,6 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/day1Aqi"
         app:layout_constraintTop_toBottomOf="@+id/day1Aqi" />
 
@@ -114,6 +124,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="256dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/day1Condition" />
 
@@ -124,6 +135,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="36dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/day2Aqi"
         app:layout_constraintTop_toBottomOf="@+id/day1Temp" />
 
@@ -203,6 +215,7 @@
         android:layout_marginTop="76dp"
         android:layout_marginEnd="76dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -213,6 +226,7 @@
         android:layout_marginTop="76dp"
         android:layout_marginEnd="36dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/day1Aqi"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -223,6 +237,7 @@
         android:layout_marginTop="76dp"
         android:layout_marginEnd="28dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/day1Temp"
         app:layout_constraintHorizontal_bias="0.97"
         app:layout_constraintStart_toEndOf="@+id/date1TextView"

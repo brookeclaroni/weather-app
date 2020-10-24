@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
             runOnUiThread {
                 cityTextView.text = currentWeather.city
-                temperatureTextView.text = getString(R.string.temperature, currentWeather.tempMet)
+                temperatureTextView.text = getString(R.string.temperature, currentWeather.tempImp)
                 humidityValueTextView.text = getString(R.string.humidity_value, currentWeather.humidity)
                 uvValueTextView.text = currentWeather.uv
                 windValueTextView.text = getString(R.string.wind_value, currentWeather.wind)

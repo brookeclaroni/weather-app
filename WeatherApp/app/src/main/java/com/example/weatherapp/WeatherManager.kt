@@ -136,13 +136,13 @@ class WeatherManager {
             dayCondition = "NA"
         )
         for (i in 1..5) {
-            fiveDayDetail[i] = dummyBriefWeather
+            fiveDayDetail.add(dummyBriefWeather)
         }
 
         if (!responseString.isNullOrEmpty() && response.isSuccessful) {
             val jsonObject = JSONObject(responseString)
             val dailyForecasts = jsonObject.getJSONArray("DailyForecasts")
-            for (i in 1..5) {
+            for (i in 0..4) {
                 val tempObject = dailyForecasts.getJSONObject(i)
                 val temp = tempObject.getJSONObject("Temperature")
                 val airAndPol = tempObject.getJSONArray("AirAndPollen")
@@ -154,6 +154,7 @@ class WeatherManager {
                     aqi = airAndPol.getJSONObject(0).getString("Value"),
                     dayCondition = day.getString("IconPhrase")
                 )
+                // fiveDayDetail.set(i, tempBriefWeather)
                 fiveDayDetail[i] = tempBriefWeather
             }
         }
