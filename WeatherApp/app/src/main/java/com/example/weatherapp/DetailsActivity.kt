@@ -28,11 +28,18 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var day3TempView: TextView
     private lateinit var day4TempView: TextView
     private lateinit var day5TempView: TextView
+    private lateinit var day1AqiView: TextView
+    private lateinit var day2AqiView: TextView
+    private lateinit var day3AqiView: TextView
+    private lateinit var day4AqiView: TextView
+    private lateinit var day5AqiView: TextView
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (supportActionBar != null)
+            supportActionBar?.hide()
         setContentView(R.layout.activity_details)
 
         day1TextView = findViewById(R.id.date1TextView)
@@ -50,6 +57,11 @@ class DetailsActivity : AppCompatActivity() {
         day3TempView = findViewById(R.id.day3Temp)
         day4TempView = findViewById(R.id.day4Temp)
         day5TempView = findViewById(R.id.day5Temp)
+        day1AqiView = findViewById(R.id.day1Aqi)
+        day2AqiView = findViewById(R.id.day2Aqi)
+        day3AqiView = findViewById(R.id.day3Aqi)
+        day4AqiView = findViewById(R.id.day4Aqi)
+        day5AqiView = findViewById(R.id.day5Aqi)
 
 
         //get intent shared preference variables
@@ -73,12 +85,16 @@ class DetailsActivity : AppCompatActivity() {
                 day3CondView.text = fiveDayDetail[2].dayCondition
                 day4CondView.text = fiveDayDetail[3].dayCondition
                 day5CondView.text = fiveDayDetail[4].dayCondition
-                day1TempView.text = fiveDayDetail[0].tempMax + "/" + fiveDayDetail[0].tempMin
-                day2TempView.text = fiveDayDetail[1].tempMax + "/" + fiveDayDetail[1].tempMin
-                day3TempView.text = fiveDayDetail[2].tempMax + "/" + fiveDayDetail[2].tempMin
-                day4TempView.text = fiveDayDetail[3].tempMax + "/" + fiveDayDetail[3].tempMin
-                day5TempView.text = fiveDayDetail[4].tempMax + "/" + fiveDayDetail[4].tempMin
-
+                day1TempView.text = fiveDayDetail[0].tempMax + "°F/" + fiveDayDetail[0].tempMin + "°F"
+                day2TempView.text = fiveDayDetail[1].tempMax + "°F/" + fiveDayDetail[1].tempMin + "°F"
+                day3TempView.text = fiveDayDetail[2].tempMax + "°F/" + fiveDayDetail[2].tempMin + "°F"
+                day4TempView.text = fiveDayDetail[3].tempMax + "°F/" + fiveDayDetail[3].tempMin + "°F"
+                day5TempView.text = fiveDayDetail[4].tempMax + "°F/" + fiveDayDetail[4].tempMin + "°F"
+                day1AqiView.text = "AQI: " + fiveDayDetail[0].aqi
+                day2AqiView.text = "AQI: " + fiveDayDetail[1].aqi
+                day3AqiView.text = "AQI: " + fiveDayDetail[2].aqi
+                day4AqiView.text = "AQI: " + fiveDayDetail[3].aqi
+                day5AqiView.text = "AQI: " + fiveDayDetail[4].aqi
             }
         }
     }

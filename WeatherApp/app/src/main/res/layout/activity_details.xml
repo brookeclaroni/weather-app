@@ -8,239 +8,242 @@
     tools:context=".DetailsActivity">
 
     <TextView
-        android:id="@+id/day5Aqi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:id="@+id/day2Condition"
+        android:layout_width="77dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="36dp"
         android:text="TextView"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/day4Aqi"
-        app:layout_constraintTop_toBottomOf="@+id/day4Aqi" />
-
-    <TextView
-        android:id="@+id/day5Condition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/date5TextView"
-        app:layout_constraintTop_toBottomOf="@+id/day4Condition" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/date2TextView"
+        app:layout_constraintTop_toTopOf="@+id/date2TextView" />
 
     <TextView
         android:id="@+id/day5Temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="20dp"
         android:text="TextView"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/day5Aqi"
-        app:layout_constraintTop_toBottomOf="@+id/day4Temp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/day5Condition"
+        app:layout_constraintTop_toBottomOf="@+id/day5Condition" />
 
     <TextView
-        android:id="@+id/day4Aqi"
+        android:id="@+id/day3Temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="TextView"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/day3Aqi"
-        app:layout_constraintTop_toBottomOf="@+id/day3Aqi" />
-
-    <TextView
-        android:id="@+id/day4Condition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/day3Condition"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/date4TextView"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/day3Condition"
         app:layout_constraintTop_toBottomOf="@+id/day3Condition" />
 
     <TextView
         android:id="@+id/day4Temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="20dp"
         android:text="TextView"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/day4Aqi"
-        app:layout_constraintTop_toBottomOf="@+id/day3Temp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/day4Condition"
+        app:layout_constraintTop_toBottomOf="@+id/day4Condition" />
 
     <TextView
-        android:id="@+id/day3Aqi"
+        android:id="@+id/day4Condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="36dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/day2Aqi"
-        app:layout_constraintTop_toBottomOf="@+id/day2Aqi"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/date4TextView"
+        app:layout_constraintTop_toTopOf="@+id/date4TextView" />
+
+    <TextView
+        android:id="@+id/day5Condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/date5TextView"
+        app:layout_constraintTop_toTopOf="@+id/date5TextView" />
+
+    <TextView
+        android:id="@+id/date5TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
+        android:text="Day5"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date4TextView" />
+
+    <TextView
+        android:id="@+id/date3TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
+        android:text="Day3"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date2TextView" />
 
     <TextView
         android:id="@+id/day3Condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="36dp"
         android:text="TextView"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/day2Condition"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/date3TextView"
-        app:layout_constraintTop_toBottomOf="@+id/day2Condition" />
+        app:layout_constraintTop_toTopOf="@+id/date3TextView" />
 
     <TextView
-        android:id="@+id/day3Temp"
+        android:id="@+id/date4TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="36dp"
-        android:text="TextView"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
+        android:text="Day4"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/day3Aqi"
-        app:layout_constraintTop_toBottomOf="@+id/day2Temp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date3TextView" />
 
     <TextView
-        android:id="@+id/day2Aqi"
+        android:id="@+id/date2TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
+        android:text="Day2"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/day1Aqi"
-        app:layout_constraintTop_toBottomOf="@+id/day1Aqi" />
-
-    <TextView
-        android:id="@+id/day2Condition"
-        android:layout_width="59dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="256dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/day1Condition" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date1TextView" />
 
     <TextView
         android:id="@+id/day2Temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="36dp"
         android:text="TextView"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/day2Aqi"
-        app:layout_constraintTop_toBottomOf="@+id/day1Temp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/day2Condition"
+        app:layout_constraintTop_toBottomOf="@+id/day2Condition" />
+
+    <TextView
+        android:id="@+id/day2Aqi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/day1Aqi"
+        app:layout_constraintTop_toTopOf="@+id/day2Temp" />
+
+    <TextView
+        android:id="@+id/day5Aqi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/day4Aqi"
+        app:layout_constraintTop_toTopOf="@+id/day5Temp" />
+
+    <TextView
+        android:id="@+id/day4Aqi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/day3Aqi"
+        app:layout_constraintTop_toTopOf="@+id/day4Temp" />
+
+    <TextView
+        android:id="@+id/day3Aqi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/day2Aqi"
+        app:layout_constraintTop_toTopOf="@+id/day3Temp" />
 
     <TextView
         android:id="@+id/detailsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:text="Details"
         android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/date1TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:text="Day1"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/date2TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873" />
-
-    <TextView
-        android:id="@+id/date4TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="24dp"
-        android:text="Day4"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/date5TextView"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/date5TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="248dp"
-        android:text="Day5"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/date2TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="24dp"
-        android:text="Day2"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/date3TextView"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/date3TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="24dp"
-        android:text="Day3"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/date4TextView"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/day1Aqi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="76dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/day1Temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="36dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/day1Aqi"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/day1Condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginStart="36dp"
         android:text="TextView"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/day1Temp"
-        app:layout_constraintHorizontal_bias="0.97"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/date1TextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/date1TextView" />
+
+    <TextView
+        android:id="@+id/date1TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:text="Day1"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsTextView" />
+
+    <TextView
+        android:id="@+id/day1Aqi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/day1Temp"
+        app:layout_constraintTop_toTopOf="@+id/day1Temp" />
+
+    <TextView
+        android:id="@+id/day1Temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/day1Condition"
+        app:layout_constraintTop_toBottomOf="@+id/day1Condition" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
