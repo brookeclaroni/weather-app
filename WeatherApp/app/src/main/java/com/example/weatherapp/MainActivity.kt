@@ -55,29 +55,63 @@ class MainActivity : AppCompatActivity() {
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityCode = preferences.getString("CURR_CITY", "327658")!!
 
-        var currentWeather = Weather (
-            city = "City",
-            locationKey = "000000",
-            state = "State",
-            country = "Country",
-            temp = "00",
-            humidity= "00",
-            uv = "0",
-            wind = "00",
-            saved = false,
-            tempMet = "00",
-            tempImp = "00"
-        )
+//        var currentWeather = Weather (
+//            city = "City",
+//            locationKey = "000000",
+//            state = "State",
+//            country = "Country",
+//            temp = "00",
+//            humidity= "00",
+//            uv = "0",
+//            wind = "00",
+//            saved = false,
+//            tempMet = "00",
+//            tempImp = "00"
+//        )
 
         doAsync {
             val weatherManager = WeatherManager()
-            currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
+            val currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
             runOnUiThread {
                 cityTextView.text = currentWeather.city
                 temperatureTextView.text = getString(R.string.temperature, currentWeather.tempImp)
                 humidityValueTextView.text = getString(R.string.humidity_value, currentWeather.humidity)
                 uvValueTextView.text = currentWeather.uv
                 windValueTextView.text = getString(R.string.wind_value, currentWeather.wind)
+
+                //when star is clicked, behave accordingly
+                //get sharedPreferences, get the string set of saved concerts
+                val savedCitySet = preferences.getStringSet("SAVED_CITIES", mutableSetOf())
+
+                //make the star the appropriate color
+                if(savedCitySet!!.contains(currentWeather.city)) {
+
+                    offStarButton.visibility =
+                        View.GONE //if this is a saved result, make the yellow star appear
+                }
+                else  //if this is not a saved result, make the grey star appear
+                    offStarButton.visibility = View.VISIBLE
+
+                //if star is grey and then the user clicks to save
+                offStarButton.setOnClickListener{
+
+                    //change the color, object data, and update shared preferences
+                    offStarButton.visibility = View.GONE
+                    currentWeather.saved=true
+                    savedCitySet?.add(currentWeather.city)
+                    preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
+
+                }
+
+                //if star is yellow and then the user clicks to unsave
+                onStarButton.setOnClickListener{
+
+                    //change the color, object data, and update shared preferences
+                    offStarButton.visibility = View.VISIBLE
+                    currentWeather.saved=false
+                    savedCitySet?.remove(currentWeather.city)
+                    preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
+                }
             }
         }
 
@@ -87,43 +121,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //when star is clicked, behave accordingly
-        //get sharedPreferences, get the string set of saved concerts
-        val savedCitySet = preferences.getStringSet("SAVED_CITIES", mutableSetOf())
-
-        //make the star the appropriate color
-        if(savedCitySet!!.contains(currentWeather.city))
-            offStarButton.visibility = View.GONE //if this is a saved result, make the yellow star appear
-        else  //if this is not a saved result, make the grey star appear
-            offStarButton.visibility = View.VISIBLE
-
-        //if star is grey and then the user clicks to save
-        offStarButton.setOnClickListener{
-
-            //change the color, object data, and update shared preferences
-            offStarButton.visibility = View.GONE
-            currentWeather.saved=true
-            savedCitySet?.add(currentWeather.city)
-            preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
-
-        }
-
-        //if star is yellow and then the user clicks to unsave
-        onStarButton.setOnClickListener{
-
-            //change the color, object data, and update shared preferences
-            offStarButton.visibility = View.VISIBLE
-            currentWeather.saved=false
-            savedCitySet?.remove(currentWeather.city)
-            preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
-        }
-
         //when details button is pressed, head to details activity
         moreDetailsButton.setOnClickListener{
             val intent = Intent(this, DetailsActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 }

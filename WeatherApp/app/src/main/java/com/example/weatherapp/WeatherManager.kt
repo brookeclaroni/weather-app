@@ -41,7 +41,7 @@ class WeatherManager {
             val locationKey = jsonObject.getString("Key")
             val cityName = jsonObject.getString("EnglishName")
             val adminArea = jsonObject.getJSONObject("AdministrativeArea")
-            val stateName = adminArea.getString("EnglishName")
+            val stateName = adminArea.getString("ID")
             val countryName = jsonObject.getJSONObject("Country").getString("EnglishName")
 
             return retrieveWeatherByKey(locationKey,cityName, stateName, countryName, apiKey)
@@ -93,9 +93,9 @@ class WeatherManager {
             val uvVal = jsonObject.getString("UVIndex")
             val temp = jsonObject.getJSONObject("Temperature")
             val tempMetric = temp.getJSONObject("Metric")
-            val tempMetricVal = tempMetric.getString("Value")
+            val tempMetricVal = tempMetric.getString("Value").toDouble().toInt()
             val tempImperial = temp.getJSONObject("Imperial")
-            val tempImperialVal = tempImperial.getString("Value")
+            val tempImperialVal = tempImperial.getString("Value").toDouble().toInt()
             val wind = jsonObject.getJSONObject("Wind")
             val windSpeed = wind.getJSONObject("Speed")
             val windSpeedImperial = windSpeed.getJSONObject("Imperial")
@@ -106,13 +106,13 @@ class WeatherManager {
                 locationKey = locationKey,
                 state = stateName,
                 country = countryName,
-                tempMet = tempMetricVal,
-                tempImp = tempImperialVal,
+                tempMet = tempMetricVal.toString(),
+                tempImp = tempImperialVal.toString(),
                 humidity= humidityVal,
                 uv = uvVal,
                 wind = windSpeedImperialVal,
                 saved = false,
-                temp = tempImperialVal
+                temp = tempImperialVal.toString()
             )
         }
         return weather
