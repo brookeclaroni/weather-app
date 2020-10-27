@@ -2,11 +2,18 @@ package com.example.weatherapp
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import org.jetbrains.anko.doAsync
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +35,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var windTextView: TextView
     private lateinit var moreDetailsButton: Button
 
+    fun openBrowser(view: View) {
+        //Get url from tag
+        val url = view.tag as String
+        try {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        } catch (e: Exception) {
+            println("Browser Undetected")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,11 +92,17 @@ class MainActivity : AppCompatActivity() {
 
         doAsync {
             val weatherManager = WeatherManager()
-            val currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
+            val currentWeather = weatherManager.retrieveWeather(
+                cityCode,
+                getString(R.string.api_key)
+            )
             runOnUiThread {
                 cityTextView.text = currentWeather.city
                 temperatureTextView.text = getString(R.string.temperature, currentWeather.tempImp)
-                humidityValueTextView.text = getString(R.string.humidity_value, currentWeather.humidity)
+                humidityValueTextView.text = getString(
+                    R.string.humidity_value,
+                    currentWeather.humidity
+                )
                 uvValueTextView.text = currentWeather.uv
                 windValueTextView.text = getString(R.string.wind_value, currentWeather.wind)
 
