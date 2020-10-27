@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_details.*
 import org.jetbrains.anko.doAsync
 
 class DetailsActivity : AppCompatActivity() {
@@ -33,6 +34,11 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var day3AqiView: TextView
     private lateinit var day4AqiView: TextView
     private lateinit var day5AqiView: TextView
+    private  lateinit var day1ImageView: ImageView
+    private  lateinit var day2ImageView: ImageView
+    private  lateinit var day3ImageView: ImageView
+    private  lateinit var day4ImageView: ImageView
+    private  lateinit var day5ImageView: ImageView
 
 
 
@@ -62,7 +68,11 @@ class DetailsActivity : AppCompatActivity() {
         day3AqiView = findViewById(R.id.day3Aqi)
         day4AqiView = findViewById(R.id.day4Aqi)
         day5AqiView = findViewById(R.id.day5Aqi)
-
+        day1ImageView = findViewById(R.id.day1ImageView)
+        day2ImageView = findViewById(R.id.day2ImageView)
+        day3ImageView = findViewById(R.id.day3ImageView)
+        day4ImageView = findViewById(R.id.day4ImageView)
+        day5ImageView = findViewById(R.id.day5ImageView)
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
@@ -95,6 +105,193 @@ class DetailsActivity : AppCompatActivity() {
                 day3AqiView.text = "AQI: " + fiveDayDetail[2].aqi
                 day4AqiView.text = "AQI: " + fiveDayDetail[3].aqi
                 day5AqiView.text = "AQI: " + fiveDayDetail[4].aqi
+
+                if (fiveDayDetail[0].dayCondition == "Sunny") {
+                    day1ImageView.setImageResource(R.drawable.day_sunny)
+                }
+                else if (fiveDayDetail[0].dayCondition == "Mostly sunny") {
+                    day1ImageView.setImageResource(R.drawable.day_mostly_sunny)
+                }
+                else if (fiveDayDetail[0].dayCondition == "Partly sunny") {
+                    day1ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[0].dayCondition == "Intermittent Clouds") {
+                    day1ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[0].dayCondition == "Mostly Cloudy") {
+                    day1ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[0].dayCondition == "Cloudy") {
+                    day1ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[0].dayCondition == "Fog") {
+                    day1ImageView.setImageResource(R.drawable.fog)
+                }
+                else if (fiveDayDetail[0].dayCondition == "Showers") {
+                    day1ImageView.setImageResource(R.drawable.showers)
+                }
+                else if (fiveDayDetail[0].dayCondition == "T-Storms") {
+                    day1ImageView.setImageResource(R.drawable.day_tstorms)
+                }
+                else if (fiveDayDetail[0].dayCondition == "Dreary (Overcast)") {
+                    day1ImageView.setImageResource(R.drawable.cloudy)
+                }
+                else if (fiveDayDetail[0].dayCondition == "Mostly Cloudy w/ Showers"){
+                    day1ImageView.setImageResource(R.drawable.day_sunny_showers)
+                }
+                else {
+                    day1ImageView.setImageResource(R.drawable.day_sunny)
+                }
+
+                if (fiveDayDetail[1].dayCondition == "Sunny") {
+                    day2ImageView.setImageResource(R.drawable.day_sunny)
+                }
+                else if (fiveDayDetail[1].dayCondition == "Mostly sunny") {
+                    day2ImageView.setImageResource(R.drawable.day_mostly_sunny)
+                }
+                else if (fiveDayDetail[1].dayCondition == "Partly sunny") {
+                    day2ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[1].dayCondition == "Intermittent Clouds") {
+                    day2ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[1].dayCondition == "Mostly Cloudy") {
+                    day2ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[1].dayCondition == "Cloudy") {
+                    day2ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[1].dayCondition == "Fog") {
+                    day2ImageView.setImageResource(R.drawable.fog)
+                }
+                else if (fiveDayDetail[1].dayCondition == "Showers") {
+                    day2ImageView.setImageResource(R.drawable.showers)
+                }
+                else if (fiveDayDetail[1].dayCondition == "T-Storms") {
+                    day2ImageView.setImageResource(R.drawable.day_tstorms)
+                }
+                else if (fiveDayDetail[1].dayCondition == "Dreary (Overcast)") {
+                    day2ImageView.setImageResource(R.drawable.cloudy)
+                }
+                else if (fiveDayDetail[1].dayCondition == "Mostly Cloudy w/ Showers"){
+                    day2ImageView.setImageResource(R.drawable.day_sunny_showers)
+                }
+                else {
+                    day2ImageView.setImageResource(R.drawable.day_sunny)
+                }
+
+
+                if (fiveDayDetail[2].dayCondition == "Sunny") {
+                    day3ImageView.setImageResource(R.drawable.day_sunny)
+                }
+                else if (fiveDayDetail[2].dayCondition == "Mostly sunny") {
+                    day3ImageView.setImageResource(R.drawable.day_mostly_sunny)
+                }
+                else if (fiveDayDetail[2].dayCondition == "Partly sunny") {
+                    day3ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[2].dayCondition == "Intermittent Clouds") {
+                    day3ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[2].dayCondition == "Mostly Cloudy") {
+                    day3ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[2].dayCondition == "Cloudy") {
+                    day3ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[2].dayCondition == "Fog") {
+                    day3ImageView.setImageResource(R.drawable.fog)
+                }
+                else if (fiveDayDetail[2].dayCondition == "Showers") {
+                    day3ImageView.setImageResource(R.drawable.showers)
+                }
+                else if (fiveDayDetail[2].dayCondition == "T-Storms") {
+                    day3ImageView.setImageResource(R.drawable.day_tstorms)
+                }
+                else if (fiveDayDetail[2].dayCondition == "Dreary (Overcast)") {
+                    day3ImageView.setImageResource(R.drawable.cloudy)
+                }
+                else if (fiveDayDetail[2].dayCondition == "Mostly Cloudy w/ Showers"){
+                    day3ImageView.setImageResource(R.drawable.day_sunny_showers)
+                }
+                else {
+                    day3ImageView.setImageResource(R.drawable.day_sunny)
+                }
+
+                if (fiveDayDetail[3].dayCondition == "Sunny") {
+                    day4ImageView.setImageResource(R.drawable.day_sunny)
+                }
+                else if (fiveDayDetail[3].dayCondition == "Mostly sunny") {
+                    day4ImageView.setImageResource(R.drawable.day_mostly_sunny)
+                }
+                else if (fiveDayDetail[3].dayCondition == "Partly sunny") {
+                    day4ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[3].dayCondition == "Intermittent Clouds") {
+                    day4ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[3].dayCondition == "Mostly Cloudy") {
+                    day4ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[3].dayCondition == "Cloudy") {
+                    day4ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[3].dayCondition == "Fog") {
+                    day4ImageView.setImageResource(R.drawable.fog)
+                }
+                else if (fiveDayDetail[3].dayCondition == "Showers") {
+                    day4ImageView.setImageResource(R.drawable.showers)
+                }
+                else if (fiveDayDetail[3].dayCondition == "T-Storms") {
+                    day4ImageView.setImageResource(R.drawable.day_tstorms)
+                }
+                else if (fiveDayDetail[3].dayCondition == "Dreary (Overcast)") {
+                    day4ImageView.setImageResource(R.drawable.cloudy)
+                }
+                else if (fiveDayDetail[3].dayCondition == "Mostly Cloudy w/ Showers"){
+                    day4ImageView.setImageResource(R.drawable.day_sunny_showers)
+                }
+                else {
+                    day4ImageView.setImageResource(R.drawable.day_sunny)
+                }
+
+                if (fiveDayDetail[4].dayCondition == "Sunny") {
+                    day5ImageView.setImageResource(R.drawable.day_sunny)
+                }
+                else if (fiveDayDetail[4].dayCondition == "Mostly sunny") {
+                    day5ImageView.setImageResource(R.drawable.day_mostly_sunny)
+                }
+                else if (fiveDayDetail[4].dayCondition == "Partly sunny") {
+                    day5ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[4].dayCondition == "Intermittent Clouds") {
+                    day5ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[4].dayCondition == "Mostly Cloudy") {
+                    day5ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[4].dayCondition == "Cloudy") {
+                    day5ImageView.setImageResource(R.drawable.day_cloudy)
+                }
+                else if (fiveDayDetail[4].dayCondition == "Fog") {
+                    day5ImageView.setImageResource(R.drawable.fog)
+                }
+                else if (fiveDayDetail[4].dayCondition == "Showers") {
+                    day5ImageView.setImageResource(R.drawable.showers)
+                }
+                else if (fiveDayDetail[4].dayCondition == "T-Storms") {
+                    day5ImageView.setImageResource(R.drawable.day_tstorms)
+                }
+                else if (fiveDayDetail[4].dayCondition == "Dreary (Overcast)") {
+                    day5ImageView.setImageResource(R.drawable.cloudy)
+                }
+                else if (fiveDayDetail[4].dayCondition == "Mostly Cloudy w/ Showers"){
+                    day5ImageView.setImageResource(R.drawable.day_sunny_showers)
+                }
+                else {
+                    day5ImageView.setImageResource(R.drawable.day_sunny)
+                }
+
             }
         }
     }

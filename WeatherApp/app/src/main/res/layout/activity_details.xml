@@ -7,11 +7,35 @@
     android:background="#3476A7"
     tools:context=".DetailsActivity">
 
+    <ImageView
+        android:id="@+id/day4ImageView"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/day4Condition"
+        app:layout_constraintStart_toStartOf="@+id/day4Aqi"
+        app:layout_constraintTop_toTopOf="@+id/day4Condition" />
+
+    <ImageView
+        android:id="@+id/day5ImageView"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/day5Condition"
+        app:layout_constraintStart_toStartOf="@+id/day5Aqi"
+        app:layout_constraintTop_toTopOf="@+id/day5Condition" />
+
+    <ImageView
+        android:id="@+id/day3ImageView"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/day3Condition"
+        app:layout_constraintStart_toStartOf="@+id/day3Aqi"
+        app:layout_constraintTop_toTopOf="@+id/day3Condition" />
+
     <TextView
         android:id="@+id/day2Condition"
-        android:layout_width="77dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="36dp"
+        android:layout_width="103dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="50dp"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -56,7 +80,7 @@
         android:id="@+id/day4Condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="50dp"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -68,7 +92,7 @@
         android:id="@+id/day5Condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="50dp"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -104,7 +128,7 @@
         android:id="@+id/day3Condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="50dp"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -204,7 +228,7 @@
         android:id="@+id/day1Condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="50dp"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -245,5 +269,21 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/day1Condition"
         app:layout_constraintTop_toBottomOf="@+id/day1Condition" />
+
+    <ImageView
+        android:id="@+id/day1ImageView"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/day1Condition"
+        app:layout_constraintStart_toStartOf="@+id/day1Aqi"
+        app:layout_constraintTop_toTopOf="@+id/day1Condition" />
+
+    <ImageView
+        android:id="@+id/day2ImageView"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/day2Condition"
+        app:layout_constraintStart_toStartOf="@+id/day2Aqi"
+        app:layout_constraintTop_toTopOf="@+id/day2Condition" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
