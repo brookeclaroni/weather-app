@@ -42,9 +42,10 @@
 
     <ImageView
         android:id="@+id/sunImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
+        android:layout_width="375dp"
+        android:layout_height="445dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
         app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
         app:layout_constraintEnd_toStartOf="@+id/temperatureTextView"
         app:layout_constraintTop_toTopOf="parent"
@@ -66,7 +67,8 @@
         android:id="@+id/temperatureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="64dp"
+        android:text="77°F"
         android:textColor="@color/white"
         android:textSize="64sp"
         android:textStyle="bold"
@@ -194,5 +196,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/accu_logo_white" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="°F  "
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/temperatureTextView"
+        app:layout_constraintStart_toStartOf="@+id/temperatureTextView"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureTextView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="°C"
+        android:textColor="#CFCFCF"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/switch1"
+        app:layout_constraintStart_toEndOf="@+id/switch1"
+        app:layout_constraintTop_toTopOf="@+id/switch1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
