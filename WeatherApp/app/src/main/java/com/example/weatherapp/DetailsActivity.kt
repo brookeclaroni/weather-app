@@ -1,6 +1,7 @@
 package com.example.weatherapp
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -39,6 +40,7 @@ class DetailsActivity : AppCompatActivity() {
     private  lateinit var day3ImageView: ImageView
     private  lateinit var day4ImageView: ImageView
     private  lateinit var day5ImageView: ImageView
+    private  lateinit var backButton: ImageButton
 
 
 
@@ -73,18 +75,21 @@ class DetailsActivity : AppCompatActivity() {
         day3ImageView = findViewById(R.id.day3ImageView)
         day4ImageView = findViewById(R.id.day4ImageView)
         day5ImageView = findViewById(R.id.day5ImageView)
+        backButton = findViewById(R.id.backButton)
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityCode = preferences.getString("CURR_CITY", "327658")!!
+        val imp = preferences.getBoolean("IMPERIAL", true)
 
         detailsTextView = findViewById(R.id.detailsTextView)
 
         doAsync {
             val weatherManager = WeatherManager()
-            var currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
-            var fiveDayDetail = weatherManager.retrieve5DayWeather(currentWeather.locationKey, getString(R.string.api_key))
+            val currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
+            val fiveDayDetail = weatherManager.retrieve5DayWeather(currentWeather.locationKey, getString(R.string.api_key))
             runOnUiThread {
+                detailsTextView.text = currentWeather.city
                 day1TextView.text = fiveDayDetail[0].date.substring(5,10)
                 day2TextView.text = fiveDayDetail[1].date.substring(5,10)
                 day3TextView.text = fiveDayDetail[2].date.substring(5,10)
@@ -293,6 +298,11 @@ class DetailsActivity : AppCompatActivity() {
                 }
 
             }
+        }
+
+        backButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

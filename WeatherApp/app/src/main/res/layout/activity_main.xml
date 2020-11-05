@@ -45,9 +45,9 @@
         android:layout_width="375dp"
         android:layout_height="445dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
-        app:layout_constraintEnd_toStartOf="@+id/temperatureTextView"
+        app:layout_constraintEnd_toStartOf="@+id/uvImageView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.266"
         app:srcCompat="@drawable/sun" />
@@ -67,13 +67,12 @@
         android:id="@+id/temperatureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:text="77°F"
         android:textColor="@color/white"
         android:textSize="64sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/windImageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sunImageView"
         app:layout_constraintTop_toBottomOf="@+id/cityTextView" />
 
     <ImageView
@@ -198,12 +197,13 @@
         app:srcCompat="@drawable/accu_logo_white" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/degreeSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
-        android:text="°F  "
+        android:text="@string/degree_f"
+        android:theme="@style/Theme.SwitchTheme"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -212,14 +212,14 @@
         app:layout_constraintTop_toBottomOf="@+id/temperatureTextView" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/degreeCTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="°C"
+        android:text="@string/degree_c"
         android:textColor="#CFCFCF"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/switch1"
-        app:layout_constraintStart_toEndOf="@+id/switch1"
-        app:layout_constraintTop_toTopOf="@+id/switch1" />
+        app:layout_constraintBottom_toBottomOf="@+id/degreeSwitch"
+        app:layout_constraintStart_toEndOf="@+id/degreeSwitch"
+        app:layout_constraintTop_toTopOf="@+id/degreeSwitch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

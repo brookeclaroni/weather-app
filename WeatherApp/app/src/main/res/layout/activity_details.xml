@@ -216,13 +216,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Details"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Details" />
 
     <TextView
         android:id="@+id/day1Condition"
@@ -285,5 +285,17 @@
         app:layout_constraintBottom_toBottomOf="@+id/day2Condition"
         app:layout_constraintStart_toStartOf="@+id/day2Aqi"
         app:layout_constraintTop_toTopOf="@+id/day2Condition" />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:tint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,10 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        //get shared prefs
+        val preferences = holder.card.context.getSharedPreferences("weather-app", Context.MODE_PRIVATE)
+        val imp = preferences.getBoolean("IMPERIAL", true)
+
         //retrieve the current result to add to the recycler view
         val currentCity = citySet.elementAt(position)
 
@@ -31,12 +35,15 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
             val weatherManager = WeatherManager()
             val currentWeather = weatherManager.retrieveWeather(currentCity, holder.card.context.getString(R.string.api_key))
             holder.card.context.runOnUiThread {
-                holder.cityTemp.text = getString(R.string.temperature, currentWeather.temp)
+                if (imp)
+                    holder.cityTemp.text = getString(R.string.tempF, currentWeather.tempImp)
+                else
+                    holder.cityTemp.text = getString(R.string.tempC, currentWeather.tempMet)
             }
         }
 
         holder.card.setOnClickListener {
-            val preferences = holder.card.context.getSharedPreferences("weather-app", Context.MODE_PRIVATE)
+
             preferences
                 .edit()
                 .putString("CURR_CITY", currentCity)

@@ -4,9 +4,12 @@
     <string name="humidity">Humidity</string>
     <string name="uv">UV Index</string>
     <string name="wind">Wind</string>
-    <string name="temperature">%1$s°F</string>
+    <string name="tempF">%1$s°F</string>
+    <string name="tempC">%1$s°C</string>
     <string name="humidity_value">%1$s%%</string>
     <string name="wind_value">%1$smph</string>
     <string name="search_city">Search for a city</string>
     <string name="logo">AccuWeather Logo</string>
+    <string name="degree_f">°F&#160;</string>
+    <string name="degree_c">°C</string>
 </resources>

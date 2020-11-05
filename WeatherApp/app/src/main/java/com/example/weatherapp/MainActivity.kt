@@ -2,13 +2,13 @@ package com.example.weatherapp
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var uvTextView: TextView
     private lateinit var windTextView: TextView
     private lateinit var moreDetailsButton: Button
+    private lateinit var degreeSwitch: Switch
+    private lateinit var degreeCTextView: TextView
+
 
     fun openBrowser(view: View) {
         //Get url from tag
@@ -71,24 +74,29 @@ class MainActivity : AppCompatActivity() {
         uvTextView = findViewById(R.id.uvTextView)
         windTextView = findViewById(R.id.windTextView)
         moreDetailsButton = findViewById(R.id.moreDetailsButton)
+        degreeSwitch = findViewById(R.id.degreeSwitch)
+        degreeCTextView = findViewById(R.id.degreeCTextView)
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityCode = preferences.getString("CURR_CITY", "327658")!!
+        val imp = preferences.getBoolean("IMPERIAL", true)
 
-//        var currentWeather = Weather (
-//            city = "City",
-//            locationKey = "000000",
-//            state = "State",
-//            country = "Country",
-//            temp = "00",
-//            humidity= "00",
-//            uv = "0",
-//            wind = "00",
-//            saved = false,
-//            tempMet = "00",
-//            tempImp = "00"
-//        )
+        var tempImp = ""
+        var tempMet = ""
+
+        degreeSwitch.isChecked = !imp
+
+        if(!imp) //temp is in celsius so witch the default
+        {
+            //Make F greyed out and regular text weight
+            degreeSwitch.setTextColor(Color.parseColor("#CFCFCF"))
+            degreeSwitch.setTypeface(null, Typeface.NORMAL)
+
+            //Make C white and bold
+            degreeCTextView.setTextColor(Color.parseColor("#FFFFFF"))
+            degreeCTextView.setTypeface(null, Typeface.BOLD)
+        }
 
         doAsync {
             val weatherManager = WeatherManager()
@@ -97,8 +105,14 @@ class MainActivity : AppCompatActivity() {
                 getString(R.string.api_key)
             )
             runOnUiThread {
+                tempImp = currentWeather.tempImp
+                tempMet = currentWeather.tempMet
+                if(imp)
+                    temperatureTextView.text = getString(R.string.tempF, tempImp)
+                else
+                    temperatureTextView.text = getString(R.string.tempC, tempMet)
+
                 cityTextView.text = currentWeather.city
-                temperatureTextView.text = getString(R.string.temperature, currentWeather.tempImp)
                 humidityValueTextView.text = getString(
                     R.string.humidity_value,
                     currentWeather.humidity
@@ -127,7 +141,6 @@ class MainActivity : AppCompatActivity() {
                     currentWeather.saved=true
                     savedCitySet?.add(currentWeather.city)
                     preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
-
                 }
 
                 //if star is yellow and then the user clicks to unsave
@@ -146,6 +159,36 @@ class MainActivity : AppCompatActivity() {
         cityButton.setOnClickListener{
             val intent = Intent(this, CitiesActivity::class.java)
             startActivity(intent)
+        }
+
+        degreeSwitch.setOnCheckedChangeListener { _ , isChecked ->
+            //if Celsius is requested
+            if(isChecked) {
+                //Make F greyed out and regular text weight
+                degreeSwitch.setTextColor(Color.parseColor("#CFCFCF"))
+                degreeSwitch.setTypeface(null, Typeface.NORMAL)
+
+                //Make C white and bold
+                degreeCTextView.setTextColor(Color.parseColor("#FFFFFF"))
+                degreeCTextView.setTypeface(null, Typeface.BOLD)
+
+                preferences.edit().putBoolean("IMPERIAL", false).apply()
+                temperatureTextView.text = getString(R.string.tempC, tempMet)
+            }
+
+            //if Fahrenheit is requested
+            else {
+                //Make F white and bold
+                degreeSwitch.setTextColor(Color.parseColor("#FFFFFF"))
+                degreeSwitch.setTypeface(null, Typeface.BOLD)
+
+                //Make C greyed out and regular text weight
+                degreeCTextView.setTextColor(Color.parseColor("#CFCFCF"))
+                degreeCTextView.setTypeface(null, Typeface.NORMAL)
+
+                preferences.edit().putBoolean("IMPERIAL", true).apply()
+                temperatureTextView.text = getString(R.string.tempF, tempImp)
+            }
         }
 
         //when details button is pressed, head to details activity
