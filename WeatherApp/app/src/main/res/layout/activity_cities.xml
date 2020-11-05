@@ -39,8 +39,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:background="?android:attr/panelBackground"
+        android:tint="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/searchEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/searchEditText"
-        app:srcCompat="@android:drawable/ic_menu_search" />
+        app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 </androidx.constraintlayout.widget.ConstraintLayout>

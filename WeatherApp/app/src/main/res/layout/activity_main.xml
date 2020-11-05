@@ -56,12 +56,13 @@
         android:id="@+id/cityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
         android:textColor="@color/white"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityButton" />
+        app:layout_constraintTop_toBottomOf="@+id/mainSearchEditText" />
 
     <TextView
         android:id="@+id/temperatureTextView"
@@ -221,5 +222,29 @@
         app:layout_constraintBottom_toBottomOf="@+id/degreeSwitch"
         app:layout_constraintStart_toEndOf="@+id/degreeSwitch"
         app:layout_constraintTop_toTopOf="@+id/degreeSwitch" />
+
+    <EditText
+        android:id="@+id/mainSearchEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/onStarButton"
+        app:layout_constraintStart_toEndOf="@+id/cityButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/mainSearchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="#00FFFFFF"
+        android:tint="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/mainSearchEditText"
+        app:layout_constraintTop_toTopOf="@+id/mainSearchEditText"
+        app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
