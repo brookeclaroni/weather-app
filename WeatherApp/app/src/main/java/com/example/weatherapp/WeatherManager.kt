@@ -65,7 +65,6 @@ class WeatherManager {
 
     fun retrieveWeatherByKey(locationKey : String, cityName : String, stateName : String, countryName: String, apiKey : String): Weather {
 
-        //val locationsKey = "327659"
         val request = Request.Builder()
             .url("https://dataservice.accuweather.com/currentconditions/v1/$locationKey?apikey=$apiKey&details=true\n")
             .method("GET", null)
@@ -122,9 +121,9 @@ class WeatherManager {
         return weather
     }
 
-    fun retrieve5DayWeather(locationKey: String, apiKey: String): ArrayList<BriefWeather>{
+    fun retrieve5DayWeather(locationKey: String, apiKey: String, metric : Boolean): ArrayList<BriefWeather>{
         val request = Request.Builder()
-            .url("https://dataservice.accuweather.com/forecasts/v1/daily/5day/$locationKey?apikey=$apiKey&details=true\n")
+            .url("https://dataservice.accuweather.com/forecasts/v1/daily/5day/$locationKey?apikey=$apiKey&details=true&metric=$metric\n")
             .method("GET", null)
             .build()
 

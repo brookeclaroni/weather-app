@@ -93,7 +93,7 @@ class DetailsActivity : AppCompatActivity() {
         doAsync {
             val weatherManager = WeatherManager()
             val currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
-            val fiveDayDetail = weatherManager.retrieve5DayWeather(currentWeather.locationKey, getString(R.string.api_key))
+            val fiveDayDetail = weatherManager.retrieve5DayWeather(currentWeather.locationKey, getString(R.string.api_key),!imp)
             runOnUiThread {
                 detailsTextView.text = currentWeather.city
                 day1TextView.text = fiveDayDetail[0].date.substring(5,10)
@@ -106,11 +106,31 @@ class DetailsActivity : AppCompatActivity() {
                 day3CondView.text = fiveDayDetail[2].dayCondition
                 day4CondView.text = fiveDayDetail[3].dayCondition
                 day5CondView.text = fiveDayDetail[4].dayCondition
-                day1TempView.text = fiveDayDetail[0].tempMax + "°F/" + fiveDayDetail[0].tempMin + "°F"
-                day2TempView.text = fiveDayDetail[1].tempMax + "°F/" + fiveDayDetail[1].tempMin + "°F"
-                day3TempView.text = fiveDayDetail[2].tempMax + "°F/" + fiveDayDetail[2].tempMin + "°F"
-                day4TempView.text = fiveDayDetail[3].tempMax + "°F/" + fiveDayDetail[3].tempMin + "°F"
-                day5TempView.text = fiveDayDetail[4].tempMax + "°F/" + fiveDayDetail[4].tempMin + "°F"
+                if(imp) {
+                    day1TempView.text =
+                        fiveDayDetail[0].tempMax + "°F/" + fiveDayDetail[0].tempMin + "°F"
+                    day2TempView.text =
+                        fiveDayDetail[1].tempMax + "°F/" + fiveDayDetail[1].tempMin + "°F"
+                    day3TempView.text =
+                        fiveDayDetail[2].tempMax + "°F/" + fiveDayDetail[2].tempMin + "°F"
+                    day4TempView.text =
+                        fiveDayDetail[3].tempMax + "°F/" + fiveDayDetail[3].tempMin + "°F"
+                    day5TempView.text =
+                        fiveDayDetail[4].tempMax + "°F/" + fiveDayDetail[4].tempMin + "°F"
+                }
+                else{
+                    day1TempView.text =
+                        fiveDayDetail[0].tempMax + "°C/" + fiveDayDetail[0].tempMin + "°C"
+                    day2TempView.text =
+                        fiveDayDetail[1].tempMax + "°C/" + fiveDayDetail[1].tempMin + "°C"
+                    day3TempView.text =
+                        fiveDayDetail[2].tempMax + "°C/" + fiveDayDetail[2].tempMin + "°C"
+                    day4TempView.text =
+                        fiveDayDetail[3].tempMax + "°C/" + fiveDayDetail[3].tempMin + "°C"
+                    day5TempView.text =
+                        fiveDayDetail[4].tempMax + "°C/" + fiveDayDetail[4].tempMin + "°C"
+                }
+
                 day1AqiView.text = "AQI: " + fiveDayDetail[0].aqi
                 day2AqiView.text = "AQI: " + fiveDayDetail[1].aqi
                 day3AqiView.text = "AQI: " + fiveDayDetail[2].aqi
