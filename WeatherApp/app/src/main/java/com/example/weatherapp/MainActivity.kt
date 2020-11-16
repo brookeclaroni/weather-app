@@ -4,12 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import org.jetbrains.anko.doAsync
@@ -36,6 +39,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var moreDetailsButton: Button
     private lateinit var degreeSwitch: Switch
     private lateinit var degreeCTextView: TextView
+    private lateinit var background: ConstraintLayout
+    private lateinit var searchEditText: EditText
+    private lateinit var searchImageButton: ImageButton
+    private lateinit var progBar: ProgressBar
 
 
     fun openBrowser(view: View) {
@@ -76,6 +83,10 @@ class MainActivity : AppCompatActivity() {
         moreDetailsButton = findViewById(R.id.moreDetailsButton)
         degreeSwitch = findViewById(R.id.degreeSwitch)
         degreeCTextView = findViewById(R.id.degreeCTextView)
+        background = findViewById(R.id.background)
+        searchEditText = findViewById(R.id.mainSearchEditText)
+        searchImageButton = findViewById(R.id.mainSearchButton)
+        progBar = findViewById(R.id.mainProgBar)
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
@@ -98,6 +109,21 @@ class MainActivity : AppCompatActivity() {
             degreeCTextView.setTypeface(null, Typeface.BOLD)
         }
 
+        searchImageButton.setOnClickListener{
+
+            preferences
+                .edit()
+                .putString("CURR_CITY", searchEditText.text.toString())
+                .apply()
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        //start the progress bar and disable clicks to the screen since networking is about to occur
+        progBar.visibility=View.VISIBLE
+        window.setFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+
         doAsync {
             val weatherManager = WeatherManager()
             val currentWeather = weatherManager.retrieveWeather(
@@ -112,6 +138,17 @@ class MainActivity : AppCompatActivity() {
                 else
                     temperatureTextView.text = getString(R.string.tempC, tempMet)
 
+                if(currentWeather.sunIsOut) {
+                    background.background =
+                        ColorDrawable(resources.getColor(R.color.colorBackgroundLight))
+                    moreDetailsButton.setTextColor(resources.getColor(R.color.colorBackgroundLight))
+                }
+                else {
+                    background.background =
+                        ColorDrawable(resources.getColor(R.color.colorBackgroundDark))
+                    moreDetailsButton.setTextColor(resources.getColor(R.color.colorBackgroundDark))
+                }
+
                 cityTextView.text = currentWeather.city
                 humidityValueTextView.text = getString(
                     R.string.humidity_value,
@@ -119,6 +156,7 @@ class MainActivity : AppCompatActivity() {
                 )
                 uvValueTextView.text = currentWeather.uv
                 windValueTextView.text = getString(R.string.wind_value, currentWeather.wind)
+
 
                 //when star is clicked, behave accordingly
                 //get sharedPreferences, get the string set of saved concerts
@@ -152,6 +190,10 @@ class MainActivity : AppCompatActivity() {
                     savedCitySet?.remove(currentWeather.city)
                     preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
                 }
+
+                //networking is done so get rid of prog bar
+                progBar.visibility=View.GONE
+                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
             }
         }
 

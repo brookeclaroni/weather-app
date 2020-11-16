@@ -2,13 +2,13 @@ package com.example.weatherapp
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.View
+import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.activity_details.*
 import org.jetbrains.anko.doAsync
 
@@ -41,6 +41,8 @@ class DetailsActivity : AppCompatActivity() {
     private  lateinit var day4ImageView: ImageView
     private  lateinit var day5ImageView: ImageView
     private  lateinit var backButton: ImageButton
+    private lateinit var detailsBackground : ConstraintLayout
+    private lateinit var progBar: ProgressBar
 
 
 
@@ -76,13 +78,17 @@ class DetailsActivity : AppCompatActivity() {
         day4ImageView = findViewById(R.id.day4ImageView)
         day5ImageView = findViewById(R.id.day5ImageView)
         backButton = findViewById(R.id.backButton)
+        detailsBackground = findViewById(R.id.detailsBackground)
+        progBar = findViewById(R.id.detailsProgBar)
+        detailsTextView = findViewById(R.id.detailsTextView)
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityCode = preferences.getString("CURR_CITY", "327658")!!
         val imp = preferences.getBoolean("IMPERIAL", true)
 
-        detailsTextView = findViewById(R.id.detailsTextView)
+        //start the progress bar and disable clicks to the screen since networking is about to occur
+        progBar.visibility= View.VISIBLE
 
         doAsync {
             val weatherManager = WeatherManager()
@@ -110,6 +116,15 @@ class DetailsActivity : AppCompatActivity() {
                 day3AqiView.text = "AQI: " + fiveDayDetail[2].aqi
                 day4AqiView.text = "AQI: " + fiveDayDetail[3].aqi
                 day5AqiView.text = "AQI: " + fiveDayDetail[4].aqi
+
+                if(currentWeather.sunIsOut) {
+                    detailsBackground.background =
+                        ColorDrawable(resources.getColor(R.color.colorBackgroundLight))
+                }
+                else {
+                    detailsBackground.background =
+                        ColorDrawable(resources.getColor(R.color.colorBackgroundDark))
+                }
 
                 if (fiveDayDetail[0].dayCondition == "Sunny") {
                     day1ImageView.setImageResource(R.drawable.day_sunny)
@@ -297,6 +312,8 @@ class DetailsActivity : AppCompatActivity() {
                     day5ImageView.setImageResource(R.drawable.day_sunny)
                 }
 
+                //stop prog bar when networking is done
+                progBar.visibility=View.GONE
             }
         }
 

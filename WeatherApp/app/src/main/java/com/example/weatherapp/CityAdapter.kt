@@ -2,10 +2,13 @@ package com.example.weatherapp
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
@@ -33,6 +36,9 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
         //fill in city name
         holder.cityName.text = currentCity
 
+        //start the progress bar and disable clicks to the screen since networking is about to occur
+        holder.progBar.visibility=View.VISIBLE
+
         doAsync {
             val weatherManager = WeatherManager()
             val currentWeather = weatherManager.retrieveWeather(currentCity, holder.card.context.getString(R.string.api_key))
@@ -41,6 +47,11 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
                     holder.cityTemp.text = getString(R.string.tempF, currentWeather.tempImp)
                 else
                     holder.cityTemp.text = getString(R.string.tempC, currentWeather.tempMet)
+                if (currentWeather.sunIsOut)
+                    holder.card.setCardBackgroundColor(resources.getColor(R.color.colorBackgroundLight))
+                else
+                    holder.card.setCardBackgroundColor(resources.getColor(R.color.colorBackgroundDark))
+                holder.progBar.visibility=View.GONE
             }
         }
 
@@ -84,5 +95,6 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
         val card : CardView = itemView.findViewById(R.id.cardView)
         val starOn : ImageButton = itemView.findViewById(R.id.starOnButton2)
         val starOff : ImageButton = itemView.findViewById(R.id.starOffButton2)
+        val progBar : ProgressBar = itemView.findViewById(R.id.cardProgBar)
     }
 }

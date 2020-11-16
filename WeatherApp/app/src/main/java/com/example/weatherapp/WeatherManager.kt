@@ -58,7 +58,8 @@ class WeatherManager {
             wind = "00",
             saved = false,
             tempMet = "00",
-            tempImp = "00"
+            tempImp = "00",
+            sunIsOut = true
         )
     }
 
@@ -83,12 +84,14 @@ class WeatherManager {
             wind = "00",
             saved = false,
             tempMet = "00",
-            tempImp = "00"
+            tempImp = "00",
+            sunIsOut = true
         )
 
         if (!responseString.isNullOrEmpty() && response.isSuccessful) {
             val jsonArray = JSONArray(responseString)
             val jsonObject = jsonArray.getJSONObject(0)
+            val isDayTime = jsonObject.getBoolean("IsDayTime")
             val humidityVal = jsonObject.getString("RelativeHumidity")
             val uvVal = jsonObject.getString("UVIndex")
             val temp = jsonObject.getJSONObject("Temperature")
@@ -112,7 +115,8 @@ class WeatherManager {
                 uv = uvVal,
                 wind = windSpeedImperialVal,
                 saved = false,
-                temp = tempImperialVal.toString()
+                temp = tempImperialVal.toString(),
+                sunIsOut = isDayTime
             )
         }
         return weather
@@ -127,8 +131,8 @@ class WeatherManager {
         val response = okHttpClient.newCall(request).execute()
         val responseString: String? = response.body?.string()
 
-        var fiveDayDetail = ArrayList<BriefWeather>(5)
-        var dummyBriefWeather = BriefWeather(
+        val fiveDayDetail = ArrayList<BriefWeather>(5)
+        val dummyBriefWeather = BriefWeather(
             date = "NA",
             tempMax = "NA",
             tempMin = "NA",
@@ -147,7 +151,7 @@ class WeatherManager {
                 val temp = tempObject.getJSONObject("Temperature")
                 val airAndPol = tempObject.getJSONArray("AirAndPollen")
                 val day = tempObject.getJSONObject("Day")
-                var tempBriefWeather = BriefWeather(
+                val tempBriefWeather = BriefWeather(
                     date = tempObject.getString("Date"),
                     tempMax = temp.getJSONObject("Maximum").getString("Value"),
                     tempMin = temp.getJSONObject("Minimum").getString("Value"),

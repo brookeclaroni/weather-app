@@ -11,7 +11,8 @@ data class Weather(
     val wind: String,
     var saved: Boolean,
     val tempMet: String,
-    val tempImp: String
+    val tempImp: String,
+    val sunIsOut: Boolean
 )
 
 data class BriefWeather(
