@@ -9,6 +9,12 @@ import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import kotlinx.android.synthetic.main.activity_details.*
 import org.jetbrains.anko.doAsync
 
@@ -43,6 +49,7 @@ class DetailsActivity : AppCompatActivity() {
     private  lateinit var backButton: ImageButton
     private lateinit var detailsBackground : ConstraintLayout
     private lateinit var progBar: ProgressBar
+    private lateinit var lineChartView: LineChart
 
 
 
@@ -81,6 +88,7 @@ class DetailsActivity : AppCompatActivity() {
         detailsBackground = findViewById(R.id.detailsBackground)
         progBar = findViewById(R.id.detailsProgBar)
         detailsTextView = findViewById(R.id.detailsTextView)
+        lineChartView = findViewById(R.id.chartView)
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
@@ -334,6 +342,45 @@ class DetailsActivity : AppCompatActivity() {
 
                 //stop prog bar when networking is done
                 progBar.visibility=View.GONE
+
+                val entries = ArrayList<Entry>()
+                entries.add(Entry(1f, fiveDayDetail[0].tempMax.toFloat()))
+                entries.add(Entry(2f, fiveDayDetail[1].tempMax.toFloat()))
+                entries.add(Entry(3f, fiveDayDetail[2].tempMax.toFloat()))
+                entries.add(Entry(4f, fiveDayDetail[3].tempMax.toFloat()))
+                entries.add(Entry(5f, fiveDayDetail[4].tempMax.toFloat()))
+
+                val vl = LineDataSet(entries, "My Type")
+                //Part4
+                vl.setDrawValues(false)
+                vl.setDrawFilled(true)
+                vl.lineWidth = 3f
+                vl.fillColor = R.color.grey
+                vl.fillAlpha = R.color.red
+
+//Part5
+                lineChartView.xAxis.labelRotationAngle = 0f
+//Part6
+                lineChartView.data = LineData(vl)
+//Part7
+                lineChartView.axisRight.isEnabled = false
+                lineChartView.setDrawBorders(false)
+                lineChartView.setScaleEnabled(false)
+                lineChartView.getDescription().setEnabled(false)
+                lineChartView.getLegend().setEnabled(false)
+                lineChartView.setHighlightPerDragEnabled(false)
+                // grid
+                val xAxis: XAxis = lineChartView.xAxis
+                xAxis.setDrawAxisLine(false)
+                xAxis.setDrawGridLines(false)
+                val leftYAxis = lineChartView.axisLeft
+                leftYAxis.isEnabled = false
+                val rightYAxis = lineChartView.axisRight
+                rightYAxis.isEnabled = false
+
+                lineChartView.data.setDrawValues(false)
+
+
             }
         }
 
