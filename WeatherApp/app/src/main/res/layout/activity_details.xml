@@ -36,9 +36,10 @@
 
     <TextView
         android:id="@+id/day2Condition"
-        android:layout_width="103dp"
-        android:layout_height="23dp"
+        android:layout_width="75dp"
+        android:layout_height="22dp"
         android:layout_marginStart="64dp"
+        android:ellipsize="end"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -47,43 +48,11 @@
         app:layout_constraintTop_toTopOf="@+id/date2TextView" />
 
     <TextView
-        android:id="@+id/day5Temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/day5Condition"
-        app:layout_constraintTop_toBottomOf="@+id/day5Condition" />
-
-    <TextView
-        android:id="@+id/day3Temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/day3Condition"
-        app:layout_constraintTop_toBottomOf="@+id/day3Condition" />
-
-    <TextView
-        android:id="@+id/day4Temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/day4Condition"
-        app:layout_constraintTop_toBottomOf="@+id/day4Condition" />
-
-    <TextView
         android:id="@+id/day4Condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
+        android:ellipsize="end"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -96,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
+        android:ellipsize="end"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -108,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="40dp"
         android:text="Day5"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -120,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="40dp"
         android:text="Day3"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -132,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
+        android:ellipsize="end"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -144,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="40dp"
         android:text="Day4"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -156,23 +127,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="40dp"
         android:text="Day2"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date1TextView" />
-
-    <TextView
-        android:id="@+id/day2Temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/day2Condition"
-        app:layout_constraintTop_toBottomOf="@+id/day2Condition" />
 
     <TextView
         android:id="@+id/day2Aqi"
@@ -182,7 +142,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/day1Aqi"
-        app:layout_constraintTop_toTopOf="@+id/day2Temp" />
+        app:layout_constraintTop_toTopOf="@+id/day2Condition" />
 
     <TextView
         android:id="@+id/day5Aqi"
@@ -192,7 +152,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/day4Aqi"
-        app:layout_constraintTop_toTopOf="@+id/day5Temp" />
+        app:layout_constraintTop_toTopOf="@+id/day5Condition" />
 
     <TextView
         android:id="@+id/day4Aqi"
@@ -202,7 +162,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/day3Aqi"
-        app:layout_constraintTop_toTopOf="@+id/day4Temp" />
+        app:layout_constraintTop_toTopOf="@+id/day4Condition" />
 
     <TextView
         android:id="@+id/day3Aqi"
@@ -212,7 +172,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/day2Aqi"
-        app:layout_constraintTop_toTopOf="@+id/day3Temp" />
+        app:layout_constraintTop_toTopOf="@+id/day3Condition" />
 
     <TextView
         android:id="@+id/detailsTextView"
@@ -232,6 +192,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
+        android:ellipsize="end"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -244,7 +205,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="50dp"
         android:text="Day1"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -255,23 +216,12 @@
         android:id="@+id/day1Aqi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginEnd="40dp"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/day1Temp"
-        app:layout_constraintTop_toTopOf="@+id/day1Temp" />
-
-    <TextView
-        android:id="@+id/day1Temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/day1Condition"
-        app:layout_constraintTop_toBottomOf="@+id/day1Condition" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/day1Condition" />
 
     <ImageView
         android:id="@+id/day1ImageView"
@@ -316,11 +266,12 @@
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chartView"
-        android:layout_width="322dp"
-        android:layout_height="167dp"
+        android:layout_width="354dp"
+        android:layout_height="202dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/day5Temp" />
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
