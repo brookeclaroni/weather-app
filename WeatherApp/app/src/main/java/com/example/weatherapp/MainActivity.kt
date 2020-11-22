@@ -133,10 +133,14 @@ class MainActivity : AppCompatActivity() {
             runOnUiThread {
                 tempImp = currentWeather.tempImp
                 tempMet = currentWeather.tempMet
-                if(imp)
+                if(imp) {
                     temperatureTextView.text = getString(R.string.tempF, tempImp)
-                else
+                    windValueTextView.text = getString(R.string.wind_value_imp, currentWeather.windImp)
+                }
+                else {
                     temperatureTextView.text = getString(R.string.tempC, tempMet)
+                    windValueTextView.text = getString(R.string.wind_value_met, currentWeather.windMet)
+                }
 
                 if(currentWeather.sunIsOut) {
                     background.background =
@@ -155,7 +159,6 @@ class MainActivity : AppCompatActivity() {
                     currentWeather.humidity
                 )
                 uvValueTextView.text = currentWeather.uv
-                windValueTextView.text = getString(R.string.wind_value, currentWeather.wind)
 
 
                 //when star is clicked, behave accordingly

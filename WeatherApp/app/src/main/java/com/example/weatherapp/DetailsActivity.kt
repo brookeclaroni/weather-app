@@ -15,6 +15,8 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.find
+import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -55,8 +57,15 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var xAxisDate3: TextView
     private lateinit var xAxisDate4: TextView
     private lateinit var xAxisDate5: TextView
+    private lateinit var precipProb: TextView
+    private lateinit var wind: TextView
+    private lateinit var uv: TextView
+    private lateinit var precipValue: TextView
+    private lateinit var pressure: TextView
+    private lateinit var visibility: TextView
     var day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
     var date = Calendar.getInstance().get(Calendar.DATE)
+
 
 
 
@@ -102,6 +111,12 @@ class DetailsActivity : AppCompatActivity() {
         xAxisDate3 = findViewById(R.id.xAxisDate5)
         xAxisDate4 = findViewById(R.id.xAxisDate4)
         xAxisDate5 = findViewById(R.id.xAxisDate3)
+        uv = findViewById(R.id.UVValue)
+        wind = findViewById(R.id.windValue)
+        pressure = findViewById(R.id.pressureValue)
+        precipProb = findViewById(R.id.percepValue)
+        precipValue = findViewById(R.id.percepVValue)
+        visibility = findViewById(R.id.visibilityValue)
 
 
         var dayList = listOf<String>("SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT")
@@ -166,13 +181,29 @@ class DetailsActivity : AppCompatActivity() {
                 day4AqiView.text = "AQI: " + fiveDayDetail[3].aqi
                 day5AqiView.text = "AQI: " + fiveDayDetail[4].aqi
 
+                if (imp) {
+                    pressure.text = currentWeather.pressureImp
+                    precipValue.text = currentWeather.precip1hrImp
+                    visibility.text = currentWeather.visibilityImp
+                    wind.text = currentWeather.windImp + " mi/h"
+                }
+                else {
+                    pressure.text = currentWeather.pressureMet
+                    precipValue.text = currentWeather.precip1hrMet
+                    visibility.text = currentWeather.visibilityMet
+                    wind.text = currentWeather.windMet + " km/h"
+                }
+                uv.text = currentWeather.uv
+
                 if(currentWeather.sunIsOut) {
                     detailsBackground.background =
                         ColorDrawable(resources.getColor(R.color.colorBackgroundLight))
+                    precipProb.text = fiveDayDetail[0].dayPrecipProb
                 }
                 else {
                     detailsBackground.background =
                         ColorDrawable(resources.getColor(R.color.colorBackgroundDark))
+                    precipProb.text = fiveDayDetail[0].nightPrecipProb
                 }
                 // Day 1
                 if (fiveDayDetail[0].dayCondition == "Sunny") {

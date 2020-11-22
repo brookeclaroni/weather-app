@@ -386,7 +386,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/windValue"></TextView>
 
             <TextView
-                android:id="@+id/UVTitle10"
+                android:id="@+id/pressureTitle"
                 android:layout_width="76dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="176dp"
@@ -408,7 +408,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/xAxisDate1"></TextView>
 
             <TextView
-                android:id="@+id/percepTitle2"
+                android:id="@+id/percepVTitle"
                 android:layout_width="76dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="176dp"
@@ -430,15 +430,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/percepTitle"></TextView>
 
             <TextView
-                android:id="@+id/percepValue2"
+                android:id="@+id/percepVValue"
                 android:layout_width="76dp"
                 android:layout_height="27dp"
                 android:layout_marginTop="10dp"
                 android:text="TextView"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/percepTitle2"
-                app:layout_constraintTop_toBottomOf="@+id/percepTitle2"></TextView>
+                app:layout_constraintStart_toStartOf="@+id/percepVTitle"
+                app:layout_constraintTop_toBottomOf="@+id/percepVTitle"></TextView>
 
             <TextView
                 android:id="@+id/windTitle"
@@ -452,7 +452,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/percepValue"></TextView>
 
             <TextView
-                android:id="@+id/windTitle2"
+                android:id="@+id/visibilityTitle"
                 android:layout_width="76dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="176dp"
@@ -474,7 +474,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/windTitle"></TextView>
 
             <TextView
-                android:id="@+id/windValue2"
+                android:id="@+id/visibilityValue"
                 android:layout_width="76dp"
                 android:layout_height="27dp"
                 android:layout_marginStart="176dp"
@@ -483,10 +483,10 @@
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/UVValue"
-                app:layout_constraintTop_toBottomOf="@+id/windTitle2"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/visibilityTitle"></TextView>
 
             <TextView
-                android:id="@+id/UVTitle2"
+                android:id="@+id/pressureValue"
                 android:layout_width="76dp"
                 android:layout_height="27dp"
                 android:layout_marginBottom="50dp"
@@ -494,7 +494,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/UVTitle10"
+                app:layout_constraintStart_toStartOf="@+id/pressureTitle"
                 app:layout_constraintTop_toTopOf="@+id/UVValue"></TextView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
