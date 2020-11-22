@@ -6,19 +6,17 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import kotlinx.android.synthetic.main.activity_details.*
 import org.jetbrains.anko.doAsync
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -52,6 +50,14 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var detailsBackground : ConstraintLayout
     private lateinit var progBar: ProgressBar
     private lateinit var lineChartView: LineChart
+    private lateinit var xAxisDate1: TextView
+    private lateinit var xAxisDate2: TextView
+    private lateinit var xAxisDate3: TextView
+    private lateinit var xAxisDate4: TextView
+    private lateinit var xAxisDate5: TextView
+    var day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+    var date = Calendar.getInstance().get(Calendar.DATE)
+
 
 
 
@@ -91,6 +97,14 @@ class DetailsActivity : AppCompatActivity() {
         progBar = findViewById(R.id.detailsProgBar)
         detailsTextView = findViewById(R.id.detailsTextView)
         lineChartView = findViewById(R.id.chartView)
+        xAxisDate1 = findViewById(R.id.xAxisDate1)
+        xAxisDate2 = findViewById(R.id.xAxisDate2)
+        xAxisDate3 = findViewById(R.id.xAxisDate5)
+        xAxisDate4 = findViewById(R.id.xAxisDate4)
+        xAxisDate5 = findViewById(R.id.xAxisDate3)
+
+
+        var dayList = listOf<String>("SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT")
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
@@ -104,13 +118,15 @@ class DetailsActivity : AppCompatActivity() {
             val weatherManager = WeatherManager()
             val currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
             val fiveDayDetail = weatherManager.retrieve5DayWeather(currentWeather.locationKey, getString(R.string.api_key),!imp)
+            // day = day + fiveDayDetail[0].date.substring(8, 10).toInt() - date - 1
+            day = day - 1
             runOnUiThread {
                 detailsTextView.text = currentWeather.city
-                day1TextView.text = fiveDayDetail[0].date.substring(5,10)
-                day2TextView.text = fiveDayDetail[1].date.substring(5,10)
-                day3TextView.text = fiveDayDetail[2].date.substring(5,10)
-                day4TextView.text = fiveDayDetail[3].date.substring(5,10)
-                day5TextView.text = fiveDayDetail[4].date.substring(5,10)
+                day1TextView.text = dayList[day % 7] + " " + fiveDayDetail[0].date.substring(8,10)
+                day2TextView.text = dayList[(day + 1)%7] +" " + fiveDayDetail[1].date.substring(8,10)
+                day3TextView.text = dayList[(day + 2)%7] +" " + fiveDayDetail[2].date.substring(8,10)
+                day4TextView.text = dayList[(day + 3)%7] +" " + fiveDayDetail[3].date.substring(8,10)
+                day5TextView.text = dayList[(day + 4)%7] +" " + fiveDayDetail[4].date.substring(8,10)
                 day1CondView.text = fiveDayDetail[0].dayCondition
                 day2CondView.text = fiveDayDetail[1].dayCondition
                 day3CondView.text = fiveDayDetail[2].dayCondition
@@ -158,7 +174,7 @@ class DetailsActivity : AppCompatActivity() {
                     detailsBackground.background =
                         ColorDrawable(resources.getColor(R.color.colorBackgroundDark))
                 }
-
+                // Day 1
                 if (fiveDayDetail[0].dayCondition == "Sunny") {
                     day1ImageView.setImageResource(R.drawable.day_sunny)
                 }
@@ -171,7 +187,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[0].dayCondition == "Intermittent Clouds") {
                     day1ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[0].dayCondition == "Mostly Cloudy") {
+                else if (fiveDayDetail[0].dayCondition == "Mostly cloudy") {
                     day1ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[0].dayCondition == "Cloudy") {
@@ -195,7 +211,7 @@ class DetailsActivity : AppCompatActivity() {
                 else {
                     day1ImageView.setImageResource(R.drawable.day_sunny)
                 }
-
+                // Day 2
                 if (fiveDayDetail[1].dayCondition == "Sunny") {
                     day2ImageView.setImageResource(R.drawable.day_sunny)
                 }
@@ -208,7 +224,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[1].dayCondition == "Intermittent Clouds") {
                     day2ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[1].dayCondition == "Mostly Cloudy") {
+                else if (fiveDayDetail[1].dayCondition == "Mostly cloudy") {
                     day2ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[1].dayCondition == "Cloudy") {
@@ -233,7 +249,7 @@ class DetailsActivity : AppCompatActivity() {
                     day2ImageView.setImageResource(R.drawable.day_sunny)
                 }
 
-
+                // Day 3
                 if (fiveDayDetail[2].dayCondition == "Sunny") {
                     day3ImageView.setImageResource(R.drawable.day_sunny)
                 }
@@ -246,7 +262,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[2].dayCondition == "Intermittent Clouds") {
                     day3ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[2].dayCondition == "Mostly Cloudy") {
+                else if (fiveDayDetail[2].dayCondition == "Mostly cloudy") {
                     day3ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[2].dayCondition == "Cloudy") {
@@ -270,7 +286,7 @@ class DetailsActivity : AppCompatActivity() {
                 else {
                     day3ImageView.setImageResource(R.drawable.day_sunny)
                 }
-
+                // Day 4
                 if (fiveDayDetail[3].dayCondition == "Sunny") {
                     day4ImageView.setImageResource(R.drawable.day_sunny)
                 }
@@ -283,7 +299,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[3].dayCondition == "Intermittent Clouds") {
                     day4ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[3].dayCondition == "Mostly Cloudy") {
+                else if (fiveDayDetail[3].dayCondition == "Mostly cloudy") {
                     day4ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[3].dayCondition == "Cloudy") {
@@ -307,7 +323,7 @@ class DetailsActivity : AppCompatActivity() {
                 else {
                     day4ImageView.setImageResource(R.drawable.day_sunny)
                 }
-
+                // Day 5
                 if (fiveDayDetail[4].dayCondition == "Sunny") {
                     day5ImageView.setImageResource(R.drawable.day_sunny)
                 }
@@ -320,7 +336,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[4].dayCondition == "Intermittent Clouds") {
                     day5ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[4].dayCondition == "Mostly Cloudy") {
+                else if (fiveDayDetail[4].dayCondition == "Mostly cloudy") {
                     day5ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[4].dayCondition == "Cloudy") {
@@ -370,10 +386,11 @@ class DetailsActivity : AppCompatActivity() {
                 vl.lineWidth = 4f
                 vl.fillColor = R.color.grey
                 // vl.fillAlpha = R.color.red
+                vl.valueTextColor = Color.WHITE
                 vl.setDrawCircles(true)
                 vl.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
                 vl_2.valueTextSize = 15f
-                vl_2.setValueTextColors(listOf(1,1,1,1))
+                vl_2.valueTextColor = Color.WHITE
                 vl_2.setDrawFilled(true)
                 vl_2.lineWidth = 4f
                 vl_2.setDrawCircles(true)
@@ -392,8 +409,10 @@ class DetailsActivity : AppCompatActivity() {
                 lineChartView.isHighlightPerTapEnabled = false
                 // grid
                 val xAxis: XAxis = lineChartView.xAxis
+                // xAxis.valueFormatter = IndexAxisValueFormatter(arrayListOf(dayList[day % 7], dayList[(day + 1)%7], dayList[(day + 2)%7], dayList[(day + 3)%7], dayList[(day + 4)%7]))
                 xAxis.setDrawAxisLine(false)
                 xAxis.setDrawGridLines(false)
+                // xAxis.position = XAxis.XAxisPosition.BOTTOM
                 xAxis.isEnabled = false
                 val leftYAxis = lineChartView.axisLeft
                 leftYAxis.isEnabled = false
@@ -402,6 +421,13 @@ class DetailsActivity : AppCompatActivity() {
 
                 // lineChartView.data.setDrawValues(false)
                 lineChartView.invalidate()
+
+                // set xAxis label
+                xAxisDate1.text = dayList[day % 7]
+                xAxisDate2.text = dayList[(day + 1) % 7]
+                xAxisDate3.text = dayList[(day + 2) % 7]
+                xAxisDate4.text = dayList[(day + 3) % 7]
+                xAxisDate5.text = dayList[(day + 4) % 7]
             }
         }
 
