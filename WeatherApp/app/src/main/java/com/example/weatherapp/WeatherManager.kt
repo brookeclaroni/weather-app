@@ -126,20 +126,20 @@ class WeatherManager {
             val pressure = jsonObject.getJSONObject("Pressure")
             val pressureImperial = pressure.getJSONObject("Imperial")
             val pressureMetric = pressure.getJSONObject("Metric")
-            val pressureImperialVal = pressureImperial.getString("Value") + pressureImperial.getString("Unit")
-            val pressureMetricVal = pressureMetric.getString("Value") + pressureMetric.getString("Unit")
+            val pressureImperialVal = pressureImperial.getString("Value") + " " + pressureImperial.getString("Unit")
+            val pressureMetricVal = pressureMetric.getString("Value") + " " + pressureMetric.getString("Unit")
             // visibility
             val visib = jsonObject.getJSONObject("Visibility")
             val visibMet = visib.getJSONObject("Metric")
             val visibImp = visib.getJSONObject("Imperial")
-            val visibMetVal = visibMet.getString("Value") + visibMet.getString("Unit")
-            val visibImpVal = visibImp.getString("Value") + visibImp.getString("Unit")
+            val visibMetVal = visibMet.getString("Value") + " " + visibMet.getString("Unit")
+            val visibImpVal = visibImp.getString("Value") + " " + visibImp.getString("Unit")
             // preciptation
             val precip = jsonObject.getJSONObject("Precip1hr")
             val precipMet = precip.getJSONObject("Metric")
             val precipImp = precip.getJSONObject("Imperial")
-            val precipMetVal = precipMet.getString("Value") + precipMet.getString("Unit")
-            val precipImpVal = precipImp.getString("Value") + precipImp.getString("Unit")
+            val precipMetVal = precipMet.getString("Value") + " " + precipMet.getString("Unit")
+            val precipImpVal = precipImp.getString("Value") + " " + precipImp.getString("Unit")
 
 
 

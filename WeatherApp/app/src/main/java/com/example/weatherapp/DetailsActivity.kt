@@ -108,9 +108,9 @@ class DetailsActivity : AppCompatActivity() {
         lineChartView = findViewById(R.id.chartView)
         xAxisDate1 = findViewById(R.id.xAxisDate1)
         xAxisDate2 = findViewById(R.id.xAxisDate2)
-        xAxisDate3 = findViewById(R.id.xAxisDate5)
+        xAxisDate3 = findViewById(R.id.xAxisDate3)
         xAxisDate4 = findViewById(R.id.xAxisDate4)
-        xAxisDate5 = findViewById(R.id.xAxisDate3)
+        xAxisDate5 = findViewById(R.id.xAxisDate5)
         uv = findViewById(R.id.UVValue)
         wind = findViewById(R.id.windValue)
         pressure = findViewById(R.id.pressureValue)
@@ -142,11 +142,37 @@ class DetailsActivity : AppCompatActivity() {
                 day3TextView.text = dayList[(day + 2)%7] +" " + fiveDayDetail[2].date.substring(8,10)
                 day4TextView.text = dayList[(day + 3)%7] +" " + fiveDayDetail[3].date.substring(8,10)
                 day5TextView.text = dayList[(day + 4)%7] +" " + fiveDayDetail[4].date.substring(8,10)
-                day1CondView.text = fiveDayDetail[0].dayCondition
-                day2CondView.text = fiveDayDetail[1].dayCondition
-                day3CondView.text = fiveDayDetail[2].dayCondition
-                day4CondView.text = fiveDayDetail[3].dayCondition
-                day5CondView.text = fiveDayDetail[4].dayCondition
+                if (fiveDayDetail[0].dayCondition == "Intermittent Clouds") {
+                    day1CondView.text = "Cloudy"
+                }
+                else {
+                    day1CondView.text = fiveDayDetail[0].dayCondition
+                }
+                if (fiveDayDetail[1].dayCondition == "Intermittent Clouds") {
+                    day2CondView.text = "Cloudy"
+                }
+                else {
+                    day2CondView.text = fiveDayDetail[1].dayCondition
+                }
+                if (fiveDayDetail[2].dayCondition == "Intermittent Clouds") {
+                    day3CondView.text = "Cloudy"
+                }
+                else {
+                    day3CondView.text = fiveDayDetail[2].dayCondition
+                }
+                if (fiveDayDetail[3].dayCondition == "Intermittent Clouds") {
+                    day4CondView.text = "Cloudy"
+                }
+                else {
+                    day4CondView.text = fiveDayDetail[3].dayCondition
+                }
+                if (fiveDayDetail[4].dayCondition == "Intermittent Clouds") {
+                    day5CondView.text = "Cloudy"
+                }
+                else {
+                    day5CondView.text = fiveDayDetail[4].dayCondition
+                }
+
                 /*
                 if(imp) {
                     day1TempView.text =
@@ -443,6 +469,7 @@ class DetailsActivity : AppCompatActivity() {
                 // xAxis.valueFormatter = IndexAxisValueFormatter(arrayListOf(dayList[day % 7], dayList[(day + 1)%7], dayList[(day + 2)%7], dayList[(day + 3)%7], dayList[(day + 4)%7]))
                 xAxis.setDrawAxisLine(false)
                 xAxis.setDrawGridLines(false)
+                xAxis.setGranularity(0f)
                 // xAxis.position = XAxis.XAxisPosition.BOTTOM
                 xAxis.isEnabled = false
                 val leftYAxis = lineChartView.axisLeft

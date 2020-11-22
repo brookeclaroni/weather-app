@@ -35,6 +35,7 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
 
         //fill in city name
         holder.cityName.text = currentCity
+        holder.cityName.isSelected = true
 
         //start the progress bar and disable clicks to the screen since networking is about to occur
         holder.progBar.visibility=View.VISIBLE
