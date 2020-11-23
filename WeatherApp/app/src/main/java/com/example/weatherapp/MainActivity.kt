@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var onStarButton: ImageButton
     private lateinit var sunImageView: ImageView
     private lateinit var cityTextView: TextView
+    private lateinit var countryTextView: TextView
     private lateinit var temperatureTextView: TextView
     private lateinit var humidityImageView: ImageView
     private lateinit var uvImageView: ImageView
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         val url = view.tag as String
         try {
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE)
             intent.data = Uri.parse(url)
             startActivity(intent)
         } catch (e: Exception) {
@@ -74,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         onStarButton = findViewById(R.id.onStarButton)
         sunImageView = findViewById(R.id.sunImageView)
         cityTextView = findViewById(R.id.cityTextView)
+        countryTextView = findViewById(R.id.countryTextView)
         temperatureTextView = findViewById(R.id.temperatureTextView)
         humidityImageView = findViewById(R.id.humidityImageView)
         uvImageView = findViewById(R.id.uvImageView)
@@ -102,6 +104,8 @@ class MainActivity : AppCompatActivity() {
 
         var tempImp = ""
         var tempMet = ""
+        var windImp = ""
+        var windMet = ""
 
         degreeSwitch.isChecked = !imp
 
@@ -140,6 +144,8 @@ class MainActivity : AppCompatActivity() {
             runOnUiThread {
                 tempImp = currentWeather.tempImp
                 tempMet = currentWeather.tempMet
+                windImp = currentWeather.windImp
+                windMet = currentWeather.windMet
                 if(imp) {
                     temperatureTextView.text = getString(R.string.tempF, tempImp)
                     windValueTextView.text = getString(R.string.wind_value_imp, currentWeather.windImp)
@@ -161,6 +167,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 cityTextView.text = currentWeather.city
+                countryTextView.text = currentWeather.country
                 humidityValueTextView.text = getString(
                     R.string.humidity_value,
                     currentWeather.humidity
@@ -226,6 +233,7 @@ class MainActivity : AppCompatActivity() {
 
                 preferences.edit().putBoolean("IMPERIAL", false).apply()
                 temperatureTextView.text = getString(R.string.tempC, tempMet)
+                windValueTextView.text = getString(R.string.wind_value_met, windMet)
             }
 
             //if Fahrenheit is requested
@@ -240,6 +248,7 @@ class MainActivity : AppCompatActivity() {
 
                 preferences.edit().putBoolean("IMPERIAL", true).apply()
                 temperatureTextView.text = getString(R.string.tempF, tempImp)
+                windValueTextView.text = getString(R.string.wind_value_imp, windImp)
             }
         }
 

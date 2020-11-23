@@ -63,6 +63,7 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var precipValue: TextView
     private lateinit var pressure: TextView
     private lateinit var visibility: TextView
+    private lateinit var lastUpdatedTime: TextView
     var day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
     var date = Calendar.getInstance().get(Calendar.DATE)
 
@@ -117,6 +118,7 @@ class DetailsActivity : AppCompatActivity() {
         precipProb = findViewById(R.id.percepValue)
         precipValue = findViewById(R.id.percepVValue)
         visibility = findViewById(R.id.visibilityValue)
+        lastUpdatedTime = findViewById(R.id.lastUpdatedTimeView)
 
 
         var dayList = listOf<String>("SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT")
@@ -137,6 +139,7 @@ class DetailsActivity : AppCompatActivity() {
             day = day - 1
             runOnUiThread {
                 detailsTextView.text = currentWeather.city
+                lastUpdatedTime.text = "Last Updated: " + currentWeather.lastUpdatedTime.substring(5,7) + "/" + currentWeather.lastUpdatedTime.substring(8,10) + " " + currentWeather.lastUpdatedTime.substring(11,16)
                 day1TextView.text = dayList[day % 7] + " " + fiveDayDetail[0].date.substring(8,10)
                 day2TextView.text = dayList[(day + 1)%7] +" " + fiveDayDetail[1].date.substring(8,10)
                 day3TextView.text = dayList[(day + 2)%7] +" " + fiveDayDetail[2].date.substring(8,10)
@@ -211,7 +214,7 @@ class DetailsActivity : AppCompatActivity() {
                     pressure.text = currentWeather.pressureImp
                     precipValue.text = currentWeather.precip1hrImp
                     visibility.text = currentWeather.visibilityImp
-                    wind.text = currentWeather.windImp + " mi/h"
+                    wind.text = currentWeather.windImp + " mph"
                 }
                 else {
                     pressure.text = currentWeather.pressureMet
@@ -219,7 +222,7 @@ class DetailsActivity : AppCompatActivity() {
                     visibility.text = currentWeather.visibilityMet
                     wind.text = currentWeather.windMet + " km/h"
                 }
-                uv.text = currentWeather.uv
+                uv.text = currentWeather.uv + ", " + currentWeather.uvStatus
 
                 if(currentWeather.sunIsOut) {
                     detailsBackground.background =
@@ -241,7 +244,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[0].dayCondition == "Partly sunny") {
                     day1ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[0].dayCondition == "Intermittent Clouds") {
+                else if (fiveDayDetail[0].dayCondition == "Intermittent clouds") {
                     day1ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[0].dayCondition == "Mostly cloudy") {
@@ -253,7 +256,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[0].dayCondition == "Fog") {
                     day1ImageView.setImageResource(R.drawable.fog)
                 }
-                else if (fiveDayDetail[0].dayCondition == "Showers") {
+                else if ((fiveDayDetail[0].dayCondition == "Showers")||(fiveDayDetail[0].dayCondition == "Rain")) {
                     day1ImageView.setImageResource(R.drawable.showers)
                 }
                 else if (fiveDayDetail[0].dayCondition == "T-Storms") {
@@ -262,7 +265,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[0].dayCondition == "Dreary (Overcast)") {
                     day1ImageView.setImageResource(R.drawable.cloudy)
                 }
-                else if (fiveDayDetail[0].dayCondition == "Mostly Cloudy w/ Showers"){
+                else if (fiveDayDetail[0].dayCondition == "Mostly cloudy w/ Showers"){
                     day1ImageView.setImageResource(R.drawable.day_sunny_showers)
                 }
                 else {
@@ -278,7 +281,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[1].dayCondition == "Partly sunny") {
                     day2ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[1].dayCondition == "Intermittent Clouds") {
+                else if (fiveDayDetail[1].dayCondition == "Intermittent clouds") {
                     day2ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[1].dayCondition == "Mostly cloudy") {
@@ -290,7 +293,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[1].dayCondition == "Fog") {
                     day2ImageView.setImageResource(R.drawable.fog)
                 }
-                else if (fiveDayDetail[1].dayCondition == "Showers") {
+                else if ((fiveDayDetail[1].dayCondition == "Showers")||(fiveDayDetail[1].dayCondition == "Rain")) {
                     day2ImageView.setImageResource(R.drawable.showers)
                 }
                 else if (fiveDayDetail[1].dayCondition == "T-Storms") {
@@ -299,7 +302,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[1].dayCondition == "Dreary (Overcast)") {
                     day2ImageView.setImageResource(R.drawable.cloudy)
                 }
-                else if (fiveDayDetail[1].dayCondition == "Mostly Cloudy w/ Showers"){
+                else if (fiveDayDetail[1].dayCondition == "Mostly cloudy w/ Showers"){
                     day2ImageView.setImageResource(R.drawable.day_sunny_showers)
                 }
                 else {
@@ -316,7 +319,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[2].dayCondition == "Partly sunny") {
                     day3ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[2].dayCondition == "Intermittent Clouds") {
+                else if (fiveDayDetail[2].dayCondition == "Intermittent clouds") {
                     day3ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[2].dayCondition == "Mostly cloudy") {
@@ -328,7 +331,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[2].dayCondition == "Fog") {
                     day3ImageView.setImageResource(R.drawable.fog)
                 }
-                else if (fiveDayDetail[2].dayCondition == "Showers") {
+                else if ((fiveDayDetail[2].dayCondition == "Showers")||(fiveDayDetail[2].dayCondition == "Rain")) {
                     day3ImageView.setImageResource(R.drawable.showers)
                 }
                 else if (fiveDayDetail[2].dayCondition == "T-Storms") {
@@ -337,7 +340,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[2].dayCondition == "Dreary (Overcast)") {
                     day3ImageView.setImageResource(R.drawable.cloudy)
                 }
-                else if (fiveDayDetail[2].dayCondition == "Mostly Cloudy w/ Showers"){
+                else if (fiveDayDetail[2].dayCondition == "Mostly cloudy w/ Showers"){
                     day3ImageView.setImageResource(R.drawable.day_sunny_showers)
                 }
                 else {
@@ -353,7 +356,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[3].dayCondition == "Partly sunny") {
                     day4ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[3].dayCondition == "Intermittent Clouds") {
+                else if (fiveDayDetail[3].dayCondition == "Intermittent clouds") {
                     day4ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[3].dayCondition == "Mostly cloudy") {
@@ -365,7 +368,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[3].dayCondition == "Fog") {
                     day4ImageView.setImageResource(R.drawable.fog)
                 }
-                else if (fiveDayDetail[3].dayCondition == "Showers") {
+                else if ((fiveDayDetail[3].dayCondition == "Showers")||(fiveDayDetail[3].dayCondition == "Rain")) {
                     day4ImageView.setImageResource(R.drawable.showers)
                 }
                 else if (fiveDayDetail[3].dayCondition == "T-Storms") {
@@ -374,7 +377,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[3].dayCondition == "Dreary (Overcast)") {
                     day4ImageView.setImageResource(R.drawable.cloudy)
                 }
-                else if (fiveDayDetail[3].dayCondition == "Mostly Cloudy w/ Showers"){
+                else if (fiveDayDetail[3].dayCondition == "Mostly cloudy w/ Showers"){
                     day4ImageView.setImageResource(R.drawable.day_sunny_showers)
                 }
                 else {
@@ -390,7 +393,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[4].dayCondition == "Partly sunny") {
                     day5ImageView.setImageResource(R.drawable.day_cloudy)
                 }
-                else if (fiveDayDetail[4].dayCondition == "Intermittent Clouds") {
+                else if (fiveDayDetail[4].dayCondition == "Intermittent clouds") {
                     day5ImageView.setImageResource(R.drawable.day_cloudy)
                 }
                 else if (fiveDayDetail[4].dayCondition == "Mostly cloudy") {
@@ -402,7 +405,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[4].dayCondition == "Fog") {
                     day5ImageView.setImageResource(R.drawable.fog)
                 }
-                else if (fiveDayDetail[4].dayCondition == "Showers") {
+                else if ((fiveDayDetail[4].dayCondition == "Showers")||(fiveDayDetail[4].dayCondition == "Rain")) {
                     day5ImageView.setImageResource(R.drawable.showers)
                 }
                 else if (fiveDayDetail[4].dayCondition == "T-Storms") {
@@ -411,7 +414,7 @@ class DetailsActivity : AppCompatActivity() {
                 else if (fiveDayDetail[4].dayCondition == "Dreary (Overcast)") {
                     day5ImageView.setImageResource(R.drawable.cloudy)
                 }
-                else if (fiveDayDetail[4].dayCondition == "Mostly Cloudy w/ Showers"){
+                else if (fiveDayDetail[4].dayCondition == "Mostly cloudy w/ Showers"){
                     day5ImageView.setImageResource(R.drawable.day_sunny_showers)
                 }
                 else {

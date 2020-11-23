@@ -52,9 +52,11 @@ class WeatherManager {
             locationKey = "000000",
             state = "State",
             country = "NA",
+            lastUpdatedTime = "00",
             temp = "00",
             humidity= "00",
             uv = "0",
+            uvStatus = "NA",
             windImp = "00",
             windMet = "00",
             saved = false,
@@ -84,9 +86,11 @@ class WeatherManager {
             locationKey = "000000",
             state = "State",
             country = "NA",
+            lastUpdatedTime = "00",
             temp = "00",
             humidity= "00",
             uv = "0",
+            uvStatus = "NA",
             windImp = "00",
             windMet = "00",
             saved = false,
@@ -105,10 +109,12 @@ class WeatherManager {
             val jsonArray = JSONArray(responseString)
             val jsonObject = jsonArray.getJSONObject(0)
             val isDayTime = jsonObject.getBoolean("IsDayTime")
+            val lastUpdatedTime = jsonObject.getString("LocalObservationDateTime")
             // humidity
             val humidityVal = jsonObject.getString("RelativeHumidity")
             // uv
             val uvVal = jsonObject.getString("UVIndex")
+            val uvStatus = jsonObject.getString("UVIndexText")
             // temp
             val temp = jsonObject.getJSONObject("Temperature")
             val tempMetric = temp.getJSONObject("Metric")
@@ -149,10 +155,12 @@ class WeatherManager {
                 locationKey = locationKey,
                 state = stateName,
                 country = countryName,
+                lastUpdatedTime = lastUpdatedTime,
                 tempMet = tempMetricVal.toString(),
                 tempImp = tempImperialVal.toString(),
                 humidity= humidityVal,
                 uv = uvVal,
+                uvStatus = uvStatus,
                 windImp = windSpeedImperialVal,
                 windMet = windSpeedMetricVal,
                 saved = false,

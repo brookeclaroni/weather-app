@@ -76,6 +76,19 @@
         app:layout_constraintTop_toBottomOf="@+id/mainSearchEditText" />
 
     <TextView
+        android:id="@+id/countryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityTextView" />
+
+    <TextView
         android:id="@+id/temperatureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,8 +102,8 @@
 
     <ImageView
         android:id="@+id/humidityImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toTopOf="@+id/humidityValueTextView"
         app:layout_constraintEnd_toEndOf="@+id/humidityValueTextView"
         app:layout_constraintStart_toStartOf="@+id/humidityValueTextView"
@@ -98,8 +111,8 @@
 
     <ImageView
         android:id="@+id/uvImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toTopOf="@+id/uvValueTextView"
         app:layout_constraintEnd_toEndOf="@+id/uvValueTextView"
         app:layout_constraintStart_toStartOf="@+id/uvValueTextView"
@@ -107,8 +120,8 @@
 
     <ImageView
         android:id="@+id/windImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toTopOf="@+id/windValueTextView"
         app:layout_constraintEnd_toEndOf="@+id/windValueTextView"
         app:layout_constraintStart_toStartOf="@+id/windValueTextView"

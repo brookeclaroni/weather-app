@@ -372,7 +372,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/UVTitle"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/UVTitle"/>
 
             <TextView
                 android:id="@+id/UVTitle"
@@ -383,7 +383,7 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/UVValue"
-                app:layout_constraintTop_toBottomOf="@+id/windValue"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/windValue" />
 
             <TextView
                 android:id="@+id/pressureTitle"
@@ -393,7 +393,7 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/visibilityTitle"
-                app:layout_constraintTop_toTopOf="@+id/UVTitle"></TextView>
+                app:layout_constraintTop_toTopOf="@+id/UVTitle" />
 
             <TextView
                 android:id="@+id/percepTitle"
@@ -404,7 +404,7 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/UVValue"
-                app:layout_constraintTop_toBottomOf="@+id/xAxisDate1"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/xAxisDate1" />
 
             <TextView
                 android:id="@+id/percepVTitle"
@@ -415,7 +415,7 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/percepTitle"></TextView>
+                app:layout_constraintTop_toTopOf="@+id/percepTitle" />
 
             <TextView
                 android:id="@+id/percepValue"
@@ -426,7 +426,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/UVValue"
-                app:layout_constraintTop_toBottomOf="@+id/percepTitle"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/percepTitle" />
 
             <TextView
                 android:id="@+id/percepVValue"
@@ -437,7 +437,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/percepVTitle"
-                app:layout_constraintTop_toBottomOf="@+id/percepVTitle"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/percepVTitle" />
 
             <TextView
                 android:id="@+id/windTitle"
@@ -448,7 +448,7 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/UVValue"
-                app:layout_constraintTop_toBottomOf="@+id/percepValue"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/percepValue" />
 
             <TextView
                 android:id="@+id/visibilityTitle"
@@ -458,7 +458,7 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/percepVTitle"
-                app:layout_constraintTop_toTopOf="@+id/windTitle"></TextView>
+                app:layout_constraintTop_toTopOf="@+id/windTitle" />
 
             <TextView
                 android:id="@+id/windValue"
@@ -469,7 +469,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/UVValue"
-                app:layout_constraintTop_toBottomOf="@+id/windTitle"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/windTitle" />
 
             <TextView
                 android:id="@+id/visibilityValue"
@@ -480,7 +480,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/visibilityTitle"
-                app:layout_constraintTop_toBottomOf="@+id/visibilityTitle"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/visibilityTitle" />
 
             <TextView
                 android:id="@+id/pressureValue"
@@ -492,7 +492,7 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/pressureTitle"
-                app:layout_constraintTop_toTopOf="@+id/UVValue"></TextView>
+                app:layout_constraintTop_toTopOf="@+id/UVValue" />
 
             <TextView
                 android:id="@+id/chartTitle"
@@ -516,6 +516,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/accu_logo_white" />
+
+            <TextView
+                android:id="@+id/lastUpdatedTimeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="TextView"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsTextView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
