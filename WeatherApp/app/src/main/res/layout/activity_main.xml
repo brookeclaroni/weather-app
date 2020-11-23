@@ -54,15 +54,14 @@
 
     <ImageView
         android:id="@+id/sunImageView"
-        android:layout_width="375dp"
-        android:layout_height="445dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
+        app:layout_constraintBottom_toTopOf="@+id/humidityImageView"
         app:layout_constraintEnd_toStartOf="@+id/uvImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266"
-        app:srcCompat="@drawable/sun" />
+        app:layout_constraintTop_toBottomOf="@+id/cityTextView"
+        app:srcCompat="@drawable/sun"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/cityTextView"
@@ -257,5 +256,24 @@
         app:layout_constraintEnd_toEndOf="@+id/mainSearchEditText"
         app:layout_constraintTop_toTopOf="@+id/mainSearchEditText"
         app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+    <ImageView
+        android:id="@+id/sunFlareImageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sunImageView"
+        app:layout_constraintStart_toStartOf="@+id/sunImageView"
+        app:layout_constraintEnd_toEndOf="@+id/sunImageView"
+        app:layout_constraintTop_toTopOf="@+id/sunImageView"
+        app:srcCompat="@drawable/ic_sun_flare" />
+    <ImageView
+        android:id="@+id/sunCenterImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sunImageView"
+        app:layout_constraintStart_toStartOf="@+id/sunImageView"
+        app:layout_constraintEnd_toEndOf="@+id/sunImageView"
+        app:layout_constraintTop_toTopOf="@+id/sunImageView"
+        app:srcCompat="@drawable/ic_sun_center" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

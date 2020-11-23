@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -43,6 +44,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var searchEditText: EditText
     private lateinit var searchImageButton: ImageButton
     private lateinit var progBar: ProgressBar
+
+    private lateinit var sunCenter : ImageView
+    private lateinit var sunFlare : ImageView
 
 
     fun openBrowser(view: View) {
@@ -87,6 +91,9 @@ class MainActivity : AppCompatActivity() {
         searchEditText = findViewById(R.id.mainSearchEditText)
         searchImageButton = findViewById(R.id.mainSearchButton)
         progBar = findViewById(R.id.mainProgBar)
+
+        sunCenter = findViewById(R.id.sunCenterImageView)
+        sunFlare = findViewById(R.id.sunFlareImageView)
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
@@ -241,5 +248,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetailsActivity::class.java)
             startActivity(intent)
         }
+
+        isSunny()
+    }
+
+    fun isSunny()
+    {
+        sunFlare.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
     }
 }
