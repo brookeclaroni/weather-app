@@ -463,9 +463,11 @@
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/temperatureTextView"
         app:layout_constraintEnd_toEndOf="@+id/temperatureTextView"
-        app:layout_constraintStart_toStartOf="@+id/temperatureTextView" />
+        app:layout_constraintStart_toStartOf="@+id/temperatureTextView"
+        tools:visibility="invisible" />
 
     <TextView
         android:id="@+id/realFealView"
