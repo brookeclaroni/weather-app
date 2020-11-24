@@ -39,3 +39,10 @@ data class BriefWeather(
     val sunrise: String,
     val sunset: String
 )
+
+data class BriefWeatherHourly(
+    val time: String,
+    val weatherIcon: Int,
+    val temp: String,
+    val precipProb: String
+)

@@ -31,11 +31,6 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var day3CondView: TextView
     private lateinit var day4CondView: TextView
     private lateinit var day5CondView: TextView
-    private lateinit var day1TempView: TextView
-    private lateinit var day2TempView: TextView
-    private lateinit var day3TempView: TextView
-    private lateinit var day4TempView: TextView
-    private lateinit var day5TempView: TextView
     private lateinit var day1AqiView: TextView
     private lateinit var day2AqiView: TextView
     private lateinit var day3AqiView: TextView
@@ -65,6 +60,45 @@ class DetailsActivity : AppCompatActivity() {
     var day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
     var date = Calendar.getInstance().get(Calendar.DATE)
 
+    // hourly var
+    private lateinit var hour1TempView: TextView
+    private lateinit var hour2TempView: TextView
+    private lateinit var hour3TempView: TextView
+    private lateinit var hour4TempView: TextView
+    private lateinit var hour5TempView: TextView
+    private lateinit var hour6TempView: TextView
+    private lateinit var hour7TempView: TextView
+    private lateinit var hour8TempView: TextView
+    private lateinit var hour9TempView: TextView
+    private lateinit var hour10TempView: TextView
+    private lateinit var hour11TempView: TextView
+    private lateinit var hour12TempView: TextView
+
+    private lateinit var hour1TextView: TextView
+    private lateinit var hour2TextView: TextView
+    private lateinit var hour3TextView: TextView
+    private lateinit var hour4TextView: TextView
+    private lateinit var hour5TextView: TextView
+    private lateinit var hour6TextView: TextView
+    private lateinit var hour7TextView: TextView
+    private lateinit var hour8TextView: TextView
+    private lateinit var hour9TextView: TextView
+    private lateinit var hour10TextView: TextView
+    private lateinit var hour11TextView: TextView
+    private lateinit var hour12TextView: TextView
+
+    private lateinit var hour1ImageView: ImageView
+    private lateinit var hour2ImageView: ImageView
+    private lateinit var hour3ImageView: ImageView
+    private lateinit var hour4ImageView: ImageView
+    private lateinit var hour5ImageView: ImageView
+    private lateinit var hour6ImageView: ImageView
+    private lateinit var hour7ImageView: ImageView
+    private lateinit var hour8ImageView: ImageView
+    private lateinit var hour9ImageView: ImageView
+    private lateinit var hour10ImageView: ImageView
+    private lateinit var hour11ImageView: ImageView
+    private lateinit var hour12ImageView: ImageView
 
 
 
@@ -118,6 +152,44 @@ class DetailsActivity : AppCompatActivity() {
         visibility = findViewById(R.id.visibilityValue)
         lastUpdatedTime = findViewById(R.id.lastUpdatedTimeView)
 
+        hour1TempView = findViewById(R.id.hour1TempTextView)
+        hour2TempView = findViewById(R.id.hour1TempTextView2)
+        hour3TempView = findViewById(R.id.hour1TempTextView3)
+        hour4TempView = findViewById(R.id.hour1TempTextView4)
+        hour5TempView = findViewById(R.id.hour1TempTextView5)
+        hour6TempView = findViewById(R.id.hour1TempTextView6)
+        hour7TempView = findViewById(R.id.hour1TempTextView7)
+        hour8TempView = findViewById(R.id.hour1TempTextView8)
+        hour9TempView = findViewById(R.id.hour1TempTextView9)
+        hour10TempView = findViewById(R.id.hour1TempTextView10)
+        hour11TempView = findViewById(R.id.hour1TempTextView11)
+        hour12TempView = findViewById(R.id.hour1TempTextView12)
+
+        hour1ImageView = findViewById(R.id.hour1ImageView)
+        hour2ImageView = findViewById(R.id.hour1ImageView2)
+        hour3ImageView = findViewById(R.id.hour1ImageView3)
+        hour4ImageView = findViewById(R.id.hour1ImageView4)
+        hour5ImageView = findViewById(R.id.hour1ImageView5)
+        hour6ImageView = findViewById(R.id.hour1ImageView6)
+        hour7ImageView = findViewById(R.id.hour1ImageView7)
+        hour8ImageView = findViewById(R.id.hour1ImageView8)
+        hour9ImageView = findViewById(R.id.hour1ImageView9)
+        hour10ImageView = findViewById(R.id.hour1ImageView10)
+        hour11ImageView = findViewById(R.id.hour1ImageView11)
+        hour12ImageView = findViewById(R.id.hour1ImageView12)
+
+        hour1TextView = findViewById(R.id.hour1TextView)
+        hour2TextView = findViewById(R.id.hour2TextView)
+        hour3TextView = findViewById(R.id.hour3TextView)
+        hour4TextView = findViewById(R.id.hour4TextView)
+        hour5TextView = findViewById(R.id.hour5TextView)
+        hour6TextView = findViewById(R.id.hour6TextView)
+        hour7TextView = findViewById(R.id.hour7TextView)
+        hour8TextView = findViewById(R.id.hour8TextView)
+        hour9TextView = findViewById(R.id.hour9TextView)
+        hour10TextView = findViewById(R.id.hour10TextView)
+        hour11TextView = findViewById(R.id.hour11TextView)
+        hour12TextView = findViewById(R.id.hour12TextView)
 
         var dayList = listOf<String>("SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT")
 
@@ -133,6 +205,7 @@ class DetailsActivity : AppCompatActivity() {
             val weatherManager = WeatherManager()
             val currentWeather = weatherManager.retrieveWeather(cityCode, getString(R.string.api_key))
             val fiveDayDetail = weatherManager.retrieve5DayWeather(currentWeather.locationKey, getString(R.string.api_key),!imp)
+            val hourlyDetail = weatherManager.retrieve12HourWeather(currentWeather.locationKey, getString(R.string.api_key), !imp)
             // day = day + fiveDayDetail[0].date.substring(8, 10).toInt() - date - 1
             day = day - 1
             runOnUiThread {
@@ -426,6 +499,94 @@ class DetailsActivity : AppCompatActivity() {
                 }
                 else {
                     day5ImageView.setImageResource(R.drawable.day_sunny)
+                }
+
+                // set hourly text
+                var imageResource = R.drawable.day_sunny
+                for (i in 0..11) {
+                    val currentTime = hourlyDetail[i].time
+                    val currentTemp = hourlyDetail[i].temp
+                    val currentWeatherIcon = hourlyDetail[i].weatherIcon
+                    if(currentWeatherIcon in 1..2)
+                        imageResource = R.drawable.day_sunny
+                    else if(currentWeatherIcon in 3..6)
+                        imageResource = R.drawable.day_mostly_sunny
+                    else if(currentWeatherIcon in 7..11 || currentWeatherIcon in 35..38)
+                        imageResource = R.drawable.cloudy
+                    else if(currentWeatherIcon in 12..14 || currentWeatherIcon in 39..40 || currentWeatherIcon == 18)
+                        imageResource = R.drawable.showers
+                    else if(currentWeatherIcon in 15..17 || currentWeatherIcon in 41..42)
+                        imageResource = R.drawable.day_tstorms //fix to night tstorms
+                    else if(currentWeatherIcon in 19..29 || currentWeatherIcon in 43..44)
+                        imageResource = R.drawable.day_tstorms //fix to night snowy
+                    else if(currentWeatherIcon in 33..34)
+                        imageResource = R.drawable.day_tstorms //fix to starry
+                    else{
+                        if (currentWeather.sunIsOut)
+                            imageResource = R.drawable.day_sunny
+                        else
+                            imageResource = R.drawable.day_sunny//fix to starry
+                    }
+                    if (i == 0){
+                        hour1TextView.text = currentTime
+                        hour1TempView.text = currentTemp
+                        hour1ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 1) {
+                        hour2TextView.text = currentTime
+                        hour2TempView.text = currentTemp
+                        hour2ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 2) {
+                        hour3TextView.text = currentTime
+                        hour3TempView.text = currentTemp
+                        hour3ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 3) {
+                        hour4TextView.text = currentTime
+                        hour4TempView.text = currentTemp
+                        hour4ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 4) {
+                        hour5TextView.text = currentTime
+                        hour5TempView.text = currentTemp
+                        hour5ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 5) {
+                        hour6TextView.text = currentTime
+                        hour6TempView.text = currentTemp
+                        hour6ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 6) {
+                        hour7TextView.text = currentTime
+                        hour7TempView.text = currentTemp
+                        hour7ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 7) {
+                        hour8TextView.text = currentTime
+                        hour8TempView.text = currentTemp
+                        hour8ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 8) {
+                        hour9TextView.text = currentTime
+                        hour9TempView.text = currentTemp
+                        hour9ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 9) {
+                        hour10TextView.text = currentTime
+                        hour10TempView.text = currentTemp
+                        hour10ImageView.setImageResource(imageResource)
+                    }
+                    else if (i == 10) {
+                        hour11TextView.text = currentTime
+                        hour11TempView.text = currentTemp
+                        hour11ImageView.setImageResource(imageResource)
+                    }
+                    else {
+                        hour12TextView.text = currentTime
+                        hour12TempView.text = currentTemp
+                        hour12ImageView.setImageResource(imageResource)
+                    }
                 }
 
                 //stop prog bar when networking is done

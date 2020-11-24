@@ -359,6 +359,16 @@
                 app:layout_constraintTop_toTopOf="@+id/xAxisDate1" />
 
             <TextView
+                android:id="@+id/xAxisDate3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/xAxisDate2" />
+
+            <TextView
                 android:id="@+id/xAxisDate5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -378,20 +388,11 @@
                 app:layout_constraintStart_toEndOf="@+id/xAxisDate3"
                 app:layout_constraintTop_toTopOf="@+id/xAxisDate3" />
 
-            <TextView
-                android:id="@+id/xAxisDate3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/xAxisDate2" />
-
             <View
                 android:id="@+id/seperator1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginTop="120dp"
                 android:background="@android:color/darker_gray"
                 app:layout_constraintBottom_toTopOf="@+id/chartView"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -399,15 +400,426 @@
                 app:layout_constraintTop_toBottomOf="@+id/day5ImageView" />
 
             <View
-                android:id="@+id/seperator2"
+                android:id="@+id/seperator3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginTop="20dp"
                 android:background="@android:color/darker_gray"
-                app:layout_constraintBottom_toTopOf="@+id/humidTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/xAxisDate3" />
+                app:layout_constraintTop_toBottomOf="@+id/bottomBar" />
+
+            <HorizontalScrollView
+                android:id="@+id/hourlyDetailScrollView"
+                android:layout_width="413dp"
+                android:layout_height="96dp"
+                android:fadingEdge="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/seperator1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/seperator3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/hourlyConstraintLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour1TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour2TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour2TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour3TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour3TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour4TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour4TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView5"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour5TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour5TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView6"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour6TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour6TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView7"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour7TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour7TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView8"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour8TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour8TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView9"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour9TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour9TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView10"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour10TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour10TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView11"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour11TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour11TextView" />
+
+                        <ImageView
+                            android:id="@+id/hour1ImageView12"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1TextView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour12TextView"
+                            app:layout_constraintStart_toStartOf="@+id/hour12TextView" />
+
+                        <TextView
+                            android:id="@+id/hour7TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour6TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour6TextView" />
+
+                        <TextView
+                            android:id="@+id/hour6TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour5TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour5TextView" />
+
+                        <TextView
+                            android:id="@+id/hour9TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour8TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour8TextView" />
+
+                        <TextView
+                            android:id="@+id/hour10TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour11TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour9TextView" />
+
+                        <TextView
+                            android:id="@+id/hour12TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginEnd="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour9TextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/hour11TextView" />
+
+                        <TextView
+                            android:id="@+id/hour4TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour3TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour3TextView" />
+
+                        <TextView
+                            android:id="@+id/hour2TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour1TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour1TextView" />
+
+                        <TextView
+                            android:id="@+id/hour8TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour7TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour7TextView" />
+
+                        <TextView
+                            android:id="@+id/hour11TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour12TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour10TextView" />
+
+                        <TextView
+                            android:id="@+id/hour3TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour2TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour2TextView" />
+
+                        <TextView
+                            android:id="@+id/hour5TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_weight="1"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/hour4TextView"
+                            app:layout_constraintStart_toEndOf="@+id/hour4TextView" />
+
+                        <TextView
+                            android:id="@+id/hour1TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView2"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView2"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView3"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView3"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView4"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView4"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView4"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView5"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView5"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView5"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView6"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView6"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView6"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView7"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView7"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView7"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView8"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView8"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView8"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView9"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView9"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView9"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView10"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView10"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView10"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView11"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView11"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView11"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/hour1TempTextView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="text"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toTopOf="@+id/hour1ImageView12"
+                            app:layout_constraintEnd_toEndOf="@+id/hour1ImageView12"
+                            app:layout_constraintStart_toStartOf="@+id/hour1ImageView12"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <View
+                android:id="@+id/seperator2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="50dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintBottom_toBottomOf="@+id/xAxisDate3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chartView" />
 
             <TextView
                 android:id="@+id/UVValue"
@@ -565,7 +977,7 @@
                 android:id="@+id/currConditionsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:text="Detailed Current Conditions"
                 android:textColor="@color/white"
                 android:textSize="24sp"

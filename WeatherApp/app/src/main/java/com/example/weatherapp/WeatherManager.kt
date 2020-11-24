@@ -253,4 +253,41 @@ class WeatherManager {
         }
         return fiveDayDetail
     }
+
+    fun retrieve12HourWeather(locationKey: String, apiKey: String, metric : Boolean): ArrayList<BriefWeatherHourly>{
+        val request = Request.Builder()
+            .url("https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/$locationKey?apikey=$apiKey&details=true&metric=$metric\n")
+            .method("GET", null)
+            .build()
+
+        val response = okHttpClient.newCall(request).execute()
+        val responseString: String? = response.body?.string()
+
+        val hourlyDetail = ArrayList<BriefWeatherHourly>(12)
+        val dummyBriefWeather = BriefWeatherHourly(
+            time = "00",
+            weatherIcon = 0,
+            temp = "OO",
+            precipProb = "NA"
+        )
+        for (i in 0..11) {
+            hourlyDetail.add(dummyBriefWeather)
+        }
+        if (!responseString.isNullOrEmpty() && response.isSuccessful) {
+            val jsonArray = JSONArray(responseString)
+            for (i in 0..11) {
+                val tempObject = jsonArray.getJSONObject(i)
+                val tempTemp = tempObject.getJSONObject("Temperature")
+                val tempBriefWeather = BriefWeatherHourly(
+                    time = tempObject.getString("DateTime").substring(11,16),
+                    temp = tempTemp.getString("Value") + "°",
+                    weatherIcon = tempObject.getInt("WeatherIcon"),
+                    precipProb = tempObject.getString("PrecipitationProbability") + "%"
+                )
+                hourlyDetail[i] = tempBriefWeather
+            }
+        }
+
+        return hourlyDetail
+    }
 }
