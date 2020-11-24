@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <rotate
+        xmlns:tools="http://schemas.android.com/tools"
+        android:fromDegrees="0"
+        android:toDegrees="-360"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="infinite"
+        android:duration="50000"
+        tools:ignore="MissingDefaultResource" />
+    <scale android:duration="3000"
+        android:fromXScale="1"
+        android:fromYScale="1"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse"
+        android:toXScale="1.08"
+        android:toYScale="1.08"
+        android:interpolator="@android:interpolator/bounce"
+        android:startOffset="700"/>
+    <scale
+        android:duration="3000"
+        android:fromXScale="1"
+        android:fromYScale="1"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse"
+        android:toXScale="1"
+        android:toYScale="1"
+        android:interpolator="@android:interpolator/bounce"
+        android:startOffset="700"/>
+</set>

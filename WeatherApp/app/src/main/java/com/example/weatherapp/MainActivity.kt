@@ -54,7 +54,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var snowFlake1 : ImageView
     private lateinit var snowFlake2 : ImageView
     private lateinit var snowFlake3 : ImageView
-
+    private lateinit var star1 : ImageView
+    private lateinit var star2 : ImageView
+    private lateinit var star3 : ImageView
 
     fun openBrowser(view: View) {
         //Get url from tag
@@ -111,6 +113,9 @@ class MainActivity : AppCompatActivity() {
         snowFlake1 = findViewById(R.id.snowFlakeImageView1)
         snowFlake2 = findViewById(R.id.snowFlakeImageView2)
         snowFlake3 = findViewById(R.id.snowFlakeImageView3)
+        star1 = findViewById(R.id.starImageView1)
+        star2 = findViewById(R.id.starImageView2)
+        star3 = findViewById(R.id.starImageView3)
 
 
         //get intent shared preference variables
@@ -280,7 +285,8 @@ class MainActivity : AppCompatActivity() {
         //isCloudy()
         //isRainy()
         //isThundering()
-        isSnowy()
+        //isSnowy()
+        isStarry()
     }
 
     fun isSunny()
@@ -333,5 +339,15 @@ class MainActivity : AppCompatActivity() {
         snowFlake1.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down))
         snowFlake2.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay1))
         snowFlake3.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay2))
+    }
+
+    fun isStarry()
+    {
+        star1.visibility = View.VISIBLE
+        star2.visibility = View.VISIBLE
+        star3.visibility = View.VISIBLE
+        star1.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
+        star2.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_delay1))
+        star3.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
     }
 }
