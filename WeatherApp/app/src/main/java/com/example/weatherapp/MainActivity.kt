@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var sunCenter : ImageView
     private lateinit var sunFlare : ImageView
+    private lateinit var bottomCloud : ImageView
 
 
     fun openBrowser(view: View) {
@@ -96,6 +97,7 @@ class MainActivity : AppCompatActivity() {
 
         sunCenter = findViewById(R.id.sunCenterImageView)
         sunFlare = findViewById(R.id.sunFlareImageView)
+        bottomCloud = findViewById(R.id.bottomCloudImageView)
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
@@ -258,11 +260,17 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        isSunny()
+        //isSunny()
+        isPartlyCloudy()
     }
 
     fun isSunny()
     {
         sunFlare.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
+    }
+    fun isPartlyCloudy()
+    {
+        sunFlare.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
+        bottomCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth))
     }
 }
