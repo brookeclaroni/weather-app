@@ -364,7 +364,7 @@
         app:layout_constraintStart_toStartOf="@+id/sunImageView"
         app:layout_constraintTop_toTopOf="@+id/sunImageView"
         app:srcCompat="@drawable/ic_star"
-        tools:visibility="visible" />
+        tools:visibility="invisible" />
 
     <ImageView
         android:id="@+id/starImageView2"
@@ -377,7 +377,7 @@
         app:layout_constraintStart_toStartOf="@+id/sunImageView"
         app:layout_constraintTop_toTopOf="@+id/sunImageView"
         app:srcCompat="@drawable/ic_star"
-        tools:visibility="visible" />
+        tools:visibility="invisible" />
 
     <ImageView
         android:id="@+id/starImageView3"
@@ -390,7 +390,7 @@
         app:layout_constraintStart_toStartOf="@+id/sunImageView"
         app:layout_constraintTop_toTopOf="@+id/sunImageView"
         app:srcCompat="@drawable/ic_star"
-        tools:visibility="visible" />
+        tools:visibility="invisible" />
 
 
 
