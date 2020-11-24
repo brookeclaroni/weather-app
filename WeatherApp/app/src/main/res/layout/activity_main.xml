@@ -107,7 +107,7 @@
         app:layout_constraintBottom_toTopOf="@+id/sunriseValueTextView"
         app:layout_constraintEnd_toEndOf="@+id/sunriseValueTextView"
         app:layout_constraintStart_toStartOf="@+id/sunriseValueTextView"
-        app:srcCompat="@drawable/sunrise" />
+        app:srcCompat="@drawable/sunrise_extra_bold" />
 
     <ImageView
         android:id="@+id/precipView"
@@ -126,7 +126,7 @@
         app:layout_constraintBottom_toTopOf="@+id/sunsetValueTextView"
         app:layout_constraintEnd_toEndOf="@+id/sunsetValueTextView"
         app:layout_constraintStart_toStartOf="@+id/sunsetValueTextView"
-        app:srcCompat="@drawable/sunset" />
+        app:srcCompat="@drawable/sunset_extra_bold" />
 
     <TextView
         android:id="@+id/sunriseValueTextView"
