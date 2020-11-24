@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rainDrop1 : ImageView
     private lateinit var rainDrop2 : ImageView
     private lateinit var rainDrop3 : ImageView
+    private lateinit var thunder : ImageView
 
 
     fun openBrowser(view: View) {
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity() {
         rainDrop1 = findViewById(R.id.rainDropImageView1)
         rainDrop2 = findViewById(R.id.rainDropImageView2)
         rainDrop3 = findViewById(R.id.rainDropImageView3)
+        thunder = findViewById(R.id.thunderImageView)
 
 
         //get intent shared preference variables
@@ -270,7 +272,8 @@ class MainActivity : AppCompatActivity() {
         //isSunny()
         //isPartlyCloudy()
         //isCloudy()
-        isRainy()
+        //isRainy()
+        isThundering()
     }
 
     fun isSunny()
@@ -304,5 +307,12 @@ class MainActivity : AppCompatActivity() {
         rainDrop1.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down))
         rainDrop2.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay1))
         rainDrop3.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay2))
+    }
+
+    fun isThundering()
+    {
+        isRainy()
+        thunder.visibility = View.VISIBLE
+        thunder.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_and_back))
     }
 }
