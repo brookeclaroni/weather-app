@@ -68,7 +68,8 @@ class WeatherManager {
             pressureMet = "00",
             visibilityMet = "00",
             precip1hrImp = "00",
-            precip1hrMet = "00"
+            precip1hrMet = "00",
+            weatherInt = 0
         )
     }
 
@@ -102,7 +103,8 @@ class WeatherManager {
             pressureMet = "00",
             visibilityMet = "00",
             precip1hrImp = "00",
-            precip1hrMet = "00"
+            precip1hrMet = "00",
+            weatherInt = 0
         )
 
         if (!responseString.isNullOrEmpty() && response.isSuccessful) {
@@ -110,6 +112,8 @@ class WeatherManager {
             val jsonObject = jsonArray.getJSONObject(0)
             val isDayTime = jsonObject.getBoolean("IsDayTime")
             val lastUpdatedTime = jsonObject.getString("LocalObservationDateTime")
+            //weather int
+            val weatherInt = jsonObject.getInt("WeatherIcon")
             // humidity
             val humidityVal = jsonObject.getString("RelativeHumidity")
             // uv
@@ -171,7 +175,8 @@ class WeatherManager {
                 visibilityImp = visibImpVal,
                 visibilityMet = visibMetVal,
                 precip1hrImp = precipImpVal,
-                precip1hrMet = precipMetVal
+                precip1hrMet = precipMetVal,
+                weatherInt = weatherInt
             )
         }
         return weather

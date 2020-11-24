@@ -168,6 +168,8 @@ class MainActivity : AppCompatActivity() {
                 tempMet = currentWeather.tempMet
                 windImp = currentWeather.windImp
                 windMet = currentWeather.windMet
+
+                //get and set temp
                 if(imp) {
                     temperatureTextView.text = getString(R.string.tempF, tempImp)
                     windValueTextView.text = getString(R.string.wind_value_imp, currentWeather.windImp)
@@ -177,6 +179,7 @@ class MainActivity : AppCompatActivity() {
                     windValueTextView.text = getString(R.string.wind_value_met, currentWeather.windMet)
                 }
 
+                //get and set background brightness
                 if(currentWeather.sunIsOut) {
                     background.background =
                         ColorDrawable(resources.getColor(R.color.colorBackgroundLight))
@@ -188,12 +191,39 @@ class MainActivity : AppCompatActivity() {
                     moreDetailsButton.setTextColor(resources.getColor(R.color.colorBackgroundDark))
                 }
 
+                //get and set weather icon
+                if(currentWeather.weatherInt in 1..2)
+                    isSunny()
+                else if(currentWeather.weatherInt in 3..6)
+                    isPartlyCloudy()
+                else if(currentWeather.weatherInt in 7..11 || currentWeather.weatherInt in 35..38)
+                    isCloudy()
+                else if(currentWeather.weatherInt in 12..14 || currentWeather.weatherInt in 39..40 || currentWeather.weatherInt == 18)
+                    isRainy()
+                else if(currentWeather.weatherInt in 15..17 || currentWeather.weatherInt in 41..42)
+                    isThundering()
+                else if(currentWeather.weatherInt in 19..29 || currentWeather.weatherInt in 43..44)
+                    isSnowy()
+                else if(currentWeather.weatherInt in 33..34)
+                    isStarry()
+                else{
+                    if (currentWeather.sunIsOut)
+                        isSunny()
+                    else
+                        isStarry()
+                }
+
+                //get and set location details
                 cityTextView.text = currentWeather.city
                 countryTextView.text = currentWeather.country
+
+                //get and set humidity
                 humidityValueTextView.text = getString(
                     R.string.humidity_value,
                     currentWeather.humidity
                 )
+
+                //get and set UV
                 uvValueTextView.text = currentWeather.uv
 
 
@@ -279,14 +309,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetailsActivity::class.java)
             startActivity(intent)
         }
-
-        //isSunny()
-        //isPartlyCloudy()
-        //isCloudy()
-        //isRainy()
-        //isThundering()
-        //isSnowy()
-        isStarry()
     }
 
     fun isSunny()
