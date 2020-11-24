@@ -16,4 +16,6 @@
     <string name="humidity">Humidity</string>
     <string name="real_feel_imp">Feels like %1$s°F</string>
     <string name="real_feel_met">Feels like %1$s°C</string>
+    <string name="unitName_f">Unit: °F</string>
+    <string name="unitName_c">Unit: °C</string>
 </resources>

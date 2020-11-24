@@ -15,6 +15,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import org.jetbrains.anko.doAsync
+import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -99,6 +100,8 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var hour10ImageView: ImageView
     private lateinit var hour11ImageView: ImageView
     private lateinit var hour12ImageView: ImageView
+
+    private lateinit var unitView: TextView
 
 
 
@@ -190,6 +193,8 @@ class DetailsActivity : AppCompatActivity() {
         hour10TextView = findViewById(R.id.hour10TextView)
         hour11TextView = findViewById(R.id.hour11TextView)
         hour12TextView = findViewById(R.id.hour12TextView)
+
+        unitView = findViewById(R.id.unitView)
 
         var dayList = listOf<String>("SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT")
 
@@ -657,6 +662,13 @@ class DetailsActivity : AppCompatActivity() {
                 xAxisDate3.text = dayList[(day + 2) % 7]
                 xAxisDate4.text = dayList[(day + 3) % 7]
                 xAxisDate5.text = dayList[(day + 4) % 7]
+
+                if (imp) {
+                    unitView.text = getString(R.string.unitName_f)
+                }
+                else {
+                    unitView.text = getString(R.string.unitName_c)
+                }
             }
         }
 
