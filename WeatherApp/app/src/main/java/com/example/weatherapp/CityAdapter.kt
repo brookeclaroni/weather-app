@@ -61,47 +61,47 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
                     holder.card.setCardBackgroundColor(resources.getColor(R.color.colorBackgroundDark))
 
                 //get and set weather icon
-//                if(currentWeather.weatherInt in 1..2)
-//                    holder.weatherIcon.setImageResource(R.drawable.day_sunny)
-//                else if(currentWeather.weatherInt in 3..6)
-//                    holder.weatherIcon.setImageResource(R.drawable.day_mostly_sunny)
-//                else if(currentWeather.weatherInt in 7..11 || currentWeather.weatherInt in 35..38)
-//                    holder.weatherIcon.setImageResource(R.drawable.cloudy)
-//                else if(currentWeather.weatherInt in 12..14 || currentWeather.weatherInt in 39..40 || currentWeather.weatherInt == 18)
-//                    holder.weatherIcon.setImageResource(R.drawable.showers)
-//                else if(currentWeather.weatherInt in 15..17 || currentWeather.weatherInt in 41..42)
-//                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to night tstorms
-//                else if(currentWeather.weatherInt in 19..29 || currentWeather.weatherInt in 43..44)
-//                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to night snowy
-//                else if(currentWeather.weatherInt in 33..34)
-//                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to starry
-//                else{
-//                    if (currentWeather.sunIsOut)
-//                        holder.weatherIcon.setImageResource(R.drawable.day_sunny)
-//                    else
-//                        holder.weatherIcon.setImageResource(R.drawable.day_sunny)//fix to starry
-//                }
-
                 if(currentWeather.weatherInt in 1..2)
-                    holder.weatherIcon.setImageResource(R.drawable.sun)//fix to updated sun
+                    holder.weatherIcon.setImageResource(R.drawable.day_sunny)
                 else if(currentWeather.weatherInt in 3..6)
-                    holder.weatherIcon.setImageResource(R.drawable.sun)//fix to sun with part cloud
+                    holder.weatherIcon.setImageResource(R.drawable.day_mostly_sunny)
                 else if(currentWeather.weatherInt in 7..11 || currentWeather.weatherInt in 35..38)
-                    holder.weatherIcon.setImageResource(R.drawable.ic_top_cloud)
+                    holder.weatherIcon.setImageResource(R.drawable.cloudy)
                 else if(currentWeather.weatherInt in 12..14 || currentWeather.weatherInt in 39..40 || currentWeather.weatherInt == 18)
-                    holder.weatherIcon.setImageResource(R.drawable.ic_rain_drop)
+                    holder.weatherIcon.setImageResource(R.drawable.showers)
                 else if(currentWeather.weatherInt in 15..17 || currentWeather.weatherInt in 41..42)
-                    holder.weatherIcon.setImageResource(R.drawable.ic_thunder)
+                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to night tstorms
                 else if(currentWeather.weatherInt in 19..29 || currentWeather.weatherInt in 43..44)
-                    holder.weatherIcon.setImageResource(R.drawable.ic_snowflake)
+                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to night snowy
                 else if(currentWeather.weatherInt in 33..34)
-                    holder.weatherIcon.setImageResource(R.drawable.ic_star)
+                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to starry
                 else{
                     if (currentWeather.sunIsOut)
-                        holder.weatherIcon.setImageResource(R.drawable.sun)//fix to updated sun
+                        holder.weatherIcon.setImageResource(R.drawable.day_sunny)
                     else
-                        holder.weatherIcon.setImageResource(R.drawable.ic_star)
+                        holder.weatherIcon.setImageResource(R.drawable.day_sunny)//fix to starry
                 }
+
+//                if(currentWeather.weatherInt in 1..2)
+//                    holder.weatherIcon.setImageResource(R.drawable.sun)//fix to updated sun
+//                else if(currentWeather.weatherInt in 3..6)
+//                    holder.weatherIcon.setImageResource(R.drawable.sun)//fix to sun with part cloud
+//                else if(currentWeather.weatherInt in 7..11 || currentWeather.weatherInt in 35..38)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_top_cloud)
+//                else if(currentWeather.weatherInt in 12..14 || currentWeather.weatherInt in 39..40 || currentWeather.weatherInt == 18)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_rain_drop)
+//                else if(currentWeather.weatherInt in 15..17 || currentWeather.weatherInt in 41..42)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_thunder)
+//                else if(currentWeather.weatherInt in 19..29 || currentWeather.weatherInt in 43..44)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_snowflake)
+//                else if(currentWeather.weatherInt in 33..34)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_star)
+//                else{
+//                    if (currentWeather.sunIsOut)
+//                        holder.weatherIcon.setImageResource(R.drawable.sun)//fix to updated sun
+//                    else
+//                        holder.weatherIcon.setImageResource(R.drawable.ic_star)
+//                }
 
                 holder.progBar.visibility=View.GONE
             }

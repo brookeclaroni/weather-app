@@ -20,6 +20,60 @@
             tools:context=".DetailsActivity">
 
             <ImageView
+                android:id="@+id/topBar"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:alpha="0.1"
+                app:layout_constraintBottom_toBottomOf="@+id/day1ImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/day1ImageView"
+                app:srcCompat="@drawable/tinted_rectangle" />
+            <ImageView
+                android:id="@+id/middleBar"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:alpha="0.1"
+                app:layout_constraintBottom_toBottomOf="@+id/day3ImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/day3ImageView"
+                app:srcCompat="@drawable/tinted_rectangle" />
+            <ImageView
+                android:id="@+id/bottomBar"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:alpha="0.1"
+                app:layout_constraintBottom_toBottomOf="@+id/day5ImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/day5ImageView"
+                app:srcCompat="@drawable/tinted_rectangle" />
+
+
+            <ImageView
+                android:id="@+id/topBar2"
+                android:layout_width="0dp"
+                android:layout_height="108dp"
+                android:alpha="0.1"
+                app:layout_constraintBottom_toBottomOf="@+id/humidityValue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/humidTitle"
+                app:srcCompat="@drawable/tinted_rectangle" />
+            <ImageView
+                android:id="@+id/bottomBar2"
+                android:layout_width="0dp"
+                android:layout_height="108dp"
+                android:alpha="0.1"
+                app:layout_constraintBottom_toBottomOf="@+id/UVValue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/UVTitle"
+                app:srcCompat="@drawable/tinted_rectangle" />
+
+
+            <ImageView
                 android:id="@+id/day4ImageView"
                 android:layout_width="38dp"
                 android:layout_height="35dp"
@@ -217,7 +271,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:ellipsize="marquee"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -279,10 +333,10 @@
                 android:id="@+id/chartView"
                 android:layout_width="354dp"
                 android:layout_height="202dp"
-                android:layout_marginTop="104dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/day5ImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/chartTitle" />
 
             <TextView
                 android:id="@+id/xAxisDate1"
@@ -392,7 +446,7 @@
                 android:layout_width="129dp"
                 android:layout_height="22dp"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/humidity"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -474,7 +528,7 @@
             <TextView
                 android:id="@+id/pressureValue"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="50dp"
                 android:textColor="#FFFFFF"
                 android:textSize="32sp"
@@ -486,6 +540,7 @@
                 android:id="@+id/chartTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="5-Day Temperature Forecast"
                 android:textColor="@color/white"
                 android:textSize="24sp"
