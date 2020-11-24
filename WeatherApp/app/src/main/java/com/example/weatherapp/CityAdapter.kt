@@ -69,17 +69,21 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
                     holder.weatherIcon.setImageResource(R.drawable.cloudy)
                 else if(currentWeather.weatherInt in 12..14 || currentWeather.weatherInt in 39..40 || currentWeather.weatherInt == 18)
                     holder.weatherIcon.setImageResource(R.drawable.showers)
-                else if(currentWeather.weatherInt in 15..17 || currentWeather.weatherInt in 41..42)
-                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to night tstorms
-                else if(currentWeather.weatherInt in 19..29 || currentWeather.weatherInt in 43..44)
-                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to night snowy
+                else if(currentWeather.weatherInt in 15..17)
+                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)
+                else if(currentWeather.weatherInt in 41..42)
+                    holder.weatherIcon.setImageResource(R.drawable.ic_white_thunder_night)
+                else if(currentWeather.weatherInt in 19..29)
+                    holder.weatherIcon.setImageResource(R.drawable.ic_white_snow_day)
+                else if(currentWeather.weatherInt in 43..44)
+                    holder.weatherIcon.setImageResource(R.drawable.ic_white_snow_night)
                 else if(currentWeather.weatherInt in 33..34)
-                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to starry
+                    holder.weatherIcon.setImageResource(R.drawable.ic_white_moon)
                 else{
                     if (currentWeather.sunIsOut)
                         holder.weatherIcon.setImageResource(R.drawable.day_sunny)
                     else
-                        holder.weatherIcon.setImageResource(R.drawable.day_sunny)//fix to starry
+                        holder.weatherIcon.setImageResource(R.drawable.ic_white_moon)
                 }
 
 //                if(currentWeather.weatherInt in 1..2)
