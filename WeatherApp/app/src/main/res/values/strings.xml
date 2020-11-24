@@ -1,18 +1,19 @@
 <resources>
-    <string name="app_name">WeatherApp</string>
+    <string name="app_name">Simple Weather</string>
     <string name="more_details">Tap for more details ➜</string>
     <string name="sunrise">Sunrise</string>
-    <string name="precipRate">Precipitation Rate</string>
+    <string name="precipRate">Chance Precipitation</string>
     <string name="sunset">Sunset</string>
-    <string name="tempF">%1$s°</string>
-    <string name="tempC">%1$s°</string>
+    <string name="tempF">%1$s</string>
+    <string name="tempC">%1$s</string>
     <string name="humidity_value">%1$s%%</string>
     <string name="wind_value_imp">%1$s mph</string>
     <string name="wind_value_met">%1$s km/h</string>
     <string name="search_city">Search for a city</string>
     <string name="logo">AccuWeather Logo</string>
     <string name="degree_f">°F&#160;</string>
-    <string name="degree_c">°C</string>
+    <string name="degree_c">°C&#160;</string>
     <string name="humidity">Humidity</string>
-    <string name="realFeel">Feels like %1$s°</string>
+    <string name="real_feel_imp">Feels like %1$s°F</string>
+    <string name="real_feel_met">Feels like %1$s°C</string>
 </resources>

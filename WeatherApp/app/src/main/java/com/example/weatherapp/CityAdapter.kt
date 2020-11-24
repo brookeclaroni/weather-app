@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -33,8 +34,7 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
         //retrieve the current result to add to the recycler view
         val currentCity = citySet.elementAt(position)
 
-        //fill in city name
-        holder.cityName.text = currentCity
+        //acknowledge that this city has been favorited
         holder.cityName.isSelected = true
 
         //start the progress bar and disable clicks to the screen since networking is about to occur
@@ -44,14 +44,65 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
             val weatherManager = WeatherManager()
             val currentWeather = weatherManager.retrieveWeather(currentCity, holder.card.context.getString(R.string.api_key))
             holder.card.context.runOnUiThread {
-                if (imp)
+                holder.cityName.text = currentWeather.city
+
+                if (imp) {
                     holder.cityTemp.text = getString(R.string.tempF, currentWeather.tempImp)
-                else
+                    holder.degLetter.text = getString(R.string.degree_f)
+                }
+                else {
                     holder.cityTemp.text = getString(R.string.tempC, currentWeather.tempMet)
+                    holder.degLetter.text = getString(R.string.degree_c)
+                }
+
                 if (currentWeather.sunIsOut)
                     holder.card.setCardBackgroundColor(resources.getColor(R.color.colorBackgroundLight))
                 else
                     holder.card.setCardBackgroundColor(resources.getColor(R.color.colorBackgroundDark))
+
+                //get and set weather icon
+                if(currentWeather.weatherInt in 1..2)
+                    holder.weatherIcon.setImageResource(R.drawable.day_sunny)
+                else if(currentWeather.weatherInt in 3..6)
+                    holder.weatherIcon.setImageResource(R.drawable.day_mostly_sunny)
+                else if(currentWeather.weatherInt in 7..11 || currentWeather.weatherInt in 35..38)
+                    holder.weatherIcon.setImageResource(R.drawable.cloudy)
+                else if(currentWeather.weatherInt in 12..14 || currentWeather.weatherInt in 39..40 || currentWeather.weatherInt == 18)
+                    holder.weatherIcon.setImageResource(R.drawable.showers)
+                else if(currentWeather.weatherInt in 15..17 || currentWeather.weatherInt in 41..42)
+                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to night tstorms
+                else if(currentWeather.weatherInt in 19..29 || currentWeather.weatherInt in 43..44)
+                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to night snowy
+                else if(currentWeather.weatherInt in 33..34)
+                    holder.weatherIcon.setImageResource(R.drawable.day_tstorms)//fix to starry
+                else{
+                    if (currentWeather.sunIsOut)
+                        holder.weatherIcon.setImageResource(R.drawable.day_sunny)
+                    else
+                        holder.weatherIcon.setImageResource(R.drawable.day_sunny)//fix to starry
+                }
+
+//                if(currentWeather.weatherInt in 1..2)
+//                    holder.weatherIcon.setImageResource(R.drawable.sun)//fix to updated sun
+//                else if(currentWeather.weatherInt in 3..6)
+//                    holder.weatherIcon.setImageResource(R.drawable.sun)//fix to sun with part cloud
+//                else if(currentWeather.weatherInt in 7..11 || currentWeather.weatherInt in 35..38)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_top_cloud)
+//                else if(currentWeather.weatherInt in 12..14 || currentWeather.weatherInt in 39..40 || currentWeather.weatherInt == 18)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_rain_drop)
+//                else if(currentWeather.weatherInt in 15..17 || currentWeather.weatherInt in 41..42)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_thunder)
+//                else if(currentWeather.weatherInt in 19..29 || currentWeather.weatherInt in 43..44)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_snowflake)
+//                else if(currentWeather.weatherInt in 33..34)
+//                    holder.weatherIcon.setImageResource(R.drawable.ic_star)
+//                else{
+//                    if (currentWeather.sunIsOut)
+//                        holder.weatherIcon.setImageResource(R.drawable.sun)//fix to updated sun
+//                    else
+//                        holder.weatherIcon.setImageResource(R.drawable.ic_star)
+//                }
+
                 holder.progBar.visibility=View.GONE
             }
         }
@@ -97,5 +148,7 @@ class CityAdapter (private val citySet: MutableSet<String>) : RecyclerView.Adapt
         val starOn : ImageButton = itemView.findViewById(R.id.starOnButton2)
         val starOff : ImageButton = itemView.findViewById(R.id.starOffButton2)
         val progBar : ProgressBar = itemView.findViewById(R.id.cardProgBar)
+        val degLetter : TextView = itemView.findViewById(R.id.degLetterTextView)
+        val weatherIcon : ImageView = itemView.findViewById(R.id.whiteWeatherIcon)
     }
 }

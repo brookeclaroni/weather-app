@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var searchEditText: EditText
     private lateinit var searchImageButton: ImageButton
     private lateinit var progBar: ProgressBar
+    private lateinit var degreeLetterTextView: TextView
 
     private lateinit var sunCenter : ImageView
     private lateinit var sunFlare : ImageView
@@ -105,6 +106,7 @@ class MainActivity : AppCompatActivity() {
         searchEditText = findViewById(R.id.mainSearchEditText)
         searchImageButton = findViewById(R.id.mainSearchButton)
         progBar = findViewById(R.id.mainProgBar)
+        degreeLetterTextView = findViewById(R.id.degreeLetterTextView)
 
         sunCenter = findViewById(R.id.sunCenterImageView)
         sunFlare = findViewById(R.id.sunFlareImageView)
@@ -123,7 +125,7 @@ class MainActivity : AppCompatActivity() {
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
-        val cityCode = preferences.getString("CURR_CITY", "327658")!!
+        val cityCode = preferences.getString("CURR_CITY", "327659")!!
         val imp = preferences.getBoolean("IMPERIAL", true)
 
         var tempImp = ""
@@ -180,11 +182,15 @@ class MainActivity : AppCompatActivity() {
                 //get and set temp
                 if(imp) {
                     temperatureTextView.text = getString(R.string.tempF, tempImp)
-                    realFeelView.text = getString(R.string.realFeel, realTempImp)
+                    realFeelView.text = getString(R.string.real_feel_imp, realTempImp)
+                    //change degree letter to F
+                    degreeLetterTextView.text = getString(R.string.degree_f)
                 }
                 else {
                     temperatureTextView.text = getString(R.string.tempC, tempMet)
-                    realFeelView.text = getString(R.string.realFeel, realTempMet)
+                    realFeelView.text = getString(R.string.real_feel_met, realTempMet)
+                    //change degree letter to F
+                    degreeLetterTextView.text = getString(R.string.degree_c)
                 }
 
                 //get and set background brightness
@@ -226,7 +232,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 //get and set location details
-                cityTextView.text = currentWeather.city
+                cityTextView.text = currentWeather.cityState
                 countryTextView.text = currentWeather.country
 
                 //get and set sunrise and sunset
@@ -252,7 +258,7 @@ class MainActivity : AppCompatActivity() {
                 val savedCitySet = preferences.getStringSet("SAVED_CITIES", mutableSetOf())
 
                 //make the star the appropriate color
-                if(savedCitySet!!.contains(currentWeather.city)) {
+                if(savedCitySet!!.contains(currentWeather.cityState)) {
 
                     offStarButton.visibility =
                         View.GONE //if this is a saved result, make the yellow star appear
@@ -266,7 +272,7 @@ class MainActivity : AppCompatActivity() {
                     //change the color, object data, and update shared preferences
                     offStarButton.visibility = View.GONE
                     currentWeather.saved=true
-                    savedCitySet?.add(currentWeather.city)
+                    savedCitySet?.add(currentWeather.cityState)
                     preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
                 }
 
@@ -276,7 +282,7 @@ class MainActivity : AppCompatActivity() {
                     //change the color, object data, and update shared preferences
                     offStarButton.visibility = View.VISIBLE
                     currentWeather.saved=false
-                    savedCitySet?.remove(currentWeather.city)
+                    savedCitySet?.remove(currentWeather.cityState)
                     preferences.edit().putStringSet("SAVED_CITIES", savedCitySet).apply()
                 }
 
@@ -303,9 +309,12 @@ class MainActivity : AppCompatActivity() {
                 degreeCTextView.setTextColor(Color.parseColor("#FFFFFF"))
                 degreeCTextView.setTypeface(null, Typeface.BOLD)
 
+                //change degree letter to C
+                degreeLetterTextView.text = getString(R.string.degree_c)
+
                 preferences.edit().putBoolean("IMPERIAL", false).apply()
                 temperatureTextView.text = getString(R.string.tempC, tempMet)
-                realFeelView.text = getString(R.string.realFeel, realTempMet)
+                realFeelView.text = getString(R.string.real_feel_met, realTempMet)
             }
 
             //if Fahrenheit is requested
@@ -318,9 +327,12 @@ class MainActivity : AppCompatActivity() {
                 degreeCTextView.setTextColor(Color.parseColor("#CFCFCF"))
                 degreeCTextView.setTypeface(null, Typeface.NORMAL)
 
+                //change degree letter to F
+                degreeLetterTextView.text = getString(R.string.degree_f)
+
                 preferences.edit().putBoolean("IMPERIAL", true).apply()
                 temperatureTextView.text = getString(R.string.tempF, tempImp)
-                realFeelView.text = getString(R.string.realFeel, realTempImp)
+                realFeelView.text = getString(R.string.real_feel_imp, realTempImp)
             }
         }
 
