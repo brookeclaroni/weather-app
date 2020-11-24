@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/colorBackgroundLight">
 
     <ImageButton
         android:id="@+id/settingBackButton"
@@ -20,11 +20,11 @@
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/settingTItleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Settings"
-        android:textColor="@android:color/black"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/settingBackButton"
@@ -40,7 +40,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="TIME FORMAT"
-        android:textColor="@android:color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Use 24-hour format"
-        android:textColor="@android:color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -66,5 +66,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView4"
         tools:checked="true" />
+
+    <TextView
+        android:id="@+id/exampleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="@+id/timeFormatSwitch"
+        app:layout_constraintEnd_toStartOf="@+id/timeFormatSwitch"
+        app:layout_constraintTop_toTopOf="@+id/timeFormatSwitch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
