@@ -47,7 +47,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sunFlare : ImageView
     private lateinit var bottomCloud : ImageView
     private lateinit var topCloud : ImageView
-
+    private lateinit var rainDrop1 : ImageView
+    private lateinit var rainDrop2 : ImageView
+    private lateinit var rainDrop3 : ImageView
+    private lateinit var thunder : ImageView
+    private lateinit var snowFlake1 : ImageView
+    private lateinit var snowFlake2 : ImageView
+    private lateinit var snowFlake3 : ImageView
+    private lateinit var star1 : ImageView
+    private lateinit var star2 : ImageView
+    private lateinit var star3 : ImageView
 
     fun openBrowser(view: View) {
         //Get url from tag
@@ -97,6 +106,17 @@ class MainActivity : AppCompatActivity() {
         sunFlare = findViewById(R.id.sunFlareImageView)
         bottomCloud = findViewById(R.id.bottomCloudImageView)
         topCloud = findViewById(R.id.topCloudImageView)
+        rainDrop1 = findViewById(R.id.rainDropImageView1)
+        rainDrop2 = findViewById(R.id.rainDropImageView2)
+        rainDrop3 = findViewById(R.id.rainDropImageView3)
+        thunder = findViewById(R.id.thunderImageView)
+        snowFlake1 = findViewById(R.id.snowFlakeImageView1)
+        snowFlake2 = findViewById(R.id.snowFlakeImageView2)
+        snowFlake3 = findViewById(R.id.snowFlakeImageView3)
+        star1 = findViewById(R.id.starImageView1)
+        star2 = findViewById(R.id.starImageView2)
+        star3 = findViewById(R.id.starImageView3)
+
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
@@ -262,7 +282,11 @@ class MainActivity : AppCompatActivity() {
 
         //isSunny()
         //isPartlyCloudy()
-        isCloudy()
+        //isCloudy()
+        //isRainy()
+        //isThundering()
+        //isSnowy()
+        isStarry()
     }
 
     fun isSunny()
@@ -285,5 +309,45 @@ class MainActivity : AppCompatActivity() {
         bottomCloud.visibility = View.VISIBLE
         topCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth))
         bottomCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth_delayed))
+    }
+    fun isRainy()
+    {
+        rainDrop1.visibility = View.VISIBLE
+        rainDrop2.visibility = View.VISIBLE
+        rainDrop3.visibility = View.VISIBLE
+        topCloud.visibility = View.VISIBLE
+        topCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth))
+        rainDrop1.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down))
+        rainDrop2.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay1))
+        rainDrop3.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay2))
+    }
+
+    fun isThundering()
+    {
+        isRainy()
+        thunder.visibility = View.VISIBLE
+        thunder.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_and_back))
+    }
+
+    fun isSnowy()
+    {
+        snowFlake1.visibility = View.VISIBLE
+        snowFlake2.visibility = View.VISIBLE
+        snowFlake3.visibility = View.VISIBLE
+        topCloud.visibility = View.VISIBLE
+        topCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth))
+        snowFlake1.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down))
+        snowFlake2.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay1))
+        snowFlake3.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay2))
+    }
+
+    fun isStarry()
+    {
+        star1.visibility = View.VISIBLE
+        star2.visibility = View.VISIBLE
+        star3.visibility = View.VISIBLE
+        star1.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
+        star2.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_delay1))
+        star3.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
     }
 }
