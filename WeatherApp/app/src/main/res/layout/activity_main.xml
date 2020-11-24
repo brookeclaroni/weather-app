@@ -269,22 +269,26 @@
         app:layout_constraintEnd_toEndOf="@+id/mainSearchEditText"
         app:layout_constraintTop_toTopOf="@+id/mainSearchEditText"
         app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+
     <ImageView
         android:id="@+id/sunFlareImageView"
         android:layout_width="250dp"
         android:layout_height="250dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/sunImageView"
-        app:layout_constraintStart_toStartOf="@+id/sunImageView"
         app:layout_constraintEnd_toEndOf="@+id/sunImageView"
+        app:layout_constraintStart_toStartOf="@+id/sunImageView"
         app:layout_constraintTop_toTopOf="@+id/sunImageView"
         app:srcCompat="@drawable/ic_sun_flare" />
+
     <ImageView
         android:id="@+id/sunCenterImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/sunImageView"
-        app:layout_constraintStart_toStartOf="@+id/sunImageView"
         app:layout_constraintEnd_toEndOf="@+id/sunImageView"
+        app:layout_constraintStart_toStartOf="@+id/sunImageView"
         app:layout_constraintTop_toTopOf="@+id/sunImageView"
         app:srcCompat="@drawable/ic_sun_center" />
 
@@ -293,10 +297,21 @@
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_marginEnd="48dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/sunImageView"
         app:layout_constraintEnd_toEndOf="@+id/sunImageView"
         app:layout_constraintStart_toStartOf="@+id/sunImageView"
         app:srcCompat="@drawable/ic_bottom_cloud" />
+    <ImageView
+        android:id="@+id/topCloudImageView"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="48dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="@+id/sunImageView"
+        app:layout_constraintEnd_toEndOf="@+id/sunImageView"
+        app:layout_constraintStart_toStartOf="@+id/sunImageView"
+        app:srcCompat="@drawable/ic_top_cloud" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

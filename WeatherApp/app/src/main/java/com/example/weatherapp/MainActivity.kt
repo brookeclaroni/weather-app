@@ -7,15 +7,12 @@ import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import org.jetbrains.anko.doAsync
 
 
@@ -49,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sunCenter : ImageView
     private lateinit var sunFlare : ImageView
     private lateinit var bottomCloud : ImageView
+    private lateinit var topCloud : ImageView
 
 
     fun openBrowser(view: View) {
@@ -98,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         sunCenter = findViewById(R.id.sunCenterImageView)
         sunFlare = findViewById(R.id.sunFlareImageView)
         bottomCloud = findViewById(R.id.bottomCloudImageView)
+        topCloud = findViewById(R.id.topCloudImageView)
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
@@ -261,16 +260,29 @@ class MainActivity : AppCompatActivity() {
         }
 
         //isSunny()
-        isPartlyCloudy()
+        //isPartlyCloudy()
+        isCloudy()
     }
 
     fun isSunny()
     {
+        sunFlare.visibility = View.VISIBLE
+        sunCenter.visibility = View.VISIBLE
         sunFlare.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
     }
     fun isPartlyCloudy()
     {
+        sunFlare.visibility = View.VISIBLE
+        sunCenter.visibility = View.VISIBLE
+        bottomCloud.visibility = View.VISIBLE
         sunFlare.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
         bottomCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth))
+    }
+    fun isCloudy()
+    {
+        topCloud.visibility = View.VISIBLE
+        bottomCloud.visibility = View.VISIBLE
+        topCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth))
+        bottomCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth_delayed))
     }
 }
