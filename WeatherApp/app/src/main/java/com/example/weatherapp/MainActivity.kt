@@ -26,15 +26,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cityTextView: TextView
     private lateinit var countryTextView: TextView
     private lateinit var temperatureTextView: TextView
-    private lateinit var humidityImageView: ImageView
-    private lateinit var uvImageView: ImageView
-    private lateinit var windImageView: ImageView
-    private lateinit var humidityValueTextView: TextView
-    private lateinit var uvValueTextView: TextView
-    private lateinit var windValueTextView: TextView
-    private lateinit var humidityTextView: TextView
-    private lateinit var uvTextView: TextView
-    private lateinit var windTextView: TextView
+    private lateinit var weatherTextView: TextView
+    private lateinit var realFeelView: TextView
+    private lateinit var sunriseImageView: ImageView
+    private lateinit var precipImageView: ImageView
+    private lateinit var sunsetImageView: ImageView
+    private lateinit var sunriseValueTextView: TextView
+    private lateinit var precipValueTextView: TextView
+    private lateinit var sunsetValueTextView: TextView
+    private lateinit var sunriseTextView: TextView
+    private lateinit var precipTextView: TextView
+    private lateinit var sunsetTextView: TextView
     private lateinit var moreDetailsButton: Button
     private lateinit var degreeSwitch: Switch
     private lateinit var degreeCTextView: TextView
@@ -85,15 +87,17 @@ class MainActivity : AppCompatActivity() {
         cityTextView = findViewById(R.id.cityTextView)
         countryTextView = findViewById(R.id.countryTextView)
         temperatureTextView = findViewById(R.id.temperatureTextView)
-        humidityImageView = findViewById(R.id.humidityImageView)
-        uvImageView = findViewById(R.id.uvImageView)
-        windImageView = findViewById(R.id.windImageView)
-        humidityValueTextView = findViewById(R.id.humidityValueTextView)
-        uvValueTextView = findViewById(R.id.uvValueTextView)
-        windValueTextView = findViewById(R.id.windValueTextView)
-        humidityTextView = findViewById(R.id.humidityTextView)
-        uvTextView = findViewById(R.id.uvTextView)
-        windTextView = findViewById(R.id.windTextView)
+        weatherTextView = findViewById(R.id.weatherTextView)
+        realFeelView = findViewById(R.id.realFealView)
+        sunriseImageView = findViewById(R.id.sunRIseView)
+        precipImageView = findViewById(R.id.precipView)
+        sunsetImageView = findViewById(R.id.sunSetView)
+        sunriseValueTextView = findViewById(R.id.sunriseValueTextView)
+        precipValueTextView = findViewById(R.id.precipValueTextView)
+        sunsetValueTextView = findViewById(R.id.sunsetValueTextView)
+        sunriseTextView = findViewById(R.id.sunriseTextView)
+        precipTextView = findViewById(R.id.precipTextView)
+        sunsetTextView = findViewById(R.id.sunsetTextView)
         moreDetailsButton = findViewById(R.id.moreDetailsButton)
         degreeSwitch = findViewById(R.id.degreeSwitch)
         degreeCTextView = findViewById(R.id.degreeCTextView)
@@ -127,6 +131,8 @@ class MainActivity : AppCompatActivity() {
         var tempMet = ""
         var windImp = ""
         var windMet = ""
+        var realTempImp = ""
+        var realTempMet = ""
 
         degreeSwitch.isChecked = !imp
 
@@ -163,20 +169,23 @@ class MainActivity : AppCompatActivity() {
                 cityCode,
                 getString(R.string.api_key)
             )
+            val fiveDayDetail = weatherManager.retrieve5DayWeather(currentWeather.locationKey, getString(R.string.api_key),!imp)
             runOnUiThread {
                 tempImp = currentWeather.tempImp
                 tempMet = currentWeather.tempMet
                 windImp = currentWeather.windImp
                 windMet = currentWeather.windMet
+                realTempImp = currentWeather.realFeelTempImp
+                realTempMet = currentWeather.realFeelTempMet
 
                 //get and set temp
                 if(imp) {
                     temperatureTextView.text = getString(R.string.tempF, tempImp)
-                    windValueTextView.text = getString(R.string.wind_value_imp, currentWeather.windImp)
+                    realFeelView.text = getString(R.string.realFeel, realTempImp)
                 }
                 else {
                     temperatureTextView.text = getString(R.string.tempC, tempMet)
-                    windValueTextView.text = getString(R.string.wind_value_met, currentWeather.windMet)
+                    realFeelView.text = getString(R.string.realFeel, realTempMet)
                 }
 
                 //get and set background brightness
@@ -217,14 +226,22 @@ class MainActivity : AppCompatActivity() {
                 cityTextView.text = currentWeather.city
                 countryTextView.text = currentWeather.country
 
-                //get and set humidity
-                humidityValueTextView.text = getString(
-                    R.string.humidity_value,
-                    currentWeather.humidity
-                )
+                //get and set sunrise and sunset
+                sunriseValueTextView.text = fiveDayDetail[0].sunrise
+                sunsetValueTextView.text = fiveDayDetail[0].sunset
 
-                //get and set UV
-                uvValueTextView.text = currentWeather.uv
+                //set weather text
+                weatherTextView.text = currentWeather.weatherText
+                // weatherTextView.isSelected = true
+
+                //get and set precipitation probability
+                if (currentWeather.sunIsOut) {
+                    precipValueTextView.text = fiveDayDetail[0].dayPrecipProb
+                }
+                else {
+                    precipValueTextView.text = fiveDayDetail[0].nightPrecipProb
+                }
+
 
 
                 //when star is clicked, behave accordingly
@@ -285,7 +302,7 @@ class MainActivity : AppCompatActivity() {
 
                 preferences.edit().putBoolean("IMPERIAL", false).apply()
                 temperatureTextView.text = getString(R.string.tempC, tempMet)
-                windValueTextView.text = getString(R.string.wind_value_met, windMet)
+                realFeelView.text = getString(R.string.realFeel, realTempMet)
             }
 
             //if Fahrenheit is requested
@@ -300,7 +317,7 @@ class MainActivity : AppCompatActivity() {
 
                 preferences.edit().putBoolean("IMPERIAL", true).apply()
                 temperatureTextView.text = getString(R.string.tempF, tempImp)
-                windValueTextView.text = getString(R.string.wind_value_imp, windImp)
+                realFeelView.text = getString(R.string.realFeel, realTempImp)
             }
         }
 

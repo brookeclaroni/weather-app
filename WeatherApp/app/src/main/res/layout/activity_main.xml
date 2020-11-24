@@ -5,6 +5,7 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
     tools:context=".MainActivity">
 
     <ProgressBar
@@ -57,11 +58,11 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/humidityImageView"
-        app:layout_constraintEnd_toStartOf="@+id/uvImageView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/sunRIseView"
+        app:layout_constraintEnd_toStartOf="@+id/precipView"
         app:layout_constraintTop_toBottomOf="@+id/cityTextView"
-        app:srcCompat="@drawable/sun"
-        android:visibility="invisible"/>
+        app:srcCompat="@drawable/sun" />
 
     <TextView
         android:id="@+id/cityTextView"
@@ -95,86 +96,87 @@
         android:textColor="@color/white"
         android:textSize="64sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/windImageView"
+        app:layout_constraintBottom_toTopOf="@+id/sunSetView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sunImageView"
         app:layout_constraintTop_toBottomOf="@+id/cityTextView" />
 
     <ImageView
-        android:id="@+id/humidityImageView"
+        android:id="@+id/sunRIseView"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        app:layout_constraintBottom_toTopOf="@+id/humidityValueTextView"
-        app:layout_constraintEnd_toEndOf="@+id/humidityValueTextView"
-        app:layout_constraintStart_toStartOf="@+id/humidityValueTextView"
-        app:srcCompat="@drawable/humidity" />
+        app:layout_constraintBottom_toTopOf="@+id/sunriseValueTextView"
+        app:layout_constraintEnd_toEndOf="@+id/sunriseValueTextView"
+        app:layout_constraintStart_toStartOf="@+id/sunriseValueTextView"
+        app:srcCompat="@drawable/sunrise" />
 
     <ImageView
-        android:id="@+id/uvImageView"
+        android:id="@+id/precipView"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        app:layout_constraintBottom_toTopOf="@+id/uvValueTextView"
-        app:layout_constraintEnd_toEndOf="@+id/uvValueTextView"
-        app:layout_constraintStart_toStartOf="@+id/uvValueTextView"
-        app:srcCompat="@drawable/uv" />
+        app:layout_constraintBottom_toTopOf="@+id/precipValueTextView"
+        app:layout_constraintEnd_toEndOf="@+id/precipValueTextView"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/precipValueTextView"
+        app:srcCompat="@drawable/showers" />
 
     <ImageView
-        android:id="@+id/windImageView"
+        android:id="@+id/sunSetView"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        app:layout_constraintBottom_toTopOf="@+id/windValueTextView"
-        app:layout_constraintEnd_toEndOf="@+id/windValueTextView"
-        app:layout_constraintStart_toStartOf="@+id/windValueTextView"
-        app:srcCompat="@drawable/wind" />
+        app:layout_constraintBottom_toTopOf="@+id/sunsetValueTextView"
+        app:layout_constraintEnd_toEndOf="@+id/sunsetValueTextView"
+        app:layout_constraintStart_toStartOf="@+id/sunsetValueTextView"
+        app:srcCompat="@drawable/sunset" />
 
     <TextView
-        android:id="@+id/humidityValueTextView"
+        android:id="@+id/sunriseValueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/humidityTextView"
-        app:layout_constraintEnd_toEndOf="@+id/humidityTextView"
-        app:layout_constraintStart_toStartOf="@+id/humidityTextView" />
+        app:layout_constraintBottom_toTopOf="@+id/sunriseTextView"
+        app:layout_constraintEnd_toEndOf="@+id/sunriseTextView"
+        app:layout_constraintStart_toStartOf="@+id/sunriseTextView" />
 
     <TextView
-        android:id="@+id/uvValueTextView"
+        android:id="@+id/precipValueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/uvTextView"
-        app:layout_constraintEnd_toEndOf="@+id/uvTextView"
-        app:layout_constraintStart_toStartOf="@+id/uvTextView" />
+        app:layout_constraintBottom_toTopOf="@+id/precipTextView"
+        app:layout_constraintEnd_toEndOf="@+id/precipTextView"
+        app:layout_constraintStart_toStartOf="@+id/precipTextView" />
 
     <TextView
-        android:id="@+id/windValueTextView"
+        android:id="@+id/sunsetValueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/windTextView"
-        app:layout_constraintEnd_toEndOf="@+id/windTextView"
-        app:layout_constraintStart_toStartOf="@+id/windTextView" />
+        app:layout_constraintBottom_toTopOf="@+id/sunsetTextView"
+        app:layout_constraintEnd_toEndOf="@+id/sunsetTextView"
+        app:layout_constraintStart_toStartOf="@+id/sunsetTextView" />
 
     <TextView
-        android:id="@+id/humidityTextView"
+        android:id="@+id/sunriseTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="@string/humidity"
+        android:text="@string/sunrise"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
-        app:layout_constraintEnd_toStartOf="@+id/uvTextView"
+        app:layout_constraintEnd_toStartOf="@+id/precipTextView"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/uvTextView"
+        android:id="@+id/precipTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="@string/uv"
+        android:text="@string/precipRate"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
@@ -182,23 +184,23 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/windTextView"
+        android:id="@+id/sunsetTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="@string/wind"
+        android:text="@string/sunset"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/moreDetailsButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/uvTextView" />
+        app:layout_constraintStart_toEndOf="@+id/precipTextView" />
 
     <Button
         android:id="@+id/moreDetailsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:background = "@drawable/roundedbutton"
+        android:background="@drawable/roundedbutton"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="@string/more_details"
@@ -214,8 +216,8 @@
         android:layout_height="32dp"
         android:layout_marginEnd="4dp"
         android:contentDescription="@string/logo"
-        android:tag="https://www.accuweather.com/"
         android:onClick="openBrowser"
+        android:tag="https://www.accuweather.com/"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/accu_logo_white" />
@@ -225,12 +227,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/degree_f"
-        android:theme="@style/Theme.SwitchTheme"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:theme="@style/Theme.SwitchTheme"
         app:layout_constraintEnd_toEndOf="@+id/temperatureTextView"
         app:layout_constraintStart_toStartOf="@+id/temperatureTextView"
         app:layout_constraintTop_toBottomOf="@+id/temperatureTextView" />
@@ -287,8 +289,8 @@
         android:id="@+id/rainDropImageView2"
         android:layout_width="40dp"
         android:layout_height="55dp"
-        android:layout_marginTop="75dp"
         android:layout_marginStart="110dp"
+        android:layout_marginTop="75dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/sunImageView"
         app:layout_constraintStart_toStartOf="@+id/sunImageView"
@@ -301,8 +303,8 @@
         android:id="@+id/rainDropImageView3"
         android:layout_width="40dp"
         android:layout_height="55dp"
-        android:layout_marginTop="75dp"
         android:layout_marginStart="220dp"
+        android:layout_marginTop="75dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/sunImageView"
         app:layout_constraintStart_toStartOf="@+id/sunImageView"
@@ -329,8 +331,8 @@
         android:id="@+id/snowFlakeImageView2"
         android:layout_width="40dp"
         android:layout_height="55dp"
-        android:layout_marginTop="75dp"
         android:layout_marginStart="110dp"
+        android:layout_marginTop="75dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/sunImageView"
         app:layout_constraintStart_toStartOf="@+id/sunImageView"
@@ -343,8 +345,8 @@
         android:id="@+id/snowFlakeImageView3"
         android:layout_width="40dp"
         android:layout_height="55dp"
-        android:layout_marginTop="75dp"
         android:layout_marginStart="220dp"
+        android:layout_marginTop="75dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/sunImageView"
         app:layout_constraintStart_toStartOf="@+id/sunImageView"
@@ -393,17 +395,16 @@
         tools:visibility="invisible" />
 
 
-
     <ImageView
         android:id="@+id/thunderImageView"
         android:layout_width="100dp"
         android:layout_height="130dp"
-        android:layout_marginTop="120dp"
         android:layout_marginStart="80dp"
+        android:layout_marginTop="120dp"
         android:visibility="invisible"
-        app:layout_constraintTop_toTopOf="@+id/sunImageView"
         app:layout_constraintEnd_toEndOf="@+id/sunImageView"
         app:layout_constraintStart_toStartOf="@+id/sunImageView"
+        app:layout_constraintTop_toTopOf="@+id/sunImageView"
         app:srcCompat="@drawable/ic_thunder" />
 
     <ImageView
@@ -450,7 +451,33 @@
         app:layout_constraintTop_toTopOf="@+id/sunImageView"
         app:srcCompat="@drawable/ic_top_cloud" />
 
+    <TextView
+        android:id="@+id/weatherTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/temperatureTextView"
+        app:layout_constraintEnd_toEndOf="@+id/temperatureTextView"
+        app:layout_constraintStart_toStartOf="@+id/temperatureTextView" />
 
+    <TextView
+        android:id="@+id/realFealView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/realFeel"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/temperatureTextView"
+        app:layout_constraintStart_toStartOf="@+id/temperatureTextView"
+        app:layout_constraintTop_toBottomOf="@+id/degreeSwitch" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

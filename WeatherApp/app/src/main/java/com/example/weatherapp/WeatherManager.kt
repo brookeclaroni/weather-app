@@ -54,6 +54,7 @@ class WeatherManager {
             country = "NA",
             lastUpdatedTime = "00",
             temp = "00",
+            weatherText = "NA",
             humidity= "00",
             uv = "0",
             uvStatus = "NA",
@@ -62,6 +63,8 @@ class WeatherManager {
             saved = false,
             tempMet = "00",
             tempImp = "00",
+            realFeelTempImp = "00",
+            realFeelTempMet = "00",
             sunIsOut = true,
             pressureImp = "00",
             visibilityImp = "00",
@@ -89,6 +92,7 @@ class WeatherManager {
             country = "NA",
             lastUpdatedTime = "00",
             temp = "00",
+            weatherText = "NA",
             humidity= "00",
             uv = "0",
             uvStatus = "NA",
@@ -97,6 +101,8 @@ class WeatherManager {
             saved = false,
             tempMet = "00",
             tempImp = "00",
+            realFeelTempImp = "00",
+            realFeelTempMet = "00",
             sunIsOut = true,
             pressureImp = "00",
             visibilityImp = "00",
@@ -119,12 +125,20 @@ class WeatherManager {
             // uv
             val uvVal = jsonObject.getString("UVIndex")
             val uvStatus = jsonObject.getString("UVIndexText")
+            // weather text
+            val weatherText = jsonObject.getString("WeatherText")
             // temp
             val temp = jsonObject.getJSONObject("Temperature")
             val tempMetric = temp.getJSONObject("Metric")
             val tempMetricVal = tempMetric.getString("Value").toDouble().toInt()
             val tempImperial = temp.getJSONObject("Imperial")
             val tempImperialVal = tempImperial.getString("Value").toDouble().toInt()
+            val realTemp = jsonObject.getJSONObject("RealFeelTemperature")
+            val realTempMetric = realTemp.getJSONObject("Metric")
+            val realTempMetricVal = realTempMetric.getString("Value").toDouble().toInt()
+            val realTempImperial = realTemp.getJSONObject("Imperial")
+            val realTempImperialVal = realTempImperial.getString("Value").toDouble().toInt()
+
             // wind
             val wind = jsonObject.getJSONObject("Wind")
             val windSpeed = wind.getJSONObject("Speed")
@@ -162,6 +176,9 @@ class WeatherManager {
                 lastUpdatedTime = lastUpdatedTime,
                 tempMet = tempMetricVal.toString(),
                 tempImp = tempImperialVal.toString(),
+                realFeelTempMet = realTempMetricVal.toString(),
+                realFeelTempImp = realTempImperialVal.toString(),
+                weatherText = weatherText,
                 humidity= humidityVal,
                 uv = uvVal,
                 uvStatus = uvStatus,
@@ -199,7 +216,9 @@ class WeatherManager {
             aqi = "NA",
             dayCondition = "NA",
             dayPrecipProb = "NA",
-            nightPrecipProb = "NA"
+            nightPrecipProb = "NA",
+            sunrise = "NA",
+            sunset = "NA"
         )
         for (i in 1..5) {
             fiveDayDetail.add(dummyBriefWeather)
@@ -211,6 +230,7 @@ class WeatherManager {
             for (i in 0..4) {
                 val tempObject = dailyForecasts.getJSONObject(i)
                 val temp = tempObject.getJSONObject("Temperature")
+                val sun = tempObject.getJSONObject("Sun")
                 val airAndPol = tempObject.getJSONArray("AirAndPollen")
                 val day = tempObject.getJSONObject("Day")
                 val night = tempObject.getJSONObject("Night")
@@ -221,7 +241,9 @@ class WeatherManager {
                     aqi = airAndPol.getJSONObject(0).getString("Value"),
                     dayCondition = day.getString("IconPhrase"),
                     dayPrecipProb = day.getString("RainProbability") + "%",
-                    nightPrecipProb = night.getString("RainProbability") + "%"
+                    nightPrecipProb = night.getString("RainProbability") + "%",
+                    sunrise = sun.getString("Rise").substring(11,16),
+                    sunset = sun.getString("Set").substring(11,16)
                 )
                 // fiveDayDetail.set(i, tempBriefWeather)
                 fiveDayDetail[i] = tempBriefWeather

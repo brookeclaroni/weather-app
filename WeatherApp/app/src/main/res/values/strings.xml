@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">WeatherApp</string>
     <string name="more_details">Tap for more details ➜</string>
-    <string name="humidity">Humidity</string>
-    <string name="uv">UV Index</string>
-    <string name="wind">Wind</string>
-    <string name="tempF">%1$s°F</string>
-    <string name="tempC">%1$s°C</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="precipRate">Precipitation Rate</string>
+    <string name="sunset">Sunset</string>
+    <string name="tempF">%1$s°</string>
+    <string name="tempC">%1$s°</string>
     <string name="humidity_value">%1$s%%</string>
     <string name="wind_value_imp">%1$s mph</string>
     <string name="wind_value_met">%1$s km/h</string>
@@ -13,4 +13,6 @@
     <string name="logo">AccuWeather Logo</string>
     <string name="degree_f">°F&#160;</string>
     <string name="degree_c">°C</string>
+    <string name="humidity">Humidity</string>
+    <string name="realFeel">Feels like %1$s°</string>
 </resources>

@@ -48,9 +48,12 @@
 
             <TextView
                 android:id="@+id/day2Condition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="22dp"
                 android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
                 android:text="TextView"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -60,9 +63,12 @@
 
             <TextView
                 android:id="@+id/day4Condition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="22dp"
                 android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
                 android:text="TextView"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -72,9 +78,12 @@
 
             <TextView
                 android:id="@+id/day5Condition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="22dp"
                 android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
                 android:text="TextView"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -110,9 +119,12 @@
 
             <TextView
                 android:id="@+id/day3Condition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="22dp"
                 android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
                 android:text="TextView"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -201,10 +213,13 @@
 
             <TextView
                 android:id="@+id/day1Condition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="22dp"
                 android:layout_marginStart="130dp"
                 android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
                 android:text="TextView"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -356,7 +371,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray"
-                app:layout_constraintBottom_toTopOf="@+id/percepTitle"
+                app:layout_constraintBottom_toTopOf="@+id/humidTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -396,11 +411,11 @@
                 app:layout_constraintTop_toTopOf="@+id/UVTitle" />
 
             <TextView
-                android:id="@+id/percepTitle"
+                android:id="@+id/humidTitle"
                 android:layout_width="129dp"
                 android:layout_height="18dp"
                 android:layout_marginTop="52dp"
-                android:text="Precipitation probability"
+                android:text="@string/humidity"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/UVValue"
@@ -415,10 +430,10 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/percepTitle" />
+                app:layout_constraintTop_toTopOf="@+id/humidTitle" />
 
             <TextView
-                android:id="@+id/percepValue"
+                android:id="@+id/humidityValue"
                 android:layout_width="wrap_content"
                 android:layout_height="27dp"
                 android:layout_marginTop="10dp"
@@ -426,7 +441,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/UVValue"
-                app:layout_constraintTop_toBottomOf="@+id/percepTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/humidTitle" />
 
             <TextView
                 android:id="@+id/percepVValue"
@@ -448,7 +463,7 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/UVValue"
-                app:layout_constraintTop_toBottomOf="@+id/percepValue" />
+                app:layout_constraintTop_toBottomOf="@+id/humidityValue" />
 
             <TextView
                 android:id="@+id/visibilityTitle"
