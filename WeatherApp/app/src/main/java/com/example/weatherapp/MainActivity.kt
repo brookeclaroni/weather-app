@@ -47,6 +47,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sunFlare : ImageView
     private lateinit var bottomCloud : ImageView
     private lateinit var topCloud : ImageView
+    private lateinit var rainDrop1 : ImageView
+    private lateinit var rainDrop2 : ImageView
+    private lateinit var rainDrop3 : ImageView
 
 
     fun openBrowser(view: View) {
@@ -97,6 +100,10 @@ class MainActivity : AppCompatActivity() {
         sunFlare = findViewById(R.id.sunFlareImageView)
         bottomCloud = findViewById(R.id.bottomCloudImageView)
         topCloud = findViewById(R.id.topCloudImageView)
+        rainDrop1 = findViewById(R.id.rainDropImageView1)
+        rainDrop2 = findViewById(R.id.rainDropImageView2)
+        rainDrop3 = findViewById(R.id.rainDropImageView3)
+
 
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
@@ -262,7 +269,8 @@ class MainActivity : AppCompatActivity() {
 
         //isSunny()
         //isPartlyCloudy()
-        isCloudy()
+        //isCloudy()
+        isRainy()
     }
 
     fun isSunny()
@@ -285,5 +293,16 @@ class MainActivity : AppCompatActivity() {
         bottomCloud.visibility = View.VISIBLE
         topCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth))
         bottomCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth_delayed))
+    }
+    fun isRainy()
+    {
+        rainDrop1.visibility = View.VISIBLE
+        rainDrop2.visibility = View.VISIBLE
+        rainDrop3.visibility = View.VISIBLE
+        topCloud.visibility = View.VISIBLE
+        topCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth))
+        rainDrop1.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down))
+        rainDrop2.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay1))
+        rainDrop3.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay2))
     }
 }
