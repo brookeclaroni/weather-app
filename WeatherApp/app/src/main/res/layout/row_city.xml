@@ -42,7 +42,7 @@
                 android:textColor="@color/white"
                 android:textSize="36sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/whiteWeatherIcon"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.437" />
 
@@ -50,13 +50,13 @@
                 android:id="@+id/cityTempTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:text="76°F"
+                android:text="76"
                 android:textColor="@color/white"
                 android:textSize="36sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/starOnButton2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toStartOf="@+id/degLetterTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.444" />
 
             <ImageButton
                 android:id="@+id/starOffButton2"
@@ -79,14 +79,13 @@
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/whiteWeatherIcon"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.8"
-                app:srcCompat="@drawable/sun" />
+                app:layout_constraintVertical_bias="0.8" />
 
             <ProgressBar
                 android:id="@+id/cardProgBar"
@@ -98,6 +97,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/degLetterTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="2dp"
+                android:text="@string/degree_c"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toStartOf="@+id/starOffButton2"
+                app:layout_constraintTop_toTopOf="@+id/cityTempTextView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

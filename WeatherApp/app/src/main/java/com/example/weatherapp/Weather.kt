@@ -1,9 +1,9 @@
 package com.example.weatherapp
 
 data class Weather(
-    val city: String,
+    val cityState: String,
     val locationKey: String,
-    val state: String,
+    val city: String,
     val country: String,
     val lastUpdatedTime: String,
     val temp: String,

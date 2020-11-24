@@ -48,9 +48,9 @@ class WeatherManager {
         }
 
         return Weather (
-            city = "City",
+            cityState = "City",
             locationKey = "000000",
-            state = "State",
+            city = "State",
             country = "NA",
             lastUpdatedTime = "00",
             temp = "00",
@@ -86,9 +86,9 @@ class WeatherManager {
         val response = okHttpClient.newCall(request).execute()
         val responseString: String? = response.body?.string()
         var weather = Weather (
-            city = "City",
+            cityState = "City",
             locationKey = "000000",
-            state = "State",
+            city = "State",
             country = "NA",
             lastUpdatedTime = "00",
             temp = "00",
@@ -165,13 +165,15 @@ class WeatherManager {
             val precipMetVal = precipMet.getString("Value") + " " + precipMet.getString("Unit")
             val precipImpVal = precipImp.getString("Value") + " " + precipImp.getString("Unit")
 
-
+            var cityState = cityName
+            if (countryName == "United States")
+                cityState = "$cityName, $stateName"
 
 
             weather = Weather (
-                city = "$cityName, $stateName",
+                cityState = cityState,
                 locationKey = locationKey,
-                state = stateName,
+                city = cityName,
                 country = countryName,
                 lastUpdatedTime = lastUpdatedTime,
                 tempMet = tempMetricVal.toString(),
