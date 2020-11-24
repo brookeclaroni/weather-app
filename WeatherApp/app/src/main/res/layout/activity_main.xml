@@ -311,6 +311,50 @@
         tools:layout_editor_absoluteX="35dp"
         tools:layout_editor_absoluteY="252dp" />
 
+
+    <ImageView
+        android:id="@+id/snowFlakeImageView1"
+        android:layout_width="40dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="75dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/sunImageView"
+        app:layout_constraintStart_toStartOf="@+id/sunImageView"
+        app:layout_constraintTop_toTopOf="@+id/sunImageView"
+        app:srcCompat="@drawable/ic_snowflake"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <ImageView
+        android:id="@+id/snowFlakeImageView2"
+        android:layout_width="40dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginStart="110dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/sunImageView"
+        app:layout_constraintStart_toStartOf="@+id/sunImageView"
+        app:layout_constraintTop_toTopOf="@+id/sunImageView"
+        app:srcCompat="@drawable/ic_snowflake"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <ImageView
+        android:id="@+id/snowFlakeImageView3"
+        android:layout_width="40dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginStart="220dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/sunImageView"
+        app:layout_constraintStart_toStartOf="@+id/sunImageView"
+        app:layout_constraintTop_toTopOf="@+id/sunImageView"
+        app:srcCompat="@drawable/ic_snowflake"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+
+
     <ImageView
         android:id="@+id/thunderImageView"
         android:layout_width="100dp"

@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rainDrop2 : ImageView
     private lateinit var rainDrop3 : ImageView
     private lateinit var thunder : ImageView
+    private lateinit var snowFlake1 : ImageView
+    private lateinit var snowFlake2 : ImageView
+    private lateinit var snowFlake3 : ImageView
 
 
     fun openBrowser(view: View) {
@@ -105,6 +108,9 @@ class MainActivity : AppCompatActivity() {
         rainDrop2 = findViewById(R.id.rainDropImageView2)
         rainDrop3 = findViewById(R.id.rainDropImageView3)
         thunder = findViewById(R.id.thunderImageView)
+        snowFlake1 = findViewById(R.id.snowFlakeImageView1)
+        snowFlake2 = findViewById(R.id.snowFlakeImageView2)
+        snowFlake3 = findViewById(R.id.snowFlakeImageView3)
 
 
         //get intent shared preference variables
@@ -273,7 +279,8 @@ class MainActivity : AppCompatActivity() {
         //isPartlyCloudy()
         //isCloudy()
         //isRainy()
-        isThundering()
+        //isThundering()
+        isSnowy()
     }
 
     fun isSunny()
@@ -314,5 +321,17 @@ class MainActivity : AppCompatActivity() {
         isRainy()
         thunder.visibility = View.VISIBLE
         thunder.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_and_back))
+    }
+
+    fun isSnowy()
+    {
+        snowFlake1.visibility = View.VISIBLE
+        snowFlake2.visibility = View.VISIBLE
+        snowFlake3.visibility = View.VISIBLE
+        topCloud.visibility = View.VISIBLE
+        topCloud.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_back_and_forth))
+        snowFlake1.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down))
+        snowFlake2.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay1))
+        snowFlake3.startAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_down_delay2))
     }
 }
