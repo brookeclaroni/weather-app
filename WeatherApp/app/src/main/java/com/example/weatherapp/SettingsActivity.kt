@@ -25,7 +25,7 @@ class SettingsActivity : AppCompatActivity() {
 
         // link preference mapping
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
-        val timeFormat = preferences.getBoolean("USE_24_H", true)
+        val timeFormat = preferences.getBoolean("USE_24_H", false)
 
         timeSwitch.isChecked = timeFormat
         if (timeSwitch.isChecked) {
