@@ -122,14 +122,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         searchImageButton.setOnClickListener{
+            if (searchEditText.text.toString() != "") {
+                preferences
+                    .edit()
+                    .putString("CURR_CITY", searchEditText.text.toString())
+                    .apply()
 
-            preferences
-                .edit()
-                .putString("CURR_CITY", searchEditText.text.toString())
-                .apply()
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         //start the progress bar and disable clicks to the screen since networking is about to occur

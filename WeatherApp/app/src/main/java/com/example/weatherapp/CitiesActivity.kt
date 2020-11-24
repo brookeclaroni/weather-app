@@ -34,14 +34,19 @@ class CitiesActivity : AppCompatActivity() {
 
 
         searchImageButton.setOnClickListener{
+            if (searchEditText.text.toString() == ""){
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            if (searchEditText.text.toString() != "") {
+                preferences
+                    .edit()
+                    .putString("CURR_CITY", searchEditText.text.toString())
+                    .apply()
 
-            preferences
-                .edit()
-                .putString("CURR_CITY", searchEditText.text.toString())
-            .apply()
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
