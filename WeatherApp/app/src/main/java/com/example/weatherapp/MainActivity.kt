@@ -121,7 +121,6 @@ class MainActivity : AppCompatActivity() {
         star2 = findViewById(R.id.starImageView2)
         star3 = findViewById(R.id.starImageView3)
 
-
         //get intent shared preference variables
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityCode = preferences.getString("CURR_CITY", "327658")!!
@@ -190,11 +189,15 @@ class MainActivity : AppCompatActivity() {
 
                 //get and set background brightness
                 if(currentWeather.sunIsOut) {
+                    window.statusBarColor = resources.getColor(R.color.colorBackgroundLight)
+                    window.navigationBarColor = resources.getColor(R.color.colorBackgroundLight)
                     background.background =
                         ColorDrawable(resources.getColor(R.color.colorBackgroundLight))
                     moreDetailsButton.setTextColor(resources.getColor(R.color.colorBackgroundLight))
                 }
                 else {
+                    window.statusBarColor = resources.getColor(R.color.colorBackgroundDark)
+                    window.navigationBarColor = resources.getColor(R.color.colorBackgroundDark)
                     background.background =
                         ColorDrawable(resources.getColor(R.color.colorBackgroundDark))
                     moreDetailsButton.setTextColor(resources.getColor(R.color.colorBackgroundDark))

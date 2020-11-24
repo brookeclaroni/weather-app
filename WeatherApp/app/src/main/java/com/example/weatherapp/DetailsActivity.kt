@@ -229,10 +229,14 @@ class DetailsActivity : AppCompatActivity() {
                 uv.text = currentWeather.uv + ", " + currentWeather.uvStatus
 
                 if(currentWeather.sunIsOut) {
+                    window.statusBarColor = resources.getColor(R.color.colorBackgroundLight)
+                    window.navigationBarColor = resources.getColor(R.color.colorBackgroundLight)
                     detailsBackground.background =
                         ColorDrawable(resources.getColor(R.color.colorBackgroundLight))
                 }
                 else {
+                    window.statusBarColor = resources.getColor(R.color.colorBackgroundDark)
+                    window.navigationBarColor = resources.getColor(R.color.colorBackgroundDark)
                     detailsBackground.background =
                         ColorDrawable(resources.getColor(R.color.colorBackgroundDark))
                 }
