@@ -402,8 +402,8 @@
                 android:id="@+id/seperator3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="20dp"
                 android:background="@android:color/darker_gray"
+                app:layout_constraintBottom_toTopOf="@+id/hourlyDetailScrollView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -412,12 +412,13 @@
             <HorizontalScrollView
                 android:id="@+id/hourlyDetailScrollView"
                 android:layout_width="413dp"
-                android:layout_height="96dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="30dp"
                 android:fadingEdge="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/seperator1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/seperator3">
+                app:layout_constraintBottom_toTopOf="@id/chartView"
+                app:layout_constraintTop_toBottomOf="@+id/bottomBar">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -544,6 +545,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour6TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour6TextView" />
 
@@ -554,6 +556,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour5TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour5TextView" />
 
@@ -564,6 +567,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour8TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour8TextView" />
 
@@ -574,6 +578,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour11TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour9TextView" />
 
@@ -585,6 +590,7 @@
                             android:layout_marginEnd="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour9TextView"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/hour11TextView" />
@@ -596,6 +602,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour3TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour3TextView" />
 
@@ -606,6 +613,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour1TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour1TextView" />
 
@@ -616,6 +624,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour7TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour7TextView" />
 
@@ -626,6 +635,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour12TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour10TextView" />
 
@@ -636,6 +646,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour2TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour2TextView" />
 
@@ -646,6 +657,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_weight="1"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/hour4TextView"
                             app:layout_constraintStart_toEndOf="@+id/hour4TextView" />
 
@@ -656,6 +668,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_marginBottom="5dp"
                             android:textColor="#FFFFFF"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
 
@@ -663,7 +676,9 @@
                             android:id="@+id/hour1TempTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView"
@@ -673,7 +688,9 @@
                             android:id="@+id/hour1TempTextView2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView2"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView2"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView2"
@@ -683,7 +700,9 @@
                             android:id="@+id/hour1TempTextView3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView3"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView3"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView3"
@@ -693,7 +712,9 @@
                             android:id="@+id/hour1TempTextView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView4"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView4"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView4"
@@ -703,7 +724,9 @@
                             android:id="@+id/hour1TempTextView5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView5"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView5"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView5"
@@ -713,7 +736,9 @@
                             android:id="@+id/hour1TempTextView6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView6"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView6"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView6"
@@ -723,7 +748,9 @@
                             android:id="@+id/hour1TempTextView7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView7"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView7"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView7"
@@ -733,7 +760,9 @@
                             android:id="@+id/hour1TempTextView8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView8"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView8"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView8"
@@ -743,7 +772,9 @@
                             android:id="@+id/hour1TempTextView9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView9"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView9"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView9"
@@ -753,7 +784,9 @@
                             android:id="@+id/hour1TempTextView10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView10"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView10"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView10"
@@ -763,7 +796,9 @@
                             android:id="@+id/hour1TempTextView11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView11"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView11"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView11"
@@ -773,7 +808,9 @@
                             android:id="@+id/hour1TempTextView12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toTopOf="@+id/hour1ImageView12"
                             app:layout_constraintEnd_toEndOf="@+id/hour1ImageView12"
                             app:layout_constraintStart_toStartOf="@+id/hour1ImageView12"
@@ -949,6 +986,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/chartView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/seperator1" />

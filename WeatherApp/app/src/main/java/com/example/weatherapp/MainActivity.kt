@@ -127,6 +127,7 @@ class MainActivity : AppCompatActivity() {
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityCode = preferences.getString("CURR_CITY", "327659")!!
         val imp = preferences.getBoolean("IMPERIAL", true)
+        val timeFormat24 = preferences.getBoolean("USE_24_H", true)
 
         var tempImp = ""
         var tempMet = ""
@@ -236,8 +237,20 @@ class MainActivity : AppCompatActivity() {
                 countryTextView.text = currentWeather.country
 
                 //get and set sunrise and sunset
-                sunriseValueTextView.text = fiveDayDetail[0].sunrise
-                sunsetValueTextView.text = fiveDayDetail[0].sunset
+                if (timeFormat24) {
+                    sunriseValueTextView.text = fiveDayDetail[0].sunrise
+                    sunsetValueTextView.text = fiveDayDetail[0].sunset
+                    sunriseValueTextView.textSize = 36f
+                    sunsetValueTextView.textSize = 36f
+
+                }
+                else {
+                    sunriseValueTextView.text = timeFormat24to12(fiveDayDetail[0].sunrise)
+                    sunriseValueTextView.textSize = 30f
+                    sunsetValueTextView.text = timeFormat24to12(fiveDayDetail[0].sunset)
+                    sunsetValueTextView.textSize = 30f
+                }
+
 
                 //set weather text
                 weatherTextView.text = currentWeather.weatherText
@@ -403,5 +416,21 @@ class MainActivity : AppCompatActivity() {
         star1.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
         star2.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_delay1))
         star3.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely))
+    }
+
+    fun timeFormat24to12(origin: String): String{
+        var ret = ""
+        if (origin.substring(0,2).toInt() < 12) {
+            ret = origin + "AM"
+            return ret
+        }
+        else if (origin.substring(0,2).toInt() == 12){
+            ret = origin + "PM"
+            return ret
+        }
+        else {
+            ret = (origin.substring(0,2).toInt() - 12).toString() + origin.substring(2,5) + "PM"
+            return ret
+        }
     }
 }
