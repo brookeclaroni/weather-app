@@ -48,9 +48,9 @@ class WeatherManager {
         }
 
         return Weather (
-            cityState = "City",
+            cityState = "City, State",
             locationKey = "000000",
-            city = "State",
+            city = "City",
             country = "NA",
             lastUpdatedTime = "00",
             temp = "00",

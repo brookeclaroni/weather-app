@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var searchImageButton: ImageButton
     private lateinit var progBar: ProgressBar
     private lateinit var degreeLetterTextView: TextView
+    private lateinit var helpTextView: TextView
 
     private lateinit var sunCenter : ImageView
     private lateinit var sunFlare : ImageView
@@ -107,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         searchImageButton = findViewById(R.id.mainSearchButton)
         progBar = findViewById(R.id.mainProgBar)
         degreeLetterTextView = findViewById(R.id.degreeLetterTextView)
+        helpTextView = findViewById(R.id.helpTextView)
 
         sunCenter = findViewById(R.id.sunCenterImageView)
         sunFlare = findViewById(R.id.sunFlareImageView)
@@ -162,7 +164,6 @@ class MainActivity : AppCompatActivity() {
 
         //start the progress bar and disable clicks to the screen since networking is about to occur
         progBar.visibility=View.VISIBLE
-        window.setFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 
         doAsync {
             val weatherManager = WeatherManager()
@@ -288,7 +289,6 @@ class MainActivity : AppCompatActivity() {
 
                 //networking is done so get rid of prog bar
                 progBar.visibility=View.GONE
-                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
             }
         }
 
@@ -339,6 +339,12 @@ class MainActivity : AppCompatActivity() {
         //when details button is pressed, head to details activity
         moreDetailsButton.setOnClickListener{
             val intent = Intent(this, DetailsActivity::class.java)
+            startActivity(intent)
+        }
+
+        //when details button is pressed, head to details activity
+        helpTextView.setOnClickListener{
+            val intent = Intent(this, HelpActivity::class.java)
             startActivity(intent)
         }
     }

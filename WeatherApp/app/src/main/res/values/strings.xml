@@ -1,4 +1,4 @@
-<resources>
+<resources >
     <string name="app_name">Simple Weather</string>
     <string name="more_details">Tap for more details ➜</string>
     <string name="sunrise">Sunrise</string>
@@ -18,4 +18,11 @@
     <string name="real_feel_met">Feels like %1$s°C</string>
     <string name="unitName_f">Unit: °F</string>
     <string name="unitName_c">Unit: °C</string>
+    <string name="help"><u>Help Menu</u></string>
+    <string name="okay">Okay</string>
+    <string name="help1">• To search for a new city, tap on the text box at the top, type in your city, and tap on the magnifying glass icon to search for it.</string>
+    <string name="help2">• To save a city to your device, tap the star in the top right corner.</string>
+    <string name="help3">• To view your saved cities, tap the map icon in the top left corner.</string>
+    <string name="help4">• To view weather attributes in metric measurements, tap on the F/C switch in the middle of the screen.</string>
+    <string name="help5">• To view more details of the current city you are viewing (such as its hourly and daily forecast), tap on the white button at the bottom.</string>
 </resources>
