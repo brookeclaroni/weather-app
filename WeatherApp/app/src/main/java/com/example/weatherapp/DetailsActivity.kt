@@ -202,6 +202,7 @@ class DetailsActivity : AppCompatActivity() {
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityCode = preferences.getString("CURR_CITY", "327658")!!
         val imp = preferences.getBoolean("IMPERIAL", true)
+        val timeFormat24 = preferences.getBoolean("USE_24_H", true)
 
         //start the progress bar and disable clicks to the screen since networking is about to occur
         progBar.visibility= View.VISIBLE
@@ -215,7 +216,6 @@ class DetailsActivity : AppCompatActivity() {
             day = day - 1
             runOnUiThread {
                 detailsTextView.text = currentWeather.city
-                lastUpdatedTime.text = "Last Updated: " + currentWeather.lastUpdatedTime.substring(5,7) + "/" + currentWeather.lastUpdatedTime.substring(8,10) + " " + currentWeather.lastUpdatedTime.substring(11,16)
                 day1TextView.text = dayList[day % 7] + " " + fiveDayDetail[0].date.substring(8,10)
                 day2TextView.text = dayList[(day + 1)%7] +" " + fiveDayDetail[1].date.substring(8,10)
                 day3TextView.text = dayList[(day + 2)%7] +" " + fiveDayDetail[2].date.substring(8,10)
@@ -226,6 +226,14 @@ class DetailsActivity : AppCompatActivity() {
                 day3CondView.isSelected = true
                 day4CondView.isSelected = true
                 day5CondView.isSelected = true
+
+                if (timeFormat24) {
+                    lastUpdatedTime.text = "Last Updated: " + currentWeather.lastUpdatedTime.substring(5,7) + "/" + currentWeather.lastUpdatedTime.substring(8,10) + " " + currentWeather.lastUpdatedTime.substring(11,16)
+                }
+                else {
+                    val tempTime = timeFormat24to12(currentWeather.lastUpdatedTime.substring(11,16))
+                    lastUpdatedTime.text = "Last Updated: " + currentWeather.lastUpdatedTime.substring(5,7) + "/" + currentWeather.lastUpdatedTime.substring(8,10) + " " + tempTime
+                }
 
                 if (fiveDayDetail[0].dayCondition == "Intermittent Clouds") {
                     day1CondView.text = "Cloudy"
@@ -509,7 +517,10 @@ class DetailsActivity : AppCompatActivity() {
                 // set hourly text
                 var imageResource = R.drawable.day_sunny
                 for (i in 0..11) {
-                    val currentTime = hourlyDetail[i].time
+                    var currentTime = hourlyDetail[i].time
+                    if (!timeFormat24) {
+                        currentTime = timeFormat24to12(currentTime)
+                    }
                     val currentTemp = hourlyDetail[i].temp
                     val currentWeatherIcon = hourlyDetail[i].weatherIcon
                     if(currentWeatherIcon in 1..2)
@@ -675,6 +686,23 @@ class DetailsActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+        }
+
+
+    }
+    fun timeFormat24to12(origin: String): String{
+        var ret = ""
+        if (origin.substring(0,2).toInt() < 12) {
+            ret = origin + "AM"
+            return ret
+        }
+        else if (origin.substring(0,2).toInt() == 12){
+            ret = origin + "PM"
+            return ret
+        }
+        else {
+            ret = (origin.substring(0,2).toInt() - 12).toString() + origin.substring(2,5) + "PM"
+            return ret
         }
     }
 }

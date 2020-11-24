@@ -16,6 +16,7 @@ class CitiesActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchEditText: EditText
     private lateinit var searchImageButton: ImageButton
+    private lateinit var settingButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class CitiesActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         searchEditText = findViewById(R.id.searchEditText)
         searchImageButton = findViewById(R.id.searchImageButton)
+        settingButton = findViewById(R.id.settingButton)
 
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityNames = preferences.getStringSet("SAVED_CITIES", mutableSetOf())
@@ -47,6 +49,10 @@ class CitiesActivity : AppCompatActivity() {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
+        }
+        settingButton.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
         }
     }
 }
