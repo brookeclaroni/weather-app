@@ -14,7 +14,7 @@
         android:layout_marginTop="16dp"
         android:background="#00FFFFFF"
         android:tint="#FFFFFF"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />

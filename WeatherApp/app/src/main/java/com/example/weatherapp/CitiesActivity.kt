@@ -3,6 +3,7 @@ package com.example.weatherapp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +15,7 @@ class CitiesActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchEditText: EditText
     private lateinit var searchImageButton: ImageButton
-    private lateinit var settingButton: ImageButton
+    private lateinit var settingFab: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class CitiesActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         searchEditText = findViewById(R.id.searchEditText)
         searchImageButton = findViewById(R.id.searchImageButton)
-        settingButton = findViewById(R.id.settingButton)
+        settingFab = findViewById(R.id.settingFab)
 
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityNames = preferences.getStringSet("SAVED_CITIES", mutableSetOf())
@@ -48,7 +49,8 @@ class CitiesActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        settingButton.setOnClickListener {
+
+        settingFab.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }

@@ -428,6 +428,9 @@ class MainActivity : AppCompatActivity() {
         var ret = ""
         if (origin.substring(0,2).toInt() < 12) {
             ret = origin + "AM"
+            if (ret.substring(0,1) == "0") {
+                ret = ret.substring(1,ret.length)
+            }
             return ret
         }
         else if (origin.substring(0,2).toInt() == 12){
