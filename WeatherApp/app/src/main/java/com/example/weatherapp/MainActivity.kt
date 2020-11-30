@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityCode = preferences.getString("CURR_CITY", "327659")!!
         val imp = preferences.getBoolean("IMPERIAL", true)
-        val timeFormat24 = preferences.getBoolean("USE_24_H", true)
+        val timeFormat24 = preferences.getBoolean("USE_24_H", false)
 
         var tempImp = ""
         var tempMet = ""
@@ -428,6 +428,9 @@ class MainActivity : AppCompatActivity() {
         var ret = ""
         if (origin.substring(0,2).toInt() < 12) {
             ret = origin + "AM"
+            if (ret.substring(0,1) == "0") {
+                ret = ret.substring(1,ret.length)
+            }
             return ret
         }
         else if (origin.substring(0,2).toInt() == 12){

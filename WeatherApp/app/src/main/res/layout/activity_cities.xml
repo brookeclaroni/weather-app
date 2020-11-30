@@ -7,15 +7,28 @@
     android:background="@color/white"
     tools:context=".CitiesActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/settingFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_settings_black_36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cityRecyclerView"
-        android:layout_width="412dp"
-        android:layout_height="691dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="410dp"
+        android:layout_height="771dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/searchEditText">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
         android:id="@+id/searchEditText"
@@ -45,6 +58,7 @@
         app:layout_constraintTop_toTopOf="@+id/searchEditText"
         app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 
+<<<<<<< HEAD
     <ImageButton
         android:id="@+id/settingButton"
         android:layout_width="wrap_content"
@@ -56,4 +70,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/baseline_settings_black_18dp" />
+=======
+>>>>>>> 860f7e1d1338e364e0950cef7a66baa96172422b
 </androidx.constraintlayout.widget.ConstraintLayout>

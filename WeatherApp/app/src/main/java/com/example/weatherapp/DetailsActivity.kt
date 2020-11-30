@@ -202,7 +202,7 @@ class DetailsActivity : AppCompatActivity() {
         val preferences = getSharedPreferences("weather-app", Context.MODE_PRIVATE)
         val cityCode = preferences.getString("CURR_CITY", "327658")!!
         val imp = preferences.getBoolean("IMPERIAL", true)
-        val timeFormat24 = preferences.getBoolean("USE_24_H", true)
+        val timeFormat24 = preferences.getBoolean("USE_24_H", false)
 
         //start the progress bar and disable clicks to the screen since networking is about to occur
         progBar.visibility= View.VISIBLE
@@ -519,7 +519,10 @@ class DetailsActivity : AppCompatActivity() {
                 for (i in 0..11) {
                     var currentTime = hourlyDetail[i].time
                     if (!timeFormat24) {
-                        currentTime = timeFormat24to12(currentTime)
+                        val newTIme = timeFormat24to12(currentTime)
+                        val endPos1 = newTIme.indexOf(':')
+                        val endPos2 = newTIme.indexOf('M')
+                        currentTime =  newTIme.substring(0,endPos1) + " " + newTIme.substring(endPos2 - 1, endPos2 + 1)
                     }
                     val currentTemp = hourlyDetail[i].temp
                     val currentWeatherIcon = hourlyDetail[i].weatherIcon
@@ -694,6 +697,9 @@ class DetailsActivity : AppCompatActivity() {
         var ret = ""
         if (origin.substring(0,2).toInt() < 12) {
             ret = origin + "AM"
+            if (ret.substring(0,1) == "0") {
+                ret = ret.substring(1,ret.length)
+            }
             return ret
         }
         else if (origin.substring(0,2).toInt() == 12){
