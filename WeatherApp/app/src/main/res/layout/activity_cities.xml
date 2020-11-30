@@ -57,19 +57,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/searchEditText"
         app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
-
-<<<<<<< HEAD
-    <ImageButton
-        android:id="@+id/settingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/white"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/baseline_settings_black_18dp" />
-=======
->>>>>>> 860f7e1d1338e364e0950cef7a66baa96172422b
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
